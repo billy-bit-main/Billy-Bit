@@ -1,81 +1,75 @@
-// Plant hover interaction
-document.querySelectorAll('.plant-link').forEach(link => {
-    const plant = link.querySelector('.plant');
-    const leaves = link.querySelectorAll('.leaf');
-
-    link.addEventListener('mouseenter', () => {
-        leaves.forEach((leaf, index) => {
-            leaf.style.animation = 'none';
-            setTimeout(() => {
-                leaf.style.animation = '';
-            }, 10);
-        });
-    });
-
-    link.addEventListener('mouseleave', () => {
-        // Reset leaf animations on mouse leave
-        leaves.forEach(leaf => {
-            leaf.style.animation = '';
-        });
-    });
-});
-
-// Smooth scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// Add ambient sound suggestion and mouse interaction
+document.addEventListener('mousemove', (e) => {
+    const greenhouses = document.querySelectorAll('.plant-container');
+    
+    greenhouses.forEach(container => {
+        const rect = container.getBoundingClientRect();
+        const distX = e.clientX - rect.left - rect.width / 2;
+        const distY = e.clientY - rect.top - rect.height / 2;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+        
+        if (distance < 200) {
+            const leaves = container.querySelectorAll('.plant-leaf');
+            leaves.forEach(leaf => {
+                const angle = Math.atan2(distY, distX) * (180 / Math.PI);
+                leaf.style.setProperty('--rotation', `${angle - 90}deg`);
             });
         }
     });
 });
 
-// Add a subtle parallax effect on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    const scrollPosition = window.scrollY;
+// Smooth scroll for content
+document.addEventListener('scroll', () => {
+    const content = document.querySelector('.greenhouse-content');
+    const header = document.querySelector('.greenhouse-header');
     
-    if (scrollPosition < 500) {
-        header.style.backgroundPosition = `0 ${scrollPosition * 0.5}px`;
+    if (window.scrollY > 100) {
+        header.style.opacity = '0.7';
+    } else {
+        header.style.opacity = '1';
     }
 });
 
-// Intersection Observer for staggered animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
+// Add ripple effect on click
+document.querySelectorAll('.plant-container').forEach(plant => {
+    plant.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        const rect = this.getBoundingClientRect();
+        
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(212, 232, 168, 0.5)';
+        ripple.style.pointerEvents = 'none';
+        ripple.style.left = e.clientX - rect.left + 'px';
+        ripple.style.top = e.clientY - rect.top + 'px';
+        ripple.style.width = '0px';
+        ripple.style.height = '0px';
+        ripple.style.animation = 'rippleExpand 0.6s ease-out';
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+// Add CSS animation for ripple
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes rippleExpand {
+        from {
+            width: 0px;
+            height: 0px;
+            opacity: 1;
         }
-    });
-}, observerOptions);
-
-// Observe all plants
-document.querySelectorAll('.plant-link').forEach(plant => {
-    plant.style.opacity = '0';
-    plant.style.transform = 'translateY(20px)';
-    plant.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(plant);
-});
-
-// Leaf rotation enhancement on interaction
-document.querySelectorAll('.plant').forEach(plant => {
-    plant.addEventListener('mouseenter', function() {
-        const leaves = this.querySelectorAll('.leaf');
-        leaves.forEach((leaf, index) => {
-            const randomRotation = (Math.random() - 0.5) * 10;
-            leaf.style.setProperty('--rotation', `${randomRotation}deg`);
-        });
-    });
-});
+        to {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
 
 console.log('🌿 Welcome to billy-bit garden! Enjoy exploring the projects.');
