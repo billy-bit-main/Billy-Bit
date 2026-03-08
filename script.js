@@ -1,4 +1,3 @@
-// Add ambient sound suggestion and mouse interaction
 document.addEventListener('mousemove', (e) => {
     const greenhouses = document.querySelectorAll('.plant-container');
     
@@ -18,7 +17,6 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// Smooth scroll for content
 document.addEventListener('scroll', () => {
     const content = document.querySelector('.greenhouse-content');
     const header = document.querySelector('.greenhouse-header');
@@ -30,7 +28,6 @@ document.addEventListener('scroll', () => {
     }
 });
 
-// Add ripple effect on click
 document.querySelectorAll('.plant-container').forEach(plant => {
     plant.addEventListener('click', function(e) {
         const ripple = document.createElement('div');
@@ -54,7 +51,6 @@ document.querySelectorAll('.plant-container').forEach(plant => {
     });
 });
 
-// Add CSS animation for ripple
 const style = document.createElement('style');
 style.textContent = `
     @keyframes rippleExpand {
