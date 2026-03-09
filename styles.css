@@ -4,13 +4,23 @@ body {
   height: 100vh;
   background: #040814;
   background: 
-    radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.1), transparent 50%),
+    radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
     radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
-    radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.06), transparent 50%),
-    radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.04), transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
+    radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
     radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
     radial-gradient(ellipse at 80% 40%, rgba(25, 25, 112, 0.03), transparent 50%),
     #040814;
+}
+
+.planet {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #90c0ff, #2a6abf 50%, #0a2a5a);
 }
 
 .site-name {
