@@ -1,6 +1,6 @@
-import * as THREE from './js/three.module.js';
-import { GLTFLoader } from './js/GLTFLoader.js';
-import { OrbitControls } from './js/OrbitControls.js';
+import * as THREE from './three.module.js';
+import { GLTFLoader } from './GLTFLoader.js';
+import { OrbitControls } from './OrbitControls.js';
 
 //setup 
   // create scene and set sky color
@@ -91,10 +91,10 @@ import { OrbitControls } from './js/OrbitControls.js';
 //mountains
   const loader = new GLTFLoader();
   const mountainList = [
-    { file: './glb/beerwah.glb',     name: 'Mount Beerwah',     position: [-330, 10,  -50], rotationY:  200, scale: 0.7 },
-    { file: './glb/coonowrin.glb',   name: 'Mount Coonowrin',   position: [180, 15, 60], rotationY: -20, scale: 1.1 },
-    { file: './glb/ngungun.glb',     name: 'Mount Ngungun',     position: [150, 20, -360], rotationY: 180, scale: 0.8 },
-    { file: './glb/tibrogargan.glb', name: 'Mount Tibrogargan', position: [160, 20, 20], rotationY: 180, scale: 0.5 },
+    { file: './beerwah.glb',     name: 'Mount Beerwah',     position: [-330, 10,  -50], rotationY:  200, scale: 0.7 },
+    { file: './coonowrin.glb',   name: 'Mount Coonowrin',   position: [180, 15, 60], rotationY: -20, scale: 1.1 },
+    { file: './ngungun.glb',     name: 'Mount Ngungun',     position: [150, 20, -360], rotationY: 180, scale: 0.8 },
+    { file: './tibrogargan.glb', name: 'Mount Tibrogargan', position: [160, 20, 20], rotationY: 180, scale: 0.5 },
   ];
 
   let mountainGroups = []; 
@@ -150,10 +150,10 @@ import { OrbitControls } from './js/OrbitControls.js';
     </p>
 
     <div style="width:48%; float:left; display:flex; flex-direction:column; justify-content:stretch; height:320px; margin: 16px 2% 16px 10px;  border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="./Beerwah-Pics/MountBeerwah3.webp" alt="Mount Beerwah Profile" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom:12px; outline : 2px solid #097238ff;">
-      <img src="./Beerwah-Pics/MountBeerwah2.webp" alt="Mount Beerwah Track" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+      <img src="./MountBeerwah3.webp" alt="Mount Beerwah Profile" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom:12px; outline : 2px solid #097238ff;">
+      <img src="./MountBeerwah2.webp" alt="Mount Beerwah Track" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
     </div>
-    <img src="./Beerwah-Pics/MountBeerwah1.jpg" alt="Mount Beerwah Summit View" style="width:45%; float:right; height:320px; object-fit:cover; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+    <img src="./MountBeerwah1.jpg" alt="Mount Beerwah Summit View" style="width:45%; float:right; height:320px; object-fit:cover; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
 
     <h3>Key Facts</h3>
     <ul>
@@ -191,10 +191,10 @@ import { OrbitControls } from './js/OrbitControls.js';
     </div></p>
 
     <div style="width:48%; float:left; display:flex; flex-direction:column; justify-content:stretch; height:320px; margin: 16px 2% 16px 10px;  border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="./Coonowrin-Pics/MountCoonowrin3.webp" alt="Mount Coonowrin Profile" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom:12px; outline : 2px solid #097238ff;">
-      <img src="./Coonowrin-Pics/MountCoonowrin2.jpg" alt="Mount Coonowrin Track" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+      <img src="./MountCoonowrin3.webp" alt="Mount Coonowrin Profile" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom:12px; outline : 2px solid #097238ff;">
+      <img src="./MountCoonowrin2.jpg" alt="Mount Coonowrin Track" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
     </div>
-    <img src="./Coonowrin-Pics/MountCoonowrin1.jpg" alt="Mount Coonowrin Summit View" style="width:45%; float:right; height:320px; object-fit:cover; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+    <img src="./MountCoonowrin1.jpg" alt="Mount Coonowrin Summit View" style="width:45%; float:right; height:320px; object-fit:cover; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
 
     <h3>Key Facts</h3>
     <ul>
@@ -230,10 +230,10 @@ import { OrbitControls } from './js/OrbitControls.js';
     </div> </p> 
 
     <div style="width:48%; float:left; display:flex; flex-direction:column; justify-content:stretch; height:320px; margin: 16px 2% 16px 10px;  border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-      <img src="./Ngungun-Pics/MountNgungun1.avif" alt="Mount Ngungun Summit View" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom:12px; outline : 2px solid #097238ff;">
-      <img src="./Ngungun-Pics/MountNgungun2.jpg" alt="Mount Ngungun Track" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+      <img src="./MountNgungun1.avif" alt="Mount Ngungun Summit View" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom:12px; outline : 2px solid #097238ff;">
+      <img src="./MountNgungun2.jpg" alt="Mount Ngungun Track" style="width:100%; height:48%; object-fit:cover; border-radius: 8px 8px 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
     </div>
-    <img src="./Ngungun-Pics/MountNgungun3.jpg" alt="Mount Ngungun Cave" style="width:45%; float:right; height:320px; object-fit:cover; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+    <img src="./MountNgungun3.jpg" alt="Mount Ngungun Cave" style="width:45%; float:right; height:320px; object-fit:cover; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
 
     <h3>Key Facts</h3>
     <ul>
@@ -269,9 +269,9 @@ import { OrbitControls } from './js/OrbitControls.js';
       Mount Tibrogargan is a volcanic plug in the Glass House Mountains of Queensland, Australia, formed 27 million years ago from a magma intrusion of hard alkali rhyolite, with an elevation of 364 meters. It is a significant landmark for the Jinibara people, considered the "father" of the mountains in local Dreaming stories. The mountain is popular for rock climbing and features a steep, challenging climb to its summit, offering rewarding views of the surrounding peaks.  
   </div></p>
 
-<img src="./Tibrogargan-Pics/MountTibrogargan2.webp" alt="Mount Tibrogargan Warning Sign" style="width:45%; float:left; margin: 16px 2% 16px 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
-<img src="./Tibrogargan-Pics/MountTibrogargan.webp" alt="Mount Tibrogargan View" style="width:45%; float:right; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
-<img src="./Tibrogargan-Pics/MountTibrogargan6.webp" alt="Veiw of Mountain Summit" style="width:45%; float:left; margin: -5px 2% 16px 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+<img src="./MountTibrogargan2.webp" alt="Mount Tibrogargan Warning Sign" style="width:45%; float:left; margin: 16px 2% 16px 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+<img src="./MountTibrogargan.webp" alt="Mount Tibrogargan View" style="width:45%; float:right; margin: 16px 0 16px 2%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
+<img src="./MountTibrogargan6.webp" alt="Veiw of Mountain Summit" style="width:45%; float:left; margin: -5px 2% 16px 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); outline : 2px solid #097238ff;">
     <h3>Key Facts</h3>
     <ul>
       <li><strong>Age:</strong> Mount Tibrogargan is a volcanic plug that is roughly 27 million years old. </li><br>
@@ -295,8 +295,6 @@ import { OrbitControls } from './js/OrbitControls.js';
     <ul>
       <li><strong>Formation and Composition:</strong> Mount Tibrogargan is a magma intrusion of hard alkali rhyolite that squeezed up into the vents of an ancient volcano 27 million years ago.</li>
     </ul>
-
-
   `,
 };
 
@@ -407,7 +405,7 @@ const tooltip = document.getElementById("tooltip");
           }
 
           tooltip.style.opacity = 1;
-          tooltip.innerHTML = getParentName(obj); // reliably gets the mountain name
+          tooltip.innerHTML = getParentName(obj);
           tooltip.style.left = `${mouseX + 10}px`;
           tooltip.style.top = `${mouseY + 10}px`;
       }
