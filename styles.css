@@ -110,12 +110,11 @@ body {
     animation: counter-spin linear infinite;
     cursor: pointer;
     pointer-events: all;
-    position: relative;
     z-index: 10;    
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -100%);
 }
 
 .planet-1 .planet { animation-duration: 12s; animation-delay: -3s; }
