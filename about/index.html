@@ -1,193 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>billy-bit · About</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>billy-bit · about</title>
+  <link rel="icon" href="roboicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0e0e10; --surface: #18181c; --border: #2a2a32;
-      --accent: #f0c040; --accent2: #5ee8b0; --accent3: #a0b4f0;
-      --text: #e8e8f0; --muted: #888898;
-    }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'IBM Plex Sans', sans-serif;
       min-height: 100vh;
-      padding: 4rem 1.5rem 6rem;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
+        radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
+        radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
+        #040814;
+      color: #e8f2ff;
+      font-family: 'Exo 2', sans-serif;
+      padding: 6rem 2rem 6rem;
     }
 
-    .container { max-width: 720px; margin: 0 auto; }
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 0px,
+        rgba(0,0,20,0.2) 2px,
+        rgba(0,0,20,0.2) 4px
+      );
+      pointer-events: none;
+      z-index: 1000000000000000;
+    }
 
-    .label {
-      font-family: 'IBM Plex Mono', monospace;
+    .hud-tl {
+      position: fixed;
+      left: 2%;
+      top: 2%;
+    }
+
+    .site-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #e8f2ff;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169,204,255);
+    }
+
+    .site-sub {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.9rem;
+      color: #4a6a9a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .back-link {
+      position: fixed;
+      right: 3%;
+      top: 2.5%;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.8rem;
+      color: #4a6a9a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: #abcfff; }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .page-label {
+      font-family: 'Exo 2', sans-serif;
       font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
+      color: #4a6a9a;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 0.75rem;
     }
 
     h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      color: #fff;
-      margin-bottom: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: #e8f2ff;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 20px rgba(74,143,255,1), 0 0 60px rgb(169,204,255);
+      margin-bottom: 3rem;
+      line-height: 1.15;
+    }
+
+    .photo-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .photo-row img {
+      height: 240px;
+      width: auto;
+      display: block;
+    }
+
+    .stat-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .stat {
+      border: 1px solid #1a2a4a;
+      border-radius: 4px;
+      padding: 0.6rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      background: rgba(10, 20, 50, 0.4);
+    }
+
+    .stat-val {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #abcfff;
+    }
+
+    .stat-key {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.65rem;
+      color: #4a6a9a;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
     .block {
-      border-left: 2px solid var(--border);
+      border-left: 1px solid #1a2a4a;
       padding-left: 1.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2.75rem;
     }
 
     .block-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.7rem;
+      color: #4a6a9a;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .block p {
-      font-size: 1rem;
-      color: #b0b0c0;
-      line-height: 1.85;
-      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: #8aaad0;
+      line-height: 1.9;
+      margin-bottom: 0.9rem;
     }
 
     .block p:last-child { margin-bottom: 0; }
 
-    .block p strong { color: var(--text); font-weight: 500; }
+    .block p strong { color: #abcfff; font-weight: 500; }
 
-    .block.highlight { border-left-color: var(--accent); }
-    .block.highlight .block-label { color: var(--accent); }
-
-    .block.green { border-left-color: var(--accent2); }
-    .block.green .block-label { color: var(--accent2); }
-
-    .block.blue { border-left-color: var(--accent3); }
-    .block.blue .block-label { color: var(--accent3); }
-
-    .stat-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
-    }
-
-    .stat {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.75rem 1.1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .stat-val {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .stat-key {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
+    .block.lit { border-left-color: rgba(74,143,255,0.6); }
+    .block.lit .block-label { color: #4a8fff; }
 
     .quote {
-      margin: 3rem 0;
-      padding: 1.5rem 1.75rem;
-      background: var(--surface);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      font-family: 'Syne', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.5;
+      border: 1px solid #1a2a4a;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      background: rgba(10, 20, 50, 0.4);
+      margin-top: 3rem;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.95rem;
+      color: #abcfff;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
     }
 
     .quote span {
       display: block;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      color: #4a6a9a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
     }
 
-    footer {
-      margin-top: 4rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      color: #444455;
+    .hud-br {
+      position: fixed;
+      right: 3%;
+      bottom: 3.5%;
+      text-align: right;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.9rem;
+      color: #4a6a9a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
+
+  <div class="hud-tl">
+    <div class="site-name">billy-bit</div>
+    <div class="site-sub">about</div>
+  </div>
+
+  <a href="https://billy-bit.com" class="back-link">← mission control</a>
+
+  <div class="scanlines"></div>
+
   <div class="container">
 
-<div class="label">billy-bit · about</div>
+    <div class="page-label">billy-bit · about</div>
+    <h1>who's<br>behind this.</h1>
 
-<div style="display:flex; align-items:flex-end; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap;">
-  <img 
-    src="Picture1.png" 
-    alt="billy-bit" 
-    style="height:260px; width:auto; display:block;"
-  />
-  <h1 style="margin-bottom:0;">Who's<br>behind this.</h1>
-</div>
-
-    <div class="block highlight">
-      <div class="block-label">The basics</div>
-      <p>I'm a 13 year old from Australia who builds things on the internet for fun. Into basketball, jazzy hip hop, and anything design related. Aiming for something in web dev, game dev, or robotics — haven't decided which yet, so I'm just building until it becomes obvious.</p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-val">13</span><span class="stat-key">years old</span></div>
-        <div class="stat"><span class="stat-val">Australia</span><span class="stat-key">based</span></div>
-        <div class="stat"><span class="stat-val">HTML · CSS · JS</span><span class="stat-key">current stack</span></div>
+    <div class="photo-row">
+      <img src="Picture1.png" alt="billy-bit" />
+      <div class="stat-grid">
+        <div class="stat"><span class="stat-val">13</span><span class="stat-key">age</span></div>
+        <div class="stat"><span class="stat-val">Australia</span><span class="stat-key">location</span></div>
+        <div class="stat"><span class="stat-val">HTML · CSS · JS</span><span class="stat-key">stack</span></div>
         <div class="stat"><span class="stat-val">building for fun</span><span class="stat-key">motivation</span></div>
+        <div class="stat"><span class="stat-val">basketball · music · design</span><span class="stat-key">outside of code</span></div>
       </div>
     </div>
 
-    <div class="block green">
-      <div class="block-label">The honest version</div>
-      <p>I tried to learn to code more than once. Both times I quit. Not because it was too hard — because I was going about it the wrong way. Trying to finish courses, trying to memorise syntax, waiting until I felt ready to actually make something.</p>
-      <p>Life has a way of teaching you that waiting until you're ready is just another way of not starting. I've had to learn that in more areas than just code. Eventually something clicks — not the material, but the <strong>approach</strong>. You stop preparing to do the thing and you just do it.</p>
-      <p>For me that click came from building something with a friend. I did the HTML and CSS, she handled the JavaScript — an interactive 3D map of the Glass House Mountains. I was jealous of what she could do. That jealousy turned into motivation. And here we are.</p>
-    </div>
-
-    <div class="block blue">
-      <div class="block-label">What this site is</div>
-      <p>billy-bit.com is space-themed. Every planet is a project. Space made sense because it's endless — there's always somewhere further out to go, always something new on the horizon. The site grows as I grow.</p>
-      <p>It's also a journal. Code notes, things I had to figure out the hard way, shortcuts that saved me hours. A record of the doing. If someone finds something here that saves them time or stops them from quitting, that's the whole point.</p>
-      <p>I'm not an expert. I'm 13 and I'm figuring it out. But I think that's exactly why this site might be useful to someone — <strong>it's not written from the top of the mountain.</strong></p>
+    <div class="block lit">
+      <div class="block-label">the honest version</div>
+      <p>I tried to learn to code more than once. Both times I quit. Not because it was too hard — because I was going about it the wrong way. Finishing courses, memorising syntax, waiting until I felt ready to actually make something.</p>
+      <p>Life has a way of showing you that waiting until you're ready is just another way of not starting. I've had to learn that lesson in more areas than just code. Eventually the approach changes — you stop preparing to do the thing and you just do it.</p>
+      <p>For me that came from building something real with a friend. An interactive 3D map of the Glass House Mountains — I handled the HTML and CSS, she did the JavaScript. Watching what she could do made me want to get there too. That was enough.</p>
     </div>
 
     <div class="block">
-      <div class="block-label">What I'm aiming for</div>
-      <p>Somewhere in web development, game development, or robotics. Probably all three at different points. Right now I'm focused on getting good at the fundamentals — HTML, CSS, JavaScript — and building things that actually work.</p>
-      <p>Long term, I want to make things that other people use and enjoy. That's it. No big mission statement. Just make good stuff.</p>
+      <div class="block-label">what this site is</div>
+      <p>billy-bit.com is space-themed. Every planet is a project. Space made sense because it's endless — there's always somewhere further out to go, always something new on the horizon. The site grows as I grow.</p>
+      <p>It's also a journal. Code notes, things I had to figure out the hard way, shortcuts that actually helped. A record of the doing. If someone finds something here that stops them from quitting — <strong>that's the whole point.</strong></p>
+    </div>
+
+    <div class="block">
+      <div class="block-label">where I'm headed</div>
+      <p>Somewhere in web development, game development, or robotics. Probably all three at different points. Right now I'm just focused on getting good at the fundamentals and building things that actually work.</p>
+      <p>I'm not an expert. I'm 13 and I'm figuring it out. But I think that's exactly why this site might be useful to someone — <strong>it's not written from the top of the mountain.</strong></p>
     </div>
 
     <div class="quote">
       "we learn by doing"
-      <span>— John Dewey. took me three tries to believe it.</span>
+      <span>— John Dewey · took me three tries to believe it</span>
     </div>
 
-    <footer>billy-bit.com · built from scratch · updated as I go</footer>
-
   </div>
+
+  <div class="hud-br">about · billy-bit.com</div>
+
 </body>
 </html>
