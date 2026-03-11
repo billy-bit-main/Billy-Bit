@@ -17,18 +17,6 @@ body {
         #040814;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #020d1f;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
 /* --- Small stars (35) --- */
 .stars-small {
   position: fixed;
