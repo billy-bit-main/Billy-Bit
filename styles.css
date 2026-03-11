@@ -17,7 +17,6 @@ body {
         #040814;
 }
 
-/* ── SOLAR SYSTEM CENTRE ── */
 .solar-system {
     position: absolute;
     top: 50%;
@@ -25,7 +24,6 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* ── CENTRE PLANET ── */
 .planet-center {
     position: absolute;
     width: 100px;
@@ -44,9 +42,6 @@ body {
     box-shadow: 0 0 30px rgba(74, 143, 255, 0.6);
 }
 
-/* ── ORBIT RINGS ── */
-/* Each orbit is a circle centred on the solar system.
-   It spins, and the planet sits at the top of it. */
 .orbit {
     position: absolute;
     top: 50%;
@@ -54,78 +49,51 @@ body {
     border-radius: 50%;
     border: 1px solid rgba(100, 150, 255, 0.1);
     animation: spin linear infinite;
-    /* shift up by half height so planet starts at top */
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
 
-.orbit-1 { width: 180px; height: 180px; animation-duration: 12s; animation-delay: -3s; }
-.orbit-2 { width: 260px; height: 260px; animation-duration: 18s; animation-delay: -7s; }
-.orbit-3 { width: 340px; height: 340px; animation-duration: 25s; animation-delay: -11s; }
-.orbit-4 { width: 420px; height: 420px; animation-duration: 33s; animation-delay: -5s; }
-.orbit-5 { width: 500px; height: 500px; animation-duration: 42s; animation-delay: -19s; }
-.orbit-6 { width: 580px; height: 580px; animation-duration: 52s; animation-delay: -23s; }
-.orbit-7 { width: 660px; height: 660px; animation-duration: 63s; animation-delay: -31s; }
-.orbit-8 { width: 740px; height: 740px; animation-duration: 75s; animation-delay: -14s; }
+.orbit-1 { width: 180px; height: 180px; animation-duration: 12s;  animation-delay: -3s;  }
+.orbit-2 { width: 260px; height: 260px; animation-duration: 18s;  animation-delay: -7s;  }
+.orbit-3 { width: 340px; height: 340px; animation-duration: 25s;  animation-delay: -11s; }
+.orbit-4 { width: 420px; height: 420px; animation-duration: 33s;  animation-delay: -5s;  }
+.orbit-5 { width: 500px; height: 500px; animation-duration: 42s;  animation-delay: -19s; }
+.orbit-6 { width: 580px; height: 580px; animation-duration: 52s;  animation-delay: -23s; }
+.orbit-7 { width: 660px; height: 660px; animation-duration: 63s;  animation-delay: -31s; }
+.orbit-8 { width: 740px; height: 740px; animation-duration: 75s;  animation-delay: -14s; }
 
 @keyframes spin {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* ── PLANETS ── */
-/* Planet sits at top-centre of its orbit ring */
+/* top:0 left:50% puts the planet at the top-centre of the orbit.
+   translate(-50%,-50%) pulls it back so it sits centred ON the ring line. */
 .planet {
     position: absolute;
-    top: 20%;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     border-radius: 50%;
     cursor: pointer;
-    pointer-events: all;
+    pointer-events: all !important;
     transition: box-shadow 0.3s;
-    z-index: 10;
+    z-index: 999;
 }
 
 .planet:hover {
     box-shadow: 0 0 20px rgba(74, 143, 255, 0.5);
 }
 
-/* Planet sizes and colours — your originals preserved exactly */
-.p1 {
-    width: 28px; height: 28px;
-    background: radial-gradient(circle at 35% 30%, #ff9eb5, #c0304a 50%, #3a0010);
-}
-.p2 {
-    width: 42px; height: 42px;
-    background: radial-gradient(circle at 35% 30%, #ffe0a0, #bf8a2a 50%, #2a1a00);
-}
-.p3 {
-    width: 32px; height: 32px;
-    background: radial-gradient(circle at 35% 30%, #a0f0c0, #1abf70 50%, #002a18);
-}
-.p4 {
-    width: 55px; height: 55px;
-    background: radial-gradient(circle at 35% 30%, #c0a0ff, #6a2abf 50%, #1a0040);
-}
-.p5 {
-    width: 26px; height: 26px;
-    background: radial-gradient(circle at 35% 30%, #ffd0a0, #bf5a1a 50%, #2a0e00);
-}
-.p6 {
-    width: 48px; height: 48px;
-    background: radial-gradient(circle at 35% 30%, #a0e0ff, #1a7abf 50%, #001a2a);
-}
-.p7 {
-    width: 30px; height: 30px;
-    background: radial-gradient(circle at 35% 30%, #ffb0e0, #bf2a8a 50%, #2a0020);
-}
-.p8 {
-    width: 58px; height: 58px;
-    background: radial-gradient(circle at 35% 30%, #b0ffb0, #2abf2a 50%, #002a00);
-}
+.p1 { width: 28px; height: 28px; background: radial-gradient(circle at 35% 30%, #ff9eb5, #c0304a 50%, #3a0010); }
+.p2 { width: 42px; height: 42px; background: radial-gradient(circle at 35% 30%, #ffe0a0, #bf8a2a 50%, #2a1a00); }
+.p3 { width: 32px; height: 32px; background: radial-gradient(circle at 35% 30%, #a0f0c0, #1abf70 50%, #002a18); }
+.p4 { width: 55px; height: 55px; background: radial-gradient(circle at 35% 30%, #c0a0ff, #6a2abf 50%, #1a0040); }
+.p5 { width: 26px; height: 26px; background: radial-gradient(circle at 35% 30%, #ffd0a0, #bf5a1a 50%, #2a0e00); }
+.p6 { width: 48px; height: 48px; background: radial-gradient(circle at 35% 30%, #a0e0ff, #1a7abf 50%, #001a2a); }
+.p7 { width: 30px; height: 30px; background: radial-gradient(circle at 35% 30%, #ffb0e0, #bf2a8a 50%, #2a0020); }
+.p8 { width: 58px; height: 58px; background: radial-gradient(circle at 35% 30%, #b0ffb0, #2abf2a 50%, #002a00); }
 
-/* ── HUD ── */
 .hud-tl {
     position: fixed;
     left: 2%;
@@ -180,7 +148,6 @@ body {
     line-height: 2;
 }
 
-/* ── SCANLINES ── */
 .scanlines {
     position: fixed;
     inset: 0;
@@ -192,7 +159,7 @@ body {
         rgba(0,0,20,0.2) 4px
     );
     pointer-events: none;
-    z-index: 1000000000000000;
+    z-index: 100;
 }
 
 @media (max-width: 480px) {
