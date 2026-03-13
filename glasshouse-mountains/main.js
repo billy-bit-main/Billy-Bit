@@ -1,6 +1,6 @@
-import * as THREE from 'three.module.js';
-import { GLTFLoader } from 'GLTFLoader.js';
-import { OrbitControls } from 'OrbitControls.js';
+import * as THREE from './three.module.js';
+import { GLTFLoader } from './GLTFLoader.js';
+import { OrbitControls } from './OrbitControls.js';
 
 //setup 
   const scene = new THREE.Scene();
@@ -78,10 +78,10 @@ homeBtn.addEventListener("click", () => {
 //mountains
   const loader = new GLTFLoader();
   const mountainList = [
-    { file: 'beerwah.glb',     name: 'Mount Beerwah',     position: [-330, 10,  -50], rotationY:  200, scale: 0.7 },
-    { file: 'coonowrin.glb',   name: 'Mount Coonowrin',   position: [180, 15, 60],    rotationY: -20,  scale: 1.1 },
-    { file: 'ngungun.glb',     name: 'Mount Ngungun',     position: [150, 20, -360],  rotationY: 180,  scale: 0.8 },
-    { file: 'tibrogargan.glb', name: 'Mount Tibrogargan', position: [160, 20, 20],    rotationY: 180,  scale: 0.5 },
+    { file: './beerwah.glb',     name: 'Mount Beerwah',     position: [-330, 10,  -50], rotationY:  200, scale: 0.7 },
+    { file: './coonowrin.glb',   name: 'Mount Coonowrin',   position: [180, 15, 60],    rotationY: -20,  scale: 1.1 },
+    { file: './ngungun.glb',     name: 'Mount Ngungun',     position: [150, 20, -360],  rotationY: 180,  scale: 0.8 },
+    { file: './tibrogargan.glb', name: 'Mount Tibrogargan', position: [160, 20, 20],    rotationY: 180,  scale: 0.5 },
   ];
 
   let mountainGroups = []; 
