@@ -1,0 +1,305 @@
+/* =============================================
+   RESET
+   Removes default browser spacing so everything
+   looks consistent across Chrome, Firefox, etc.
+   ============================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================
+   BODY / BACKGROUND
+   Copied exactly from your main styles.css.
+   overflow: hidden stops scrollbars appearing
+   since everything is position: fixed.
+   ============================================= */
+body {
+  height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
+    radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
+    radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
+    radial-gradient(ellipse at 80% 40%, rgba(25, 25, 112, 0.03), transparent 50%),
+    #040814;
+}
+
+/* =============================================
+   STARS
+   Copied exactly from your main styles.css.
+   The trick: a 1x1px (or 2x2, 3x3) element with
+   hundreds of box-shadows. Each shadow is offset
+   to a random position with no blur, creating the
+   illusion of individual stars across the screen.
+   ============================================= */
+.stars-small {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    1181px 879px 0 rgba(255,255,255,0.45), 1045px 747px 0 rgba(255,255,255,0.40),
+    1189px 206px 0 rgba(255,255,255,0.42), 872px 13px 0 rgba(255,255,255,0.39),
+    295px 736px 0 rgba(255,255,255,0.46), 1054px 492px 0 rgba(255,255,255,0.59),
+    1121px 521px 0 rgba(255,255,255,0.70), 926px 719px 0 rgba(255,255,255,0.50),
+    452px 13px 0 rgba(255,255,255,0.63), 880px 571px 0 rgba(255,255,255,0.44),
+    1273px 700px 0 rgba(255,255,255,0.60), 945px 217px 0 rgba(255,255,255,0.55),
+    1230px 98px 0 rgba(255,255,255,0.31), 904px 33px 0 rgba(255,255,255,0.53),
+    337px 347px 0 rgba(255,255,255,0.39), 887px 753px 0 rgba(255,255,255,0.60),
+    1163px 801px 0 rgba(255,255,255,0.43), 335px 354px 0 rgba(255,255,255,0.69),
+    955px 443px 0 rgba(255,255,255,0.56), 418px 472px 0 rgba(255,255,255,0.39),
+    133px 125px 0 rgba(255,255,255,0.67), 344px 130px 0 rgba(255,255,255,0.31),
+    280px 608px 0 rgba(255,255,255,0.30), 976px 642px 0 rgba(255,255,255,0.36),
+    284px 741px 0 rgba(255,255,255,0.34), 1215px 327px 0 rgba(255,255,255,0.41),
+    266px 335px 0 rgba(255,255,255,0.32), 345px 278px 0 rgba(255,255,255,0.33),
+    1086px 419px 0 rgba(255,255,255,0.41), 428px 29px 0 rgba(255,255,255,0.67),
+    418px 7px 0 rgba(255,255,255,0.47), 595px 288px 0 rgba(255,255,255,0.41),
+    353px 454px 0 rgba(255,255,255,0.64), 378px 872px 0 rgba(255,255,255,0.40),
+    1181px 280px 0 rgba(255,255,255,0.47);
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars-medium {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    1133px 21px 0 rgba(255,255,255,0.74), 60px 157px 0 rgba(255,255,255,0.77),
+    1152px 250px 0 rgba(255,255,255,0.80), 665px 831px 0 rgba(255,255,255,0.74),
+    103px 366px 0 rgba(255,255,255,0.68), 235px 838px 0 rgba(255,255,255,0.68),
+    317px 654px 0 rgba(255,255,255,0.64), 695px 668px 0 rgba(255,255,255,0.86),
+    1226px 251px 0 rgba(255,255,255,0.64), 503px 29px 0 rgba(255,255,255,0.62),
+    978px 630px 0 rgba(255,255,255,0.90), 434px 484px 0 rgba(255,255,255,0.76);
+  animation: twinkle 6s ease-in-out infinite alternate;
+  animation-delay: 1.5s;
+}
+
+.stars-large {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    41px 179px 0 rgba(255,255,255,0.96),
+    1129px 425px 0 rgba(255,255,255,0.90),
+    317px 225px 0 rgba(255,255,255,0.99);
+  animation: twinkle 8s ease-in-out infinite alternate;
+  animation-delay: 3s;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 1; }
+  40%  { opacity: 0.3; }
+  70%  { opacity: 0.8; }
+  100% { opacity: 0.5; }
+}
+
+/* =============================================
+   SCANLINES
+   Copied exactly from your main styles.css.
+   A repeating gradient that creates faint
+   horizontal lines across the whole screen,
+   like an old CRT monitor. z-index: 100 puts
+   it above everything else visually.
+   ============================================= */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 0px,
+    rgba(0,0,20,0.2) 2px,
+    rgba(0,0,20,0.2) 4px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* =============================================
+   HUD - TOP LEFT
+   Copied exactly from your main styles.css.
+   ============================================= */
+.hud-tl {
+  position: fixed;
+  left: 2%;
+  top: 2%;
+}
+
+.site-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  font-weight: 900;
+  color: #e8f2ff;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169,204,255);
+  text-decoration: none;
+  display: block;
+}
+
+.site-sub {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  color: #4a6a9a;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* =============================================
+   HUD - BOTTOM RIGHT
+   Copied exactly from your main styles.css.
+   Two columns side by side: labels on the left,
+   values on the right.
+   ============================================= */
+.hud-br {
+  position: fixed;
+  right: 3%;
+  bottom: 3.5%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.project-details {
+  text-align: right;
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  color: #4a6a9a;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+.detail-values {
+  text-align: left;
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  color: #abcfff;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+/* =============================================
+   GAME CONTAINER
+   Centers the title + iframe + badge on screen.
+   position: fixed + top/left 50% + translate(-50%)
+   is the standard trick to perfectly center
+   something both horizontally and vertically.
+   ============================================= */
+.game-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.game-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  color: #e8f2ff;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(74,143,255,0.8), 0 0 40px rgba(169,204,255,0.4);
+  text-align: center;
+}
+
+/* =============================================
+   GAME FRAME
+   The wrapper div around the iframe.
+   Adds the glowing blue border + box-shadow
+   to make the game window feel like part of
+   the space UI, matching your planet sidebar style.
+   ============================================= */
+.game-frame {
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  border-radius: 8px;
+  box-shadow:
+    0 0 30px rgba(74, 143, 255, 0.15),
+    0 0 80px rgba(74, 143, 255, 0.05),
+    inset 0 0 20px rgba(0,0,0,0.4);
+  background: #000;
+  overflow: hidden;
+}
+
+/* =============================================
+   IFRAME
+   The actual embedded Scratch window.
+   display: block removes a small gap browsers
+   add under inline elements like images/iframes.
+   Width and height control the size of the
+   Scratch player - 480x360 is Scratch's default.
+   ============================================= */
+iframe {
+  display: block;
+  width: 480px;
+  height: 360px;
+  border: none;
+}
+
+/* =============================================
+   STATUS BADGE
+   The green "live" indicator below the game.
+   Matches the sidebar-status style from your
+   main site (same green colour and border).
+   ============================================= */
+.game-status {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.65rem;
+  color: #5ee8b0;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(94, 232, 176, 0.3);
+  border-radius: 6px;
+  padding: 0.25rem 0.65rem;
+}
+
+/* =============================================
+   PULSING DOT
+   The small circle inside the status badge.
+   The pulse animation fades it in and out to
+   suggest a live/active signal.
+   ============================================= */
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #5ee8b0;
+  box-shadow: 0 0 6px #5ee8b0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* =============================================
+   RESPONSIVE
+   On small screens (phones), shrink the iframe
+   to fit and hide the bottom-right HUD since
+   it would overlap the game.
+   ============================================= */
+@media (max-width: 520px) {
+  iframe { width: 320px; height: 240px; }
+  .hud-br { display: none; }
+}
