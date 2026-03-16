@@ -1,385 +1,111 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-body {
-    height: 100vh;
-    overflow: hidden;
-    background:
-        radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
-        radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
-        radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
-        radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
-        radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
-        radial-gradient(ellipse at 80% 40%, rgba(25, 25, 112, 0.03), transparent 50%),
-        #040814;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>billy-bit</title>
+    <meta name="description" content="A space-themed personal hub where every planet is a project. Built to document my coding journey and keep a record of everything I make and learn along the way.">
+    <meta name="author" content="Billy">
+    <meta property="og:title" content="billy-bit.com">
+    <meta property="og:description" content="I quit learning to code twice. Then I started building things instead. This is where I put everything — and hopefully proof that the doing is the learning.">
+    <meta property="og:image" content="https://billy-bit.com/og-image.jpg">
+    <meta property="og:url" content="https://billy-bit.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="billy-bit.com">
+    <meta name="twitter:description" content="I quit learning to code twice. Then I started building things instead. This is where I put everything.">
+    <meta name="twitter:image" content="https://billy-bit.com/og-image.jpg">
+    <link rel="icon" href="roboicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hud-tl">
+        <div class="site-name">billy-bit</div>
+        <div class="site-sub">mission control</div>
+    </div>
+    <div class="hud-br">
+        <div class="project-details">
+            <div class="detail-label">PROJECTS LAUNCHED</div>
+            <div class="detail-label">PROJECTS IN PROGRESS</div>
+        </div>
+        <div class="detail-values">
+            <div class="launched-value">0</div>
+            <div class="pending-value">1</div>
+        </div>
+    </div>
 
-/* --- Small stars (35) --- */
-.stars-small {
-  position: fixed;
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
-  background: transparent;
-  box-shadow:
-  1181px 879px 0 rgba(255,255,255,0.45),
-  1045px 747px 0 rgba(255,255,255,0.40),
-  1189px 206px 0 rgba(255,255,255,0.42),
-  872px  13px  0 rgba(255,255,255,0.39),
-  295px  736px 0 rgba(255,255,255,0.46),
-  1054px 492px 0 rgba(255,255,255,0.59),
-  1121px 521px 0 rgba(255,255,255,0.70),
-  926px  719px 0 rgba(255,255,255,0.50),
-  452px  13px  0 rgba(255,255,255,0.63),
-  880px  571px 0 rgba(255,255,255,0.44),
-  1273px 700px 0 rgba(255,255,255,0.60),
-  945px  217px 0 rgba(255,255,255,0.55),
-  1230px 98px  0 rgba(255,255,255,0.31),
-  904px  33px  0 rgba(255,255,255,0.53),
-  337px  347px 0 rgba(255,255,255,0.39),
-  887px  753px 0 rgba(255,255,255,0.60),
-  1163px 801px 0 rgba(255,255,255,0.43),
-  335px  354px 0 rgba(255,255,255,0.69),
-  955px  443px 0 rgba(255,255,255,0.56),
-  418px  472px 0 rgba(255,255,255,0.39),
-  133px  125px 0 rgba(255,255,255,0.67),
-  344px  130px 0 rgba(255,255,255,0.31),
-  280px  608px 0 rgba(255,255,255,0.30),
-  976px  642px 0 rgba(255,255,255,0.36),
-  284px  741px 0 rgba(255,255,255,0.34),
-  1215px 327px 0 rgba(255,255,255,0.41),
-  266px  335px 0 rgba(255,255,255,0.32),
-  345px  278px 0 rgba(255,255,255,0.33),
-  1086px 419px 0 rgba(255,255,255,0.41),
-  428px  29px  0 rgba(255,255,255,0.67),
-  418px  7px   0 rgba(255,255,255,0.47),
-  595px  288px 0 rgba(255,255,255,0.41),
-  353px  454px 0 rgba(255,255,255,0.64),
-  378px  872px 0 rgba(255,255,255,0.40),
-  1181px 280px 0 rgba(255,255,255,0.47);
-  animation: twinkle 4s ease-in-out infinite alternate;
-}
+    <div class="stars-small"></div>
+    <div class="stars-medium"></div>
+    <div class="stars-large"></div>
 
-/* --- Medium stars (12) --- */
-.stars-medium {
-  position: fixed;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: transparent;
-  box-shadow:
-  1133px 21px  0 rgba(255,255,255,0.74),
-  60px   157px 0 rgba(255,255,255,0.77),
-  1152px 250px 0 rgba(255,255,255,0.80),
-  665px  831px 0 rgba(255,255,255,0.74),
-  103px  366px 0 rgba(255,255,255,0.68),
-  235px  838px 0 rgba(255,255,255,0.68),
-  317px  654px 0 rgba(255,255,255,0.64),
-  695px  668px 0 rgba(255,255,255,0.86),
-  1226px 251px 0 rgba(255,255,255,0.64),
-  503px  29px  0 rgba(255,255,255,0.62),
-  978px  630px 0 rgba(255,255,255,0.90),
-  434px  484px 0 rgba(255,255,255,0.76);
-  animation: twinkle 6s ease-in-out infinite alternate;
-  animation-delay: 1.5s;
-}
+    <div class="solar-system">
+        <a href="https://billy-bit.com/about" target="_blank" rel="noopener noreferrer">
+            <div class="planet planet-center"></div>
+        </a>
+        <div class="orbit orbit-1">
+            <div class="planet p1" id="planet-glasshouse"></div>
+        </div>
+        <div class="orbit orbit-2">
+            <div class="planet p2" onclick="window.location.href='#'"></div>
+        </div>
+        <div class="orbit orbit-3">
+            <div class="planet p3" onclick="window.location.href='#'"></div>
+        </div>
+        <div class="orbit orbit-4">
+            <div class="planet p4" onclick="window.location.href='#'"></div>
+        </div>
+        <div class="orbit orbit-5">
+            <div class="planet p5" onclick="window.location.href='#'"></div>
+        </div>
+        <div class="orbit orbit-6">
+            <div class="planet p6" onclick="window.location.href='#'"></div>
+        </div>
+        <div class="orbit orbit-7">
+            <div class="planet p7" onclick="window.location.href='#'"></div>
+        </div>
+        <div class="orbit orbit-8">
+            <div class="planet p8" onclick="window.location.href='#'"></div>
+        </div>
+    </div>
 
-/* --- Large bright stars (3) --- */
-.stars-large {
-  position: fixed;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: transparent;
-  box-shadow:
-  41px   179px 0 rgba(255,255,255,0.96),
-  1129px 425px 0 rgba(255,255,255,0.90),
-  317px  225px 0 rgba(255,255,255,0.99);
-  animation: twinkle 8s ease-in-out infinite alternate;
-  animation-delay: 3s;
-}
+    <!-- OVERLAY -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-@keyframes twinkle {
-  0%   { opacity: 1; }
-  40%  { opacity: 0.3; }
-  70%  { opacity: 0.8; }
-  100% { opacity: 0.5; }
-}
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebar-close">✕</button>
 
-.solar-system {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+        <div class="sidebar-label">billy-bit · glasshouse mountains</div>
+        <div class="sidebar-title">Glasshouse Mountains</div>
+        <div class="sidebar-status">FINISHED</div>
 
-.planet-center {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #90c0ff, #2a6abf 50%, #0a2a5a);
-    z-index: 10;
-    cursor: pointer;
-    transition: box-shadow 0.3s;
-}
-.planet-center:hover {
-    box-shadow: 0 0 30px rgba(74, 143, 255, 0.6);
-}
+        <div class="sidebar-section">
+            <div class="sidebar-section-heading">what it is</div>
+            <p class="sidebar-text">An interactive 3D scene of the Glasshouse Mountains in Queensland, Australia. Click any mountain and an info panel opens — how hard it is to climb, whether it's open, what dangers to watch out for, whether it's safe.</p>
+            <p class="sidebar-text">It's meant to be genuinely useful. Not just a pretty scene — actual information for anyone thinking about heading out there.</p>
+        </div>
 
-.orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    border: 1px solid rgba(100, 150, 255, 0.1);
-    animation: spin linear infinite;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-}
+        <div class="sidebar-section">
+            <div class="sidebar-section-heading">how it was built</div>
+            <p class="sidebar-text">Built with a friend named Ally. She handled the JavaScript — the 3D scene, the interactions, the info panels. I handled the HTML and CSS. Watching what she could pull off with code was honestly the thing that made me want to get good at this.</p>
+            <p class="sidebar-text">I didn't know that a project like this was possible before we built it. Now I know it is. That's worth a lot.</p>
+        </div>
 
-.orbit-1 { width: 180px; height: 180px; animation-duration: 12s;  animation-delay: -3s;  }
-.orbit-2 { width: 260px; height: 260px; animation-duration: 18s;  animation-delay: -7s;  }
-.orbit-3 { width: 340px; height: 340px; animation-duration: 25s;  animation-delay: -11s; }
-.orbit-4 { width: 420px; height: 420px; animation-duration: 33s;  animation-delay: -5s;  }
-.orbit-5 { width: 500px; height: 500px; animation-duration: 42s;  animation-delay: -19s; }
-.orbit-6 { width: 580px; height: 580px; animation-duration: 52s;  animation-delay: -23s; }
-.orbit-7 { width: 660px; height: 660px; animation-duration: 63s;  animation-delay: -31s; }
-.orbit-8 { width: 740px; height: 740px; animation-duration: 75s;  animation-delay: -14s; }
+        <div class="sidebar-section">
+            <div class="sidebar-section-heading">what it means</div>
+            <p class="sidebar-text">This project is a big part of why billy-bit.com exists. It gave me hope that one day I could build something as cool as what Ally did with the JavaScript. I'm not there yet — but I enjoyed every part of making this, and that feeling is what keeps me going.</p>
+        </div>
 
-@keyframes spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
+        <a class="sidebar-link" href="https://billy-bit.com/glasshouse-mountains" target="_blank" rel="noopener noreferrer">
+            visit project →
+        </a>
+    </div>
 
-.planet {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    cursor: pointer;
-    pointer-events: all !important;
-    transition: box-shadow 0.3s;
-    z-index: 999;
-}
-.planet:hover {
-    box-shadow: 0 0 20px rgba(74, 143, 255, 0.5);
-}
-
-.p1 { width: 28px; height: 28px; background: radial-gradient(circle at 35% 30%, #ff9eb5, #c0304a 50%, #3a0010); }
-.p2 { width: 42px; height: 42px; background: radial-gradient(circle at 35% 30%, #ffe0a0, #bf8a2a 50%, #2a1a00); }
-.p3 { width: 32px; height: 32px; background: radial-gradient(circle at 35% 30%, #a0f0c0, #1abf70 50%, #002a18); }
-.p4 { width: 55px; height: 55px; background: radial-gradient(circle at 35% 30%, #c0a0ff, #6a2abf 50%, #1a0040); }
-.p5 { width: 26px; height: 26px; background: radial-gradient(circle at 35% 30%, #ffd0a0, #bf5a1a 50%, #2a0e00); }
-.p6 { width: 48px; height: 48px; background: radial-gradient(circle at 35% 30%, #a0e0ff, #1a7abf 50%, #001a2a); }
-.p7 { width: 30px; height: 30px; background: radial-gradient(circle at 35% 30%, #ffb0e0, #bf2a8a 50%, #2a0020); }
-.p8 { width: 58px; height: 58px; background: radial-gradient(circle at 35% 30%, #b0ffb0, #2abf2a 50%, #002a00); }
-
-/* ── HUD ── */
-.hud-tl {
-    position: fixed;
-    left: 2%;
-    top: 2%;
-}
-.site-name {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.8rem);
-    font-weight: 900;
-    color: #e8f2ff;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169, 204, 255);
-}
-.site-sub {
-    font-family: 'Exo 2', sans-serif;
-    font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-    color: #4a6a9a;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-}
-.hud-br {
-    position: fixed;
-    right: 3%;
-    bottom: 3.5%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 1rem;
-}
-.project-details {
-    text-align: right;
-    font-family: 'Exo 2', sans-serif;
-    font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-    color: #4a6a9a;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    line-height: 2;
-}
-.detail-values {
-    text-align: left;
-    font-family: 'Exo 2', sans-serif;
-    font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-    color: #abcfff;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    line-height: 2;
-}
-
-/* ── SCANLINES ── */
-.scanlines {
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 0px,
-        rgba(0,0,20,0.2) 2px,
-        rgba(0,0,20,0.2) 4px
-    );
-    pointer-events: none;
-    z-index: 100;
-}
-
-/* ── SIDEBAR OVERLAY ── */
-.sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 200;
-}
-.sidebar-overlay.open {
-    opacity: 1;
-    pointer-events: all;
-}
-
-/* ── SIDEBAR ── */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 340px;
-    height: 100%;
-    background: rgba(4, 8, 20, 0.95);
-    border-left: 1px solid rgba(100, 150, 255, 0.2);
-    border-radius: 16px 0 0 16px;
-    transform: translateX(100%);
-    transition: transform 0.35s ease;
-    z-index: 300;
-    padding: 2rem 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    overflow-y: auto;
-}
-.sidebar.open {
-    transform: translateX(0);
-}
-
-.sidebar-close {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    background: none;
-    border: 1px solid rgba(100, 150, 255, 0.2);
-    border-radius: 8px;
-    color: #4a6a9a;
-    font-size: 0.85rem;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.2s, color 0.2s;
-}
-.sidebar-close:hover {
-    border-color: rgba(100, 150, 255, 0.6);
-    color: #abcfff;
-}
-
-.sidebar-label {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.65rem;
-    color: #4a6a9a;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding-right: 2rem;
-}
-
-.sidebar-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #e8f2ff;
-    letter-spacing: 0.05em;
-    text-shadow: 0 0 20px rgba(74, 143, 255, 0.6);
-    line-height: 1.3;
-}
-
-.sidebar-status {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: #5ee8b0;
-    border: 1px solid rgba(94, 232, 176, 0.3);
-    border-radius: 6px;
-    padding: 0.25rem 0.65rem;
-    width: fit-content;
-}
-
-.sidebar-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    border-top: 1px solid rgba(100, 150, 255, 0.1);
-    padding-top: 1.25rem;
-}
-
-.sidebar-section-heading {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.65rem;
-    color: #4a8aff;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.sidebar-text {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.85rem;
-    color: #8aaad0;
-    line-height: 1.7;
-}
-
-.sidebar-link {
-    display: inline-block;
-    margin-top: auto;
-    padding-top: 1.5rem;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #4a8aff;
-    text-decoration: none;
-    border-top: 1px solid rgba(100, 150, 255, 0.1);
-    transition: color 0.2s;
-}
-.sidebar-link:hover {
-    color: #abcfff;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 480px) {
-    .hud-br { display: none; }
-    .sidebar { width: 100%; border-radius: 0; }
-}
+    <div class="scanlines"></div>
+    <script src="scripts.js"></script>
+</body>
+</html>
