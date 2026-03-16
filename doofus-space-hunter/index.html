@@ -1,0 +1,82 @@
+<!-- gonna have some tuff comments cause lots of new stuff -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>doofus space hunter · billy-bit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Star layers (styled in CSS, just need to exist as elements) -->
+  <div class="stars-small"></div>
+  <div class="stars-medium"></div>
+  <div class="stars-large"></div>
+
+  <!-- Scanline overlay (decorative, sits on top of everything) -->
+  <div class="scanlines"></div>
+
+  <!-- Top-left HUD: site name and section label -->
+  <div class="hud-tl">
+    <a class="site-name" href="https://billy-bit.com">billy-bit</a>
+    <div class="site-sub">mission control</div>
+  </div>
+
+  <!-- Bottom-right HUD: project info -->
+  <div class="hud-br">
+    <div class="project-details">
+      project<br>
+      platform<br>
+      status
+    </div>
+    <div class="detail-values">
+      doofus space hunter<br>
+      scratch<br>
+      launched
+    </div>
+  </div>
+
+  <!-- Main content: title, game, status badge -->
+  <div class="game-container">
+    <div class="game-title">Doofus Space Hunter</div>
+
+    <div class="game-frame">
+      <!--
+        IFRAME - this is how you embed another website inside your own page.
+        Think of it like a window cut into your page that shows a different site.
+
+        src             the URL to load inside the iframe. Scratch provides a special
+                        /embed version of every project URL just for this purpose.
+                        Normal URL:  scratch.mit.edu/projects/816816891
+                        Embed URL:   scratch.mit.edu/projects/816816891/embed
+
+        allowfullscreen lets the player click the fullscreen button inside the game.
+
+        allowtransparency lets the iframe background be see-through if Scratch
+                        uses a transparent background (keeps things clean).
+
+        scrolling="no"  stops scrollbars appearing inside the iframe window.
+
+        width/height are set in CSS instead of here, so it is easier to change
+        and works with the responsive (mobile) styles.
+      -->
+      <iframe
+        src="https://scratch.mit.edu/projects/816816891/embed"
+        allowtransparency="true"
+        allowfullscreen
+        scrolling="no"
+      ></iframe>
+    </div>
+
+    <!-- Small badge shown below the game -->
+    <div class="game-status">
+      <span class="status-dot"></span>
+      live on scratch.mit.edu
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
