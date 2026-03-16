@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
 }
-
 body {
     height: 100vh;
     overflow: hidden;
@@ -129,7 +128,6 @@ body {
     cursor: pointer;
     transition: box-shadow 0.3s;
 }
-
 .planet-center:hover {
     box-shadow: 0 0 30px rgba(74, 143, 255, 0.6);
 }
@@ -159,8 +157,6 @@ body {
     to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* top:0 left:50% puts the planet at the top-centre of the orbit.
-   translate(-50%,-50%) pulls it back so it sits centred ON the ring line. */
 .planet {
     position: absolute;
     top: 0;
@@ -172,7 +168,6 @@ body {
     transition: box-shadow 0.3s;
     z-index: 999;
 }
-
 .planet:hover {
     box-shadow: 0 0 20px rgba(74, 143, 255, 0.5);
 }
@@ -186,12 +181,12 @@ body {
 .p7 { width: 30px; height: 30px; background: radial-gradient(circle at 35% 30%, #ffb0e0, #bf2a8a 50%, #2a0020); }
 .p8 { width: 58px; height: 58px; background: radial-gradient(circle at 35% 30%, #b0ffb0, #2abf2a 50%, #002a00); }
 
+/* ── HUD ── */
 .hud-tl {
     position: fixed;
     left: 2%;
     top: 2%;
 }
-
 .site-name {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(1rem, 3vw, 1.8rem);
@@ -200,7 +195,6 @@ body {
     letter-spacing: 0.1em;
     text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169, 204, 255);
 }
-
 .site-sub {
     font-family: 'Exo 2', sans-serif;
     font-size: clamp(0.6rem, 1.5vw, 0.9rem);
@@ -209,7 +203,6 @@ body {
     text-transform: uppercase;
     margin-top: 0.25rem;
 }
-
 .hud-br {
     position: fixed;
     right: 3%;
@@ -219,7 +212,6 @@ body {
     align-items: flex-end;
     gap: 1rem;
 }
-
 .project-details {
     text-align: right;
     font-family: 'Exo 2', sans-serif;
@@ -229,7 +221,6 @@ body {
     text-transform: uppercase;
     line-height: 2;
 }
-
 .detail-values {
     text-align: left;
     font-family: 'Exo 2', sans-serif;
@@ -240,6 +231,7 @@ body {
     line-height: 2;
 }
 
+/* ── SCANLINES ── */
 .scanlines {
     position: fixed;
     inset: 0;
@@ -254,6 +246,140 @@ body {
     z-index: 100;
 }
 
+/* ── SIDEBAR OVERLAY ── */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 200;
+}
+.sidebar-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 340px;
+    height: 100%;
+    background: rgba(4, 8, 20, 0.95);
+    border-left: 1px solid rgba(100, 150, 255, 0.2);
+    border-radius: 16px 0 0 16px;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 300;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+}
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: 1px solid rgba(100, 150, 255, 0.2);
+    border-radius: 8px;
+    color: #4a6a9a;
+    font-size: 0.85rem;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+}
+.sidebar-close:hover {
+    border-color: rgba(100, 150, 255, 0.6);
+    color: #abcfff;
+}
+
+.sidebar-label {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.65rem;
+    color: #4a6a9a;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-right: 2rem;
+}
+
+.sidebar-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e8f2ff;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px rgba(74, 143, 255, 0.6);
+    line-height: 1.3;
+}
+
+.sidebar-status {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #5ee8b0;
+    border: 1px solid rgba(94, 232, 176, 0.3);
+    border-radius: 6px;
+    padding: 0.25rem 0.65rem;
+    width: fit-content;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-top: 1px solid rgba(100, 150, 255, 0.1);
+    padding-top: 1.25rem;
+}
+
+.sidebar-section-heading {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.65rem;
+    color: #4a8aff;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.sidebar-text {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.85rem;
+    color: #8aaad0;
+    line-height: 1.7;
+}
+
+.sidebar-link {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #4a8aff;
+    text-decoration: none;
+    border-top: 1px solid rgba(100, 150, 255, 0.1);
+    transition: color 0.2s;
+}
+.sidebar-link:hover {
+    color: #abcfff;
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 480px) {
     .hud-br { display: none; }
+    .sidebar { width: 100%; border-radius: 0; }
 }
