@@ -16,6 +16,11 @@ body {
         #040814;
 }
 
+.easter-egg {
+    width: 100%;
+    height: 5%;
+    margin: 0;
+}
 /* --- Small stars (35) --- */
 .stars-small {
   position: fixed;
