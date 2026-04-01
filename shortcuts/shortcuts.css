@@ -10,6 +10,7 @@ body {
     radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
     radial-gradient(ellipse at 80% 40%, rgba(25, 25, 112, 0.03), transparent 50%),
     #040814;
+  background-attachment: fixed;
   color: #e8f2ff;
   font-family: 'Exo 2', sans-serif;
   overflow-x: hidden;
