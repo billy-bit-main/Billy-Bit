@@ -1,5 +1,5 @@
 // ── CHANGE THIS to your raw GitHub JSON URL ──
-const JSON_URL = "https://raw.githubusercontent.com/Biggy-Billy/Billy-Bit/main/shortcuts.json";
+const JSON_URL = "https://raw.githubusercontent.com/Biggy-Billy/Billy-Bit/main/shortcuts/shortcuts.json";
 
 const CATEGORY_ORDER = ["productivity", "automation", "life_improvement"];
 
