@@ -1,13 +1,16 @@
-const overlay = document.getElementById('sidebar-overlay');
+const overlay          = document.getElementById('sidebar-overlay');
 
-const planetDoofus    = document.getElementById('planet-doofus');
-const sidebarDoofus   = document.getElementById('sidebar-doofus');
-const closeDoofus     = document.getElementById('close-doofus');
+const planetDoofus     = document.getElementById('planet-doofus');
+const sidebarDoofus    = document.getElementById('sidebar-doofus');
+const closeDoofus      = document.getElementById('close-doofus');
 
-const planetGlass     = document.getElementById('planet-glasshouse');
-const sidebarGlass    = document.getElementById('sidebar-glasshouse');
-const closeGlass      = document.getElementById('close-glasshouse');
+const planetGlass      = document.getElementById('planet-glasshouse');
+const sidebarGlass     = document.getElementById('sidebar-glasshouse');
+const closeGlass       = document.getElementById('close-glasshouse');
 
+const planetShortcuts  = document.getElementById('planet-shortcuts');
+const sidebarShortcuts = document.getElementById('sidebar-shortcuts');
+const closeShortcuts   = document.getElementById('close-shortcuts');
 
 function openSidebar(sidebar) {
     sidebar.classList.add('open');
@@ -17,14 +20,17 @@ function openSidebar(sidebar) {
 function closeAll() {
     sidebarDoofus.classList.remove('open');
     sidebarGlass.classList.remove('open');
+    sidebarShortcuts.classList.remove('open');
     overlay.classList.remove('open');
 }
-
 
 planetDoofus.addEventListener('click', function() { openSidebar(sidebarDoofus); });
 closeDoofus.addEventListener('click', closeAll);
 
 planetGlass.addEventListener('click', function() { openSidebar(sidebarGlass); });
 closeGlass.addEventListener('click', closeAll);
+
+planetShortcuts.addEventListener('click', function() { openSidebar(sidebarShortcuts); });
+closeShortcuts.addEventListener('click', closeAll);
 
 overlay.addEventListener('click', closeAll);
