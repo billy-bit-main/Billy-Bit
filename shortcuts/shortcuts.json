@@ -1,0 +1,50 @@
+{
+  "productivity": [
+    {
+      "name": "Study Mode Toggle",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/f4c18178b0c340e5b2fc41e8bb631a96",
+      "category": "Productivity"
+    },
+    {
+      "name": "Morning Routine",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/863943c0bcf74122b3b000db3ca70577",
+      "category": "Productivity"
+    },
+    {
+      "name": "Calendar Creater",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/04b8035580e8457ba5021287f5db027b",
+      "category": "Productivity"
+    }
+  ],
+  "automation": [
+    {
+      "name": "Message Logger",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/87428650d16a4fd5a3e608e9a64f33be",
+      "category": "Automation"
+    },
+    {
+      "name": "Value Limiter",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/87428650d16a4fd5a3e608e9a64f33be",
+      "category": "Automation"
+    }
+  ],
+  "life_improvement": [
+    {
+      "name": "Shortcut Scout",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/fa885ff408c24a5caecf6406450edf92",
+      "category": "Life Improvement"
+    },
+    {
+      "name": "Filing Shortcut",
+      "description": "Placeholder description — add your description here.",
+      "url": "https://www.icloud.com/shortcuts/db9af2ba83ad4d8c9f78b873be20f5fa",
+      "category": "Life Improvement"
+    }
+  ]
+}
