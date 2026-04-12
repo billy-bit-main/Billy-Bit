@@ -1,16 +1,4 @@
-const overlay          = document.getElementById('sidebar-overlay');
-
-const planetDoofus     = document.getElementById('planet-doofus');
-const sidebarDoofus    = document.getElementById('sidebar-doofus');
-const closeDoofus      = document.getElementById('close-doofus');
-
-const planetGlass      = document.getElementById('planet-glasshouse');
-const sidebarGlass     = document.getElementById('sidebar-glasshouse');
-const closeGlass       = document.getElementById('close-glasshouse');
-
-const planetShortcuts  = document.getElementById('planet-shortcuts');
-const sidebarShortcuts = document.getElementById('sidebar-shortcuts');
-const closeShortcuts   = document.getElementById('close-shortcuts');
+const overlay = document.getElementById('sidebar-overlay');
 
 function openSidebar(sidebar) {
     sidebar.classList.add('open');
@@ -18,19 +6,26 @@ function openSidebar(sidebar) {
 }
 
 function closeAll() {
-    sidebarDoofus.classList.remove('open');
-    sidebarGlass.classList.remove('open');
-    sidebarShortcuts.classList.remove('open');
+    document.querySelectorAll('.sidebar').forEach(s => s.classList.remove('open'));
     overlay.classList.remove('open');
 }
 
-planetDoofus.addEventListener('click', function() { openSidebar(sidebarDoofus); });
-closeDoofus.addEventListener('click', closeAll);
+const pairs = [
+    ['planet-doofus',  'sidebar-doofus'],
+    ['planet-glasshouse', 'sidebar-glasshouse'],
+    ['planet-shortcuts', 'sidebar-shortcuts'],
+    ['planet-bot',     'sidebar-p4'],
+    ['planet-display', 'sidebar-p5'],
+    ['planet-p6',      'sidebar-p6'],
+    ['planet-p7',      'sidebar-p7'],
+    ['planet-p8',      'sidebar-p8'],
+];
 
-planetGlass.addEventListener('click', function() { openSidebar(sidebarGlass); });
-closeGlass.addEventListener('click', closeAll);
+pairs.forEach(([planetId, sidebarId]) => {
+    document.getElementById(planetId).addEventListener('click', () => {
+        openSidebar(document.getElementById(sidebarId));
+    });
+});
 
-planetShortcuts.addEventListener('click', function() { openSidebar(sidebarShortcuts); });
-closeShortcuts.addEventListener('click', closeAll);
-
+document.querySelectorAll('.sidebar-close').forEach(btn => btn.addEventListener('click', closeAll));
 overlay.addEventListener('click', closeAll);
