@@ -1,301 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billy Bot — billy-bit</title>
-    <meta name="description" content="Mission report for Billy Bot — a voice assistant built on a Raspberry Pi 5 that responds in my own voice.">
-    <link rel="icon" href="/icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<!-- ONLY SHOWING CHANGED / FIXED TEXT CONTENT — structure stays identical -->
 
-<!-- NAV -->
-<nav class="nav">
-    <a href="https://billy-bit.com" class="nav-home">
-        <span class="nav-site-name">billy-bit</span>
-        <span class="nav-sep">·</span>
-        <span class="nav-page">billy bot</span>
-    </a>
-    <div class="nav-status">
-        <span class="status-dot"></span>
-        <span class="nav-status-text">OPERATIONAL</span>
-    </div>
-</nav>
+<!-- SECTION 01 — MISSION BRIEF (minor clarity tweak) -->
+<p>Billy Bot is basically a mini Alexa — a local voice assistant that uses keyword extraction instead of AI. It runs on a Raspberry Pi with Python 3. There are two core output functions: <code>play()</code>, which plays a pre-recorded voice clip of me saying an answer (because I'm a narcissist), and <code>say()</code>, which falls back to text-to-speech when the response needs dynamic data.</p>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-inner">
-        <div class="hero-label">mission report · 2025</div>
-        <h1 class="hero-title">Billy Bot</h1>
-        <p class="hero-sub">basically alexa. except it's me talking to myself.</p>
-    </div>
-</section>
+<p>Billy waits for the wake word "billy" before listening for commands. Then it runs speech-to-text through Google (with Vosk as an offline fallback) and converts what you said into a string. From there it scans for keywords. On the surface it looks like AI — but it's actually just a very long if/elif chain checking whether certain words exist in the sentence.</p>
 
-<!-- SECTION 03 — SETUP -->
-<section class="section section-dark" id="setup">
-<div class="section-inner">
-<div class="section-header">
-<div class="section-number">03</div>
-<h2 class="section-title">Setup</h2>
-</div>
 
-<p class="section-intro">
-Full headless setup. No monitor. No keyboard. Just your computer and a terminal.
-If something breaks, it's almost always one of three things: wrong path, wrong device, or Bluetooth being Bluetooth.
-</p>
+<!-- SECTION 03 — SETUP FIXES -->
 
 <!-- STEP 1 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">01</div>
-<div class="step-title">Flash the OS</div>
-</div>
-<div class="setup-step-body">
-<p>Download Raspberry Pi Imager. Select:</p>
+<p>Before you click Write, click the <strong>cog icon</strong> (Edit Settings). This is what makes the headless setup actually work:</p>
 <ul class="setup-list">
-<li>Device → your Pi</li>
-<li>OS → Raspberry Pi OS Lite (64-bit)</li>
-<li>Storage → your SD card</li>
+    <li><strong>Set hostname</strong> → e.g. <code>billybot</code> (you will use this later)</li>
+    <li><strong>Enable SSH</strong> → use password authentication (do not skip this)</li>
+    <li><strong>Set username and password</strong> → this becomes <code>[username]</code> everywhere in this guide</li>
+    <li><strong>Configure wireless LAN</strong> → exact WiFi name + password (case sensitive). Country code: AU</li>
+    <li><strong>Set locale</strong> → your timezone</li>
 </ul>
+<p>If you miss any of these, the Pi will boot but you won’t be able to connect to it.</p>
 
-<p>Open advanced settings (cog icon):</p>
-<ul class="setup-list">
-<li>Set hostname → <code>billybot</code></li>
-<li>Enable SSH</li>
-<li>Set username/password</li>
-<li>Enter WiFi exactly</li>
-</ul>
-
-<p>
-Click Write. Your SD card will disappear mid-process. That’s normal.
-Do not touch anything until it says complete.
-</p>
-</div>
-</div>
 
 <!-- STEP 2 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">02</div>
-<div class="step-title">Find the Pi</div>
-</div>
-<div class="setup-step-body">
-
-<p>Wait 90 seconds. Then check your router devices list. Find <code>billybot</code>.</p>
-
-<p>Alternative (sometimes works):</p>
+<p>If you can't find it in your router, run this from your computer's terminal:</p>
 <div class="cmd-block"><code>ping billybot.local</code></div>
+<p>If that fails, wait another 30–60 seconds and try again. First boot can be slow and the network comes online last.</p>
 
-<p>
-If that fails, ignore it. Router method is the only reliable one.
-</p>
-
-</div>
-</div>
 
 <!-- STEP 3 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">03</div>
-<div class="step-title">SSH in</div>
-</div>
-<div class="setup-step-body">
+<p>Open a terminal on your computer:</p>
+<div class="cmd-block"><code>ssh [username]@billybot.local</code></div>
+<p>This usually works without needing the IP. If it doesn't, use the IP address instead.</p>
 
-<div class="cmd-block"><code>ssh [username]@192.168.x.x</code></div>
-
-<p>
-Use your IP. Hostnames sometimes fail. IP never does.
-</p>
-
-</div>
-</div>
-
-<!-- STEP 4 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">04</div>
-<div class="step-title">Update</div>
-</div>
-<div class="setup-step-body">
-<div class="cmd-block"><code>sudo apt update && sudo apt upgrade -y</code></div>
-</div>
-</div>
 
 <!-- STEP 5 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">05</div>
-<div class="step-title">Dependencies</div>
-</div>
-<div class="setup-step-body">
+<ul class="setup-list">
+    <li><code>espeak</code>, <code>espeak-ng</code>, <code>espeak-ng-data</code> — all required for pyttsx3. Missing any one of these = silent failure</li>
+    <li><code>portaudio19-dev</code> — required for microphone input (PyAudio backend)</li>
+    <li><code>flac</code> — required for speech recognition. Without it, Google STT fails silently</li>
+    <li><code>sox</code> — used to generate the silence file later</li>
+    <li><code>git</code> — optional but useful</li>
+</ul>
 
-<div class="cmd-block"><code>
-sudo apt install python3-pip espeak espeak-ng espeak-ng-data portaudio19-dev flac sox git -y
-</code></div>
-
-<p>
-If audio or speech breaks later, it's almost always one of these missing.
-</p>
-
-</div>
-</div>
 
 <!-- STEP 6 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">06</div>
-<div class="step-title">Python packages</div>
-</div>
-<div class="setup-step-body">
+<p>The <code>--break-system-packages</code> flag is required on newer Raspberry Pi OS versions. It looks scary. It just bypasses a restriction — it does not break anything.</p>
+<p>If this step fails halfway, rerun the command. pip installs are not always atomic.</p>
 
-<div class="cmd-block"><code>
-pip install SpeechRecognition pygame pyttsx3 requests vosk word2number --break-system-packages
-</code></div>
 
-<p>
-That flag looks scary. It's fine. You need it.
-</p>
+<!-- STEP 8 (Bluetooth clarity fix) -->
+<p>If audio does not play after setting the sink, run:</p>
+<div class="cmd-block"><code>pactl info</code></div>
+<p>and confirm your default sink matches the Bluetooth device. If it doesn't, redo the set-default-sink step.</p>
 
-</div>
-</div>
-
-<!-- STEP 8 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">08</div>
-<div class="step-title">Audio (Bluetooth)</div>
-</div>
-<div class="setup-step-body">
-
-<p>
-This is the worst part of the entire build. If something randomly breaks later, it’s probably this.
-</p>
-
-<div class="cmd-block"><code>bluetoothctl</code></div>
-
-<p>Pair, trust, connect.</p>
-
-<p>
-If it works once, good. It still might break later.
-That’s why you add a reconnect script.
-</p>
-
-</div>
-</div>
 
 <!-- STEP 9 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">09</div>
-<div class="step-title">Microphone</div>
-</div>
-<div class="setup-step-body">
+<p>Important: the <code>1,0</code> is not universal. It depends on your system. Always check <code>arecord -l</code> first.</p>
 
-<div class="cmd-block"><code>arecord -l</code></div>
 
-<p>
-Look for your device. You’ll get something like:
-<code>card 1, device 0</code>
-</p>
+<!-- STEP 11 -->
+<p>This model is ~50MB. If download fails, rerun the wget command — partial downloads are common.</p>
 
-<div class="cmd-block"><code>
-arecord -D hw:1,0 -f cd -t wav -d 3 test.wav
-</code></div>
-
-<p>
-If this doesn’t work, your card number is wrong.
-</p>
-
-</div>
-</div>
 
 <!-- STEP 12 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">12</div>
-<div class="step-title">Transfer files</div>
-</div>
-<div class="setup-step-body">
+<p>If you're on Windows and <code>scp</code> fails, use PowerShell or install OpenSSH client. Alternatively, use a file transfer tool like WinSCP.</p>
 
-<p>
-Run this on your computer. NOT inside SSH.
-</p>
-
-<div class="cmd-block"><code>
-scp assistant.py user@ip:/home/user/billy/
-</code></div>
-
-</div>
-</div>
 
 <!-- STEP 13 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">13</div>
-<div class="step-title">Fix paths (critical)</div>
-</div>
-<div class="setup-step-body">
+<ul class="setup-list">
+    <li><strong>File paths</strong> — replace every instance of <code>/home/zescott12/</code> with your username. Missing one will break playback</li>
+    <li><strong>GNews key</strong> — paste your own key. Leaving mine will eventually stop working</li>
+    <li><strong>Weather location</strong> — optional. Only change if you're not in Brisbane</li>
+    <li><strong>Birthday function</strong> — optional. Safe to delete entirely</li>
+</ul>
 
-<p>
-If audio doesn’t play, this is why.
-</p>
 
-<p>
-Every path must match exactly:
-<code>/home/[username]/billy/Voices</code>
-</p>
+<!-- STEP 14 -->
+<p>This file exists purely to stop Bluetooth speakers from turning off. If you are wired, skip this completely.</p>
 
-<p>
-If even one is wrong → silent failure.
-</p>
-
-</div>
-</div>
 
 <!-- STEP 15 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">15</div>
-<div class="step-title">Test</div>
-</div>
-<div class="setup-step-body">
-
+<p>If nothing happens, check for errors immediately — do not keep retrying blindly:</p>
 <div class="cmd-block"><code>python3 assistant.py</code></div>
 
-<p>
-If you see output but hear nothing → audio issue.
-If nothing runs → code issue.
-</p>
-
-</div>
-</div>
 
 <!-- STEP 16 -->
-<div class="setup-step">
-<div class="setup-step-header">
-<div class="step-num">16</div>
-<div class="step-title">Run on boot</div>
-</div>
-<div class="setup-step-body">
+<p>The delays (<code>sleep</code>) are not random — they prevent race conditions during boot (WiFi + audio not ready yet). Removing them will break startup reliability.</p>
 
-<p>
-If it doesn’t start on boot:
-</p>
 
-<div class="cmd-block"><code>
-cat /home/[username]/billy/billy.log
-</code></div>
+<!-- SECTION 06 — WHAT WENT WRONG (FILLED IN) -->
 
-<p>
-Don’t guess. The log tells you exactly what broke.
-</p>
-
-</div>
+<div class="log-entry">
+    <div class="log-prefix">ERR_001</div>
+    <div class="log-body">
+        <div class="log-title">PyAudio on Python 3.14</div>
+        <div class="log-text">Completely incompatible. Would not build, no useful errors. Fixed by avoiding PyAudio directly and relying on system-level portaudio + SpeechRecognition instead.</div>
+    </div>
 </div>
 
+<div class="log-entry">
+    <div class="log-prefix">ERR_002</div>
+    <div class="log-body">
+        <div class="log-title">pipwin broken</div>
+        <div class="log-text">Tried using pipwin to install PyAudio on Windows. Didn't work. Abandoned immediately and moved everything onto the Pi instead.</div>
+    </div>
 </div>
-</section>
 
-</body>
-</html>
+<div class="log-entry">
+    <div class="log-prefix">ERR_003</div>
+    <div class="log-body">
+        <div class="log-title">playsound abandoned</div>
+        <div class="log-text">Unreliable, blocking, and inconsistent across platforms. Switched to pygame for full control over playback.</div>
+    </div>
+</div>
+
+<div class="log-entry">
+    <div class="log-prefix">ERR_004</div>
+    <div class="log-body">
+        <div class="log-title">mp4 not supported by pygame</div>
+        <div class="log-text">pygame does not support mp4 audio. Converted everything to wav. Problem solved instantly.</div>
+    </div>
+</div>
+
+<div class="log-entry">
+    <div class="log-prefix">ERR_005</div>
+    <div class="log-body">
+        <div class="log-title">espeak not installed</div>
+        <div class="log-text">pyttsx3 ran without errors but produced no sound. Root cause: missing espeak packages.</div>
+    </div>
+</div>
+
+<div class="log-entry">
+    <div class="log-prefix">ERR_006</div>
+    <div class="log-body">
+        <div class="log-title">FLAC missing</div>
+        <div class="log-text">SpeechRecognition failed silently. Installing flac fixed everything instantly.</div>
+    </div>
+</div>
+
+<div class="log-entry">
+    <div class="log-prefix">ERR_007</div>
+    <div class="log-body">
+        <div class="log-title">Bluetooth audio chaos</div>
+        <div class="log-text">Pairing worked, audio didn’t. Default sink wrong. PulseAudio timing issues. Took hours. Fixed with manual sink assignment and boot delays.</div>
+    </div>
+</div>
+
+<div class="log-entry">
+    <div class="log-prefix">ERR_008</div>
+    <div class="log-body">
+        <div class="log-title">Vosk AcceptWaveform typo</div>
+        <div class="log-text">Single capitalisation mistake. Completely broke recognition. Took too long to notice.</div>
+    </div>
+</div>
+
+<div class="log-entry">
+    <div class="log-prefix">ERR_009</div>
+    <div class="log-body">
+        <div class="log-title">Case sensitivity</div>
+        <div class="log-text">Worked on Windows, failed on Linux. Filename mismatch. Fixed by matching exact casing.</div>
+    </div>
+</div>
+
+
+<!-- SECTION 07 — WHAT I LEARNED (FILLED IN, same tone) -->
+
+<p>I started this knowing basically nothing about Linux, audio systems, or speech recognition. The first time anything worked — like actually hearing a response come back — felt unreal. Not because it was complex, but because it proved the entire chain worked end to end.</p>
+
+<p>The biggest shift was going from randomly trying things to actually debugging properly. Early problems took days. Later ones took an hour. Same difficulty — just better thinking.</p>
+
+<p>From the outside, this looks like a voice assistant. It isn't. It's a structured system of rules, conditions, and audio playback pretending to be something smarter. But it works. It's sitting there. And that gap between “this is simple” and “this actually works” is the whole project.</p>
+
+<p>Next step: make it less dumb without losing control.</p>
