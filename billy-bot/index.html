@@ -1,1 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy Bot — billy-bit</title>
+    <meta name="description" content="Mission report for Billy Bot — a voice assistant built on a Raspberry Pi 5 that responds in my own voice.">
+    <link rel="icon" href="/icon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+    <div class="stars-small"></div>
+    <div class="stars-medium"></div>
+    <div class="stars-large"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="https://billy-bit.com" class="nav-home">
+            <span class="nav-site-name">billy-bit</span>
+            <span class="nav-sep">·</span>
+            <span class="nav-page">billy bot</span>
+        </a>
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            <span class="nav-status-text">OPERATIONAL</span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-label">mission report · 2025</div>
+            <h1 class="hero-title">Billy Bot</h1>
+            <p class="hero-sub">basically alexa. except it's me talking to myself.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="meta-label">PLATFORM</span>
+                    <span class="meta-value">Raspberry Pi 5</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="meta-label">LANGUAGE</span>
+                    <span class="meta-value">Python</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="meta-label">STATUS</span>
+                    <span class="meta-value meta-green">Complete</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="meta-label">LOCATION</span>
+                    <span class="meta-value">Brisbane, QLD</span>
+                </div>
+            </div>
+            <div class="hero-waveform" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 01 — MISSION BRIEF -->
+    <section class="section" id="brief">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Mission Brief</h2>
+            </div>
+            <div class="section-body two-col">
+                <div class="prose-block">
+                    <p>Placeholder text that's roughly the length of your actual intro — something like two or three sentences explaining what Billy Bot is, what it runs on, and the core gag that it responds in your own recorded voice. This paragraph is sized to match what you'd actually write here so the layout feels real.</p>
+                    <p>Second paragraph. More detail about the "intelligence" — the if/elif chain, the wake word, the keyword detection. A line about how it sounds impressive because it uses your actual voice even though under the hood it's extremely unsophisticated. That contrast is the whole joke and also the whole point.</p>
+                </div>
+                <div class="prose-block">
+                    <p>Third paragraph. Something about the scope — the timer function, real weather, news search, birthday countdowns, truth or dare, coin flips, all of it. A sentence that sets up the rest of the page. Something like "here's everything that went into it."</p>
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="flow-icon">🎤</div>
+                            <div class="flow-label">USB mic hears you</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">🔤</div>
+                            <div class="flow-label">Google STT / Vosk</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">🔍</div>
+                            <div class="flow-label">keyword scan</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="flow-icon">🔊</div>
+                            <div class="flow-label">plays your voice</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02 — HARDWARE -->
+    <section class="section section-dark" id="hardware">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Hardware</h2>
+            </div>
+            <div class="section-sub-label">total build cost · AUD $357.34 before delivery</div>
+
+            <!-- PARTS RAIL -->
+            <div class="parts-rail-wrap">
+                <div class="parts-rail" id="parts-rail">
+
+                    <div class="part-card">
+                        <div class="part-img-wrap">
+                            <div class="part-img-placeholder">
+                                <span class="part-img-label">Pi 5 — top-down flat lay, dark surface</span>
+                            </div>
+                        </div>
+                        <div class="part-info">
+                            <div class="part-name">Raspberry Pi 5 4GB</div>
+                            <div class="part-price">$179.55 AUD</div>
+                            <div class="part-desc">The brain. Could get away with a Pi 4 2GB for this project alone but I'll use this for more.</div>
+                            <a class="part-link" href="https://core-electronics.com.au/raspberry-pi-5-model-b-4gb.html" target="_blank" rel="noopener noreferrer">view part →</a>
+                        </div>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-img-wrap">
+                            <div class="part-img-placeholder">
+                                <span class="part-img-label">Wonderboom — angled hero shot, speaker + Pi together</span>
+                            </div>
+                        </div>
+                        <div class="part-info">
+                            <div class="part-name">UE Wonderboom</div>
+                            <div class="part-price">$117.82 AUD</div>
+                            <div class="part-desc">Only used this because I already had it and wanted more budget for the mic. Any speaker works.</div>
+                            <a class="part-link" href="https://www.amazon.com.au/dp/B0B8FV6RZS" target="_blank" rel="noopener noreferrer">view part →</a>
+                        </div>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-img-wrap">
+                            <div class="part-img-placeholder">
+                                <span class="part-img-label">Mini USB mic — close up, fill frame, side light</span>
+                            </div>
+                        </div>
+                        <div class="part-info">
+                            <div class="part-name">ChanGeek Mini USB Mic</div>
+                            <div class="part-price">$16.95 AUD</div>
+                            <div class="part-desc">Great value. Actually really good. Far field mics are $100+ so this was the easy call.</div>
+                            <a class="part-link" href="https://shorturl.at/rKNI8" target="_blank" rel="noopener noreferrer">view part →</a>
+                        </div>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-img-wrap">
+                            <div class="part-img-placeholder">
+                                <span class="part-img-label">Pi power supply — product shot, clean + simple</span>
+                            </div>
+                        </div>
+                        <div class="part-info">
+                            <div class="part-name">Official Pi 5 Power Supply</div>
+                            <div class="part-price">$21.07 AUD</div>
+                            <div class="part-desc">Just get the right one. USB-C PD 27W. Don't cheap out on this.</div>
+                            <a class="part-link" href="https://core-electronics.com.au/raspberry-pi-5-power-supply-usb-c-pd-27w-white.html" target="_blank" rel="noopener noreferrer">view part →</a>
+                        </div>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-img-wrap">
+                            <div class="part-img-placeholder">
+                                <span class="part-img-label">microSD — close-up macro, card in hand or on surface</span>
+                            </div>
+                        </div>
+                        <div class="part-info">
+                            <div class="part-name">Samsung PRO Endurance 32GB</div>
+                            <div class="part-price">$21.95 AUD</div>
+                            <div class="part-desc">I guessed 32GB was enough. Ended up using about 10GB including the OS. Fine call.</div>
+                            <a class="part-link" href="https://core-electronics.com.au/hp-32gb-microsd.html" target="_blank" rel="noopener noreferrer">view part →</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="rail-fade-right"></div>
+            </div>
+            <div class="rail-hint">drag to scroll →</div>
+
+            <!-- BUILD GALLERY -->
+            <div class="gallery-header">
+                <div class="section-header" style="margin-bottom:0;">
+                    <div class="section-number" style="font-size:0.8rem;">02b</div>
+                    <h3 class="section-title" style="font-size:1.1rem;">The Build</h3>
+                </div>
+            </div>
+            <div class="gallery-film">
+                <div class="gallery-strip" id="gallery-strip">
+                    <div class="gallery-frame">
+                        <div class="gallery-img-placeholder">
+                            <span>overhead flat lay — full setup spread out</span>
+                        </div>
+                        <div class="gallery-caption">full build, overhead</div>
+                    </div>
+                    <div class="gallery-frame gallery-frame--tilt-r">
+                        <div class="gallery-img-placeholder">
+                            <span>front-on desk level — Pi + speaker in situ</span>
+                        </div>
+                        <div class="gallery-caption">desk setup, front</div>
+                    </div>
+                    <div class="gallery-frame gallery-frame--tilt-l">
+                        <div class="gallery-img-placeholder">
+                            <span>close-up Pi board — ports, chip, detail</span>
+                        </div>
+                        <div class="gallery-caption">Pi 5 board</div>
+                    </div>
+                    <div class="gallery-frame gallery-frame--tilt-r">
+                        <div class="gallery-img-placeholder">
+                            <span>close-up mic plugged in</span>
+                        </div>
+                        <div class="gallery-caption">USB mic</div>
+                    </div>
+                    <div class="gallery-frame">
+                        <div class="gallery-img-placeholder">
+                            <span>hero shot — speaker + Pi, ambient room light</span>
+                        </div>
+                        <div class="gallery-caption">hero shot</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rail-hint">drag to scroll →</div>
+        </div>
+    </section>
+
+    <!-- SECTION 03 — SETUP (LOCKED) -->
+    <section class="section" id="setup">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Setup</h2>
+                <div class="badge-locked">AWAITING CLEARANCE</div>
+            </div>
+            <div class="locked-block">
+                <div class="locked-content">
+                    <div class="locked-line locked-line--wide"></div>
+                    <div class="locked-line locked-line--med"></div>
+                    <div class="locked-line locked-line--full"></div>
+                    <div class="locked-line locked-line--short"></div>
+                    <div class="locked-line locked-line--full"></div>
+                    <div class="locked-line locked-line--wide"></div>
+                    <div class="locked-line locked-line--med"></div>
+                    <div class="locked-line locked-line--short"></div>
+                    <div class="locked-line locked-line--full"></div>
+                </div>
+                <div class="locked-overlay">
+                    <div class="locked-icon">⬛</div>
+                    <div class="locked-msg">this section will be written with Claude's help.<br>check back later.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04 — THE CODE -->
+    <section class="section section-dark" id="code">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2 class="section-title">The Code</h2>
+                <a href="/billy-bot/code" class="view-code-link">view full code →</a>
+            </div>
+            <p class="section-intro">The whole thing is one Python file. Here's how it's structured.</p>
+
+            <div class="code-blocks">
+
+                <div class="code-entry">
+                    <div class="code-entry-header">
+                        <span class="code-tag">imports</span>
+                        <span class="code-entry-title">Libraries & Dependencies</span>
+                    </div>
+                    <div class="code-entry-body">
+                        <p>Placeholder text — a short paragraph explaining each import: speech_recognition for audio input, pygame for playing audio files, pyttsx3 for TTS fallback, vosk for offline speech recognition, requests for weather and news APIs, word2number for converting spoken numbers into integers for the timer. Explains why each one was chosen and how to install them.</p>
+                    </div>
+                    <div class="code-snippet">
+                        <pre><code>import speech_recognition as sr
+import pygame
+import pyttsx3
+import requests
+from vosk import Model, KaldiRecognizer
+from word2number import w2n</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-entry">
+                    <div class="code-entry-header">
+                        <span class="code-tag">core</span>
+                        <span class="code-entry-title">play() and say()</span>
+                    </div>
+                    <div class="code-entry-body">
+                        <p>Placeholder — explains the two core output functions. play() loads and plays a pre-recorded .mp4 audio clip from the Voices directory using pygame. say() is the fallback that uses pyttsx3 text-to-speech for dynamic data like the actual temperature number or timer duration. Every response is either a play() or a play() followed by a say() for the variable data part.</p>
+                    </div>
+                    <div class="code-snippet">
+                        <pre><code>def play(filename):
+    path = os.path.join("/home/.../Voices", filename)
+    pygame.mixer.music.load(path)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        pass
+
+def say(text):
+    speaker.say(text)
+    speaker.runAndWait()</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-entry">
+                    <div class="code-entry-header">
+                        <span class="code-tag">functional</span>
+                        <span class="code-entry-title">Weather, Time, News, Calculator</span>
+                    </div>
+                    <div class="code-entry-body">
+                        <p>Placeholder — walks through the functional commands. Weather hits the Open-Meteo API (free, no key needed) and pulls current temperature, weather code, and wind speed for Brisbane. Time and date use Python's datetime and strftime. News uses the GNews API to pull one article matching whatever topic you say after "billy what's in the news about". Calculator converts spoken words to operators and runs eval().</p>
+                    </div>
+                </div>
+
+                <div class="code-entry code-entry--highlight">
+                    <div class="code-entry-header">
+                        <span class="code-tag">🏆 best function</span>
+                        <span class="code-entry-title">The Timer — Duration Accumulation Algorithm</span>
+                    </div>
+                    <div class="code-entry-body">
+                        <p>The one I'm most proud of. It can understand any combination of hours, minutes, and seconds spoken in natural language. "Set a timer for 2 hours 15 minutes and 30 seconds." "Remind me in 45 minutes." "Timer for an hour and a half." It works by scanning the word list, converting words to numbers using word2number, then accumulating the total seconds based on the unit word that follows each number. Threading.Timer fires the buzzer clip when it's done.</p>
+                    </div>
+                    <div class="code-snippet">
+                        <pre><code>def timer(speech):
+    words = speech.lower().split()
+    total_seconds = 0
+    last_number = None
+    for word in words:
+        try:
+            last_number = w2n.word_to_num(word)
+        except ValueError:
+            if last_number is not None:
+                if word in ["second", "seconds", "sec", "secs"]:
+                    total_seconds += last_number
+                    last_number = None
+                elif word in ["minute", "minutes", "min", "mins"]:
+                    total_seconds += last_number * 60
+                    last_number = None
+                elif word in ["hour", "hours", "hr", "hrs"]:
+                    total_seconds += last_number * 3600
+                    last_number = None
+    threading.Timer(total_seconds, play, args=["buzzer.mp4"]).start()</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-entry">
+                    <div class="code-entry-header">
+                        <span class="code-tag">games</span>
+                        <span class="code-entry-title">Game System & State</span>
+                    </div>
+                    <div class="code-entry-body">
+                        <p>Placeholder — explains the current_game global variable pattern. Because Billy Bot is always listening in a loop, games that require multiple turns (number guessing, truth or dare) need to hold state between loops. current_game gets set to "number_guess" or "truth_or_dare" and the main loop checks it before calling respond(), routing to the game handler instead. Explains why you can't just use a while loop inside a function in this architecture.</p>
+                    </div>
+                </div>
+
+                <div class="code-entry">
+                    <div class="code-entry-header">
+                        <span class="code-tag">speech</span>
+                        <span class="code-entry-title">Dual Recognition — Google + Vosk Fallback</span>
+                    </div>
+                    <div class="code-entry-body">
+                        <p>Placeholder — explains the two-layer speech recognition setup. Primary is Google's free speech-to-text over the internet — accurate and fast when it responds. If Google doesn't respond (no internet, rate limited, whatever), it falls back to Vosk running entirely on the Pi — slower and slightly less accurate but fully offline. The try/except catches sr.RequestError to trigger the switch. Also explains the Vosk AcceptWaveform typo that came from a find/replace gone wrong.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="code-cta">
+                <a href="/billy-bot/code" class="cta-link">read the full annotated code →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05 — WHAT IT CAN DO -->
+    <section class="section" id="features">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2 class="section-title">What It Can Do</h2>
+            </div>
+            <p class="section-intro">Full feature spec. Say "billy" then any of these.</p>
+
+            <div class="feature-grid">
+                <div class="feature-category">
+                    <div class="feature-cat-label">Functional</div>
+                    <ul class="feature-list">
+                        <li>Real-time Brisbane weather (temp, conditions, wind)</li>
+                        <li>Current time and date</li>
+                        <li>Natural language timer ("2 hours 15 minutes and 30 seconds")</li>
+                        <li>News search by topic via GNews API</li>
+                        <li>Spoken maths — add, subtract, multiply, divide</li>
+                        <li>Birthday countdown in seconds (16th and 18th)</li>
+                        <li>System uptime</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <div class="feature-cat-label">Games</div>
+                    <ul class="feature-list">
+                        <li>Truth or dare</li>
+                        <li>Number guessing (1–100, hot/cold hints)</li>
+                        <li>Coin flip</li>
+                        <li>Magic 8 ball</li>
+                        <li>Yes or no oracle</li>
+                        <li>"Am I cooked" randomiser</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <div class="feature-cat-label">Personality</div>
+                    <ul class="feature-list">
+                        <li>Jokes (10 clips)</li>
+                        <li>Roasts (5 clips)</li>
+                        <li>Hype / motivation (5 clips)</li>
+                        <li>Affirmations (10 clips)</li>
+                        <li>Deaffirmations / insults (10 clips)</li>
+                        <li>Fit checks (5 clips)</li>
+                        <li>Greetings, goodbyes, good morning, good night</li>
+                        <li>Emotional responses (sad, tired, hungry, bored)</li>
+                        <li>~50 personality responses total</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <div class="feature-cat-label">System</div>
+                    <ul class="feature-list">
+                        <li>Wake word: "billy"</li>
+                        <li>Google STT primary, Vosk offline fallback</li>
+                        <li>Keep-alive silent audio (Wonderboom auto-shutoff workaround)</li>
+                        <li>Emergency stop protocol</li>
+                        <li>Runs 24/7 on Raspberry Pi 5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 06 — WHAT WENT WRONG -->
+    <section class="section section-dark" id="wrong">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2 class="section-title">What Went Wrong</h2>
+            </div>
+            <p class="section-intro">The honest log.</p>
+
+            <div class="error-log">
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_001</div>
+                    <div class="log-body">
+                        <div class="log-title">PyAudio on Python 3.14</div>
+                        <div class="log-text">Placeholder — describe the incompatibility issue, what broke, how long it took to figure out, what the fix was.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_002</div>
+                    <div class="log-body">
+                        <div class="log-title">pipwin broken</div>
+                        <div class="log-text">Placeholder — what pipwin was supposed to do, why it failed, what you used instead.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_003</div>
+                    <div class="log-body">
+                        <div class="log-title">playsound abandoned</div>
+                        <div class="log-text">Placeholder — why you tried playsound, what went wrong, why you switched to pygame.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_004</div>
+                    <div class="log-body">
+                        <div class="log-title">mp4 not supported by pygame (first attempt)</div>
+                        <div class="log-text">Placeholder — the file format issue, what you were trying to play, how you resolved it.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_005</div>
+                    <div class="log-body">
+                        <div class="log-title">espeak not installed</div>
+                        <div class="log-text">Placeholder — the missing dependency, what broke when it wasn't there, how you installed it.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_006</div>
+                    <div class="log-body">
+                        <div class="log-title">FLAC missing from PATH</div>
+                        <div class="log-text">Placeholder — why speech_recognition needs FLAC, where it went missing, how long this took.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_007</div>
+                    <div class="log-body">
+                        <div class="log-title">Bluetooth audio chaos</div>
+                        <div class="log-text">Placeholder — the full Bluetooth drama. The Wonderboom pairing issues, the pulseaudio/pipewire conflict, how many hours this cost.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_008</div>
+                    <div class="log-body">
+                        <div class="log-title">Vosk AcceptWaveform typo</div>
+                        <div class="log-text">Placeholder — the find/replace that created "AcceptWaveform" as a typo, how long it took to spot it buried in the error log.</div>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-prefix">ERR_009</div>
+                    <div class="log-body">
+                        <div class="log-title">Capital S on Startup.mp4</div>
+                        <div class="log-text">Placeholder — the case sensitivity gotcha on Linux. The file was named Startup.mp4, the code said startup.mp4. Ran fine on Windows in testing. Silent failure on the Pi.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 07 — WHAT I LEARNED -->
+    <section class="section" id="learned">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2 class="section-title">What I Learned</h2>
+            </div>
+            <div class="section-body two-col">
+                <div class="prose-block">
+                    <p>Placeholder — personal reflection on where you started vs where you came out. What you knew going in (not much). What genuinely surprised you. The moment something actually worked for the first time. Something about recording your own voice into a hundred little clips and how strange that is.</p>
+                    <p>Second paragraph. The "buns at coding" to "designed a duration accumulation algorithm" arc. What that shift felt like. How the problems that took three days at the start would take an hour now. Something real here, not generic.</p>
+                </div>
+                <div class="prose-block">
+                    <p>Third paragraph. Something about what this project actually is vs what it looks like from the outside. It looks like a voice assistant. It's actually just a massive if/elif chain with pre-recorded audio. But it works. It's sitting on your desk right now. And that gap between "it's unsophisticated" and "it actually works" is the whole thing.</p>
+                    <p>Closing line. One sentence. Something honest about what comes next.</p>
+                </div>
+            </div>
+
+            <div class="next-mission">
+                <div class="next-label">next mission</div>
+                <a href="https://billy-bit.com" class="next-link">← back to mission control</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="footer-text">billy-bit.com · billy bot · 2025</span>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
