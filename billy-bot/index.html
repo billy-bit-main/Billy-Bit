@@ -240,31 +240,344 @@
         </div>
     </section>
 
-    <!-- SECTION 03 — SETUP (LOCKED) -->
-    <section class="section" id="setup">
+    <!-- SECTION 03 — SETUP -->
+    <section class="section section-dark" id="setup">
         <div class="section-inner">
             <div class="section-header">
                 <div class="section-number">03</div>
                 <h2 class="section-title">Setup</h2>
-                <div class="badge-locked">AWAITING CLEARANCE</div>
             </div>
-            <div class="locked-block">
-                <div class="locked-content">
-                    <div class="locked-line locked-line--wide"></div>
-                    <div class="locked-line locked-line--med"></div>
-                    <div class="locked-line locked-line--full"></div>
-                    <div class="locked-line locked-line--short"></div>
-                    <div class="locked-line locked-line--full"></div>
-                    <div class="locked-line locked-line--wide"></div>
-                    <div class="locked-line locked-line--med"></div>
-                    <div class="locked-line locked-line--short"></div>
-                    <div class="locked-line locked-line--full"></div>
+            <p class="section-intro">Full headless setup from a blank microSD card. You will never plug a monitor into this Pi — everything happens over SSH from your computer. If that sounds scary, it isn't. It's just a terminal window that talks to the Pi over WiFi.</p>
+
+            <div class="callout callout--info">
+                <div class="callout-label">before you start</div>
+                <div class="callout-text">You need: a computer (any OS), the microSD card with a card reader, your WiFi name and password, and all the hardware from Section 02 ready to go.</div>
+            </div>
+
+            <!-- STEP 1 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Flash the OS onto the microSD card</div>
                 </div>
-                <div class="locked-overlay">
-                    <div class="locked-icon">⬛</div>
-                    <div class="locked-msg">this section will be written with Claude's help.<br>check back later.</div>
+                <div class="setup-step-body">
+                    <p>Download <strong>Raspberry Pi Imager</strong> from <code>raspberrypi.com/software</code> and install it on your computer. Open it and make these selections:</p>
+                    <ul class="setup-list">
+                        <li><strong>Choose Device</strong> → your Pi model</li>
+                        <li><strong>Choose OS</strong> → Raspberry Pi OS Lite (64-bit). Not the desktop version — you don't need a GUI and it'll just slow everything down</li>
+                        <li><strong>Choose Storage</strong> → your microSD card. Double check this. It will wipe whatever you pick</li>
+                    </ul>
+                    <p>Before you click Write, click the <strong>cog icon</strong> (Edit Settings). This is critical for headless setup:</p>
+                    <ul class="setup-list">
+                        <li><strong>Set hostname</strong> → e.g. <code>billybot</code></li>
+                        <li><strong>Enable SSH</strong> → use password authentication</li>
+                        <li><strong>Set username and password</strong> → pick a username — this is <code>[username]</code> for the rest of this guide</li>
+                        <li><strong>Configure wireless LAN</strong> → your WiFi name and password exactly as written, including capitals. Country code: AU</li>
+                        <li><strong>Set locale</strong> → your timezone</li>
+                    </ul>
+                    <p>Click Save → Write. Wait until it fully finishes. Eject, plug into the Pi, connect the power.</p>
                 </div>
             </div>
+
+            <!-- STEP 2 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">02</div>
+                    <div class="step-title">Find the Pi on your network</div>
+                </div>
+                <div class="setup-step-body">
+                    <p>Give the Pi about 90 seconds to boot — it's doing first-time setup behind the scenes. Then log into your home router (usually <code>192.168.0.1</code> or <code>192.168.1.1</code> in a browser) and look at the connected devices list. Find <code>billybot</code> and write down the IP address. It'll look like <code>192.168.1.42</code>.</p>
+                    <p>If you can't find it in your router, run this from your computer's terminal:</p>
+                    <div class="cmd-block"><code>ping billybot.local</code></div>
+                    <p>If it times out, wait 30 more seconds and try again — the Pi might still be booting.</p>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">03</div>
+                    <div class="step-title">SSH into the Pi</div>
+                </div>
+                <div class="setup-step-body">
+                    <p>Open a terminal on your computer (Command Prompt or PowerShell on Windows, Terminal on Mac/Linux):</p>
+                    <div class="cmd-block"><code>ssh [username]@192.168.1.42</code></div>
+                    <p>Replace the IP with yours. First time it'll ask if you want to continue connecting — type <code>yes</code>. Then enter your password. You won't see anything appear while you type — that's normal.</p>
+                    <p>If you see <code>[username]@billybot:~$</code> — you're in. Everything from here runs in this terminal window.</p>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">04</div>
+                    <div class="step-title">Update the Pi</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>sudo apt update</code></div>
+                    <div class="cmd-block"><code>sudo apt upgrade -y</code></div>
+                    <p>The first fetches available updates, the second installs them. The <code>-y</code> skips confirmation prompts. Takes 5–10 minutes on first run — let it finish completely before moving on.</p>
+                </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">05</div>
+                    <div class="step-title">Install system dependencies</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>sudo apt install python3-pip espeak espeak-ng espeak-ng-data portaudio19-dev flac sox git -y</code></div>
+                    <ul class="setup-list">
+                        <li><code>espeak</code> + <code>espeak-ng</code> + <code>espeak-ng-data</code> — the voice engine pyttsx3 needs for text-to-speech. You need all three. If you only install <code>espeak</code>, pyttsx3 will appear to work but produce no sound and give you no useful error about it</li>
+                        <li><code>portaudio19-dev</code> — lets Python talk to the microphone</li>
+                        <li><code>flac</code> — required by the speech recognition library. Without it Google STT silently does nothing</li>
+                        <li><code>sox</code> — for creating the silent keep-alive audio file later</li>
+                        <li><code>git</code> — useful for moving files around</li>
+                    </ul>
+                    <p>If anything fails, run <code>sudo apt update</code> again and retry.</p>
+                </div>
+            </div>
+
+            <!-- STEP 6 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">06</div>
+                    <div class="step-title">Install Python packages</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>pip install SpeechRecognition pygame pyttsx3 requests vosk word2number --break-system-packages</code></div>
+                    <p>The <code>--break-system-packages</code> flag is required on current Raspberry Pi OS — newer versions block pip from installing to system Python by default. It sounds alarming. It's fine.</p>
+                    <p>Wait for it to finish. As long as it ends with <code>Successfully installed</code> and no red <code>ERROR:</code> lines, you're good.</p>
+                    <div class="callout callout--warn">
+                        <div class="callout-label">if pygame fails</div>
+                        <div class="callout-text"><code>sudo apt install python3-pygame -y</code></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 7 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">07</div>
+                    <div class="step-title">Get your own GNews API key</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="callout callout--warn">
+                        <div class="callout-label">important</div>
+                        <div class="callout-text">Do not use the API key already in the code. That's mine. It has a request limit and using it will break the news feature for both of us. Get your own free key — it takes two minutes.</div>
+                    </div>
+                    <p>Go to <code>gnews.io</code> → sign up for a free account → copy your API key. You'll paste it into the code in Step 13.</p>
+                </div>
+            </div>
+
+            <!-- STEP 8 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">08</div>
+                    <div class="step-title">Set up your speaker</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="variant-tabs">
+                        <div class="variant-block">
+                            <div class="variant-label">Bluetooth speaker</div>
+                            <p>Install Bluetooth audio packages:</p>
+                            <div class="cmd-block"><code>sudo apt install pulseaudio pulseaudio-module-bluetooth bluez -y</code></div>
+                            <div class="cmd-block"><code>sudo reboot</code></div>
+                            <p>SSH back in after 60 seconds. Start PulseAudio:</p>
+                            <div class="cmd-block"><code>pulseaudio --start</code></div>
+                            <p>Open the Bluetooth controller:</p>
+                            <div class="cmd-block"><code>bluetoothctl</code></div>
+                            <p>You'll see a <code>[bluetooth]#</code> prompt. Run these one at a time:</p>
+                            <div class="cmd-block"><code>power on<br>agent on<br>default-agent<br>scan on</code></div>
+                            <p>Put your speaker into pairing mode. Devices will appear with MAC addresses (<code>XX:XX:XX:XX:XX:XX</code>). When you see your speaker's name:</p>
+                            <div class="cmd-block"><code>pair XX:XX:XX:XX:XX:XX<br>trust XX:XX:XX:XX:XX:XX<br>connect XX:XX:XX:XX:XX:XX</code></div>
+                            <p>If it says <code>Connection successful</code>, type <code>exit</code>. Then set it as the default audio output:</p>
+                            <div class="cmd-block"><code>pactl list short sinks</code></div>
+                            <p>Find the entry with <code>bluez</code> in the name. Then (replace the MAC with yours, colons become underscores):</p>
+                            <div class="cmd-block"><code>pactl set-default-sink bluez_sink.XX_XX_XX_XX_XX_XX.a2dp_sink</code></div>
+                            <p>Test it:</p>
+                            <div class="cmd-block"><code>paplay /usr/share/sounds/alsa/Front_Left.wav</code></div>
+                            <p>If you hear something through the speaker, audio is working.</p>
+                            <p><strong>Make Bluetooth reconnect automatically on boot.</strong> Create a reconnect script:</p>
+                            <div class="cmd-block"><code>nano /home/[username]/bt-connect.sh</code></div>
+                            <p>Paste this in (replace the MAC with yours):</p>
+                            <div class="cmd-block"><code>#!/bin/bash<br>sleep 20<br>bluetoothctl connect XX:XX:XX:XX:XX:XX</code></div>
+                            <p>Save: <code>Ctrl+X</code> → <code>Y</code> → <code>Enter</code>. Make it executable:</p>
+                            <div class="cmd-block"><code>chmod +x /home/[username]/bt-connect.sh</code></div>
+                            <p>You'll add this to crontab in Step 15.</p>
+                        </div>
+                        <div class="variant-block variant-block--alt">
+                            <div class="variant-label">USB speaker or 3.5mm jack</div>
+                            <p>Test it works immediately:</p>
+                            <div class="cmd-block"><code>aplay /usr/share/sounds/alsa/Front_Left.wav</code></div>
+                            <p>If sound comes out the wrong output, run <code>raspi-config</code> → System Options → Audio → select the right output.</p>
+                            <p>You can also skip or delete the <code>keep_alive()</code> function from the code entirely — it only exists to stop Bluetooth speakers from auto-shutting off. A wired speaker doesn't need it.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 9 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">09</div>
+                    <div class="step-title">Set up and test the microphone</div>
+                </div>
+                <div class="setup-step-body">
+                    <p>Plug in your USB microphone. Check the Pi sees it:</p>
+                    <div class="cmd-block"><code>arecord -l</code></div>
+                    <p>You should see something like:</p>
+                    <div class="cmd-block cmd-block--output"><code>card 1: Device [USB Audio Device], device 0: USB Audio [USB Audio]</code></div>
+                    <p>Note the card number. Record a 3-second test (replace <code>1,0</code> with your card number if different):</p>
+                    <div class="cmd-block"><code>arecord -D hw:1,0 -f cd -t wav -d 3 test.wav</code></div>
+                    <p>Talk into the mic for 3 seconds. Play it back:</p>
+                    <div class="cmd-block"><code>paplay test.wav</code></div>
+                    <p>If you hear yourself, the mic works. Any USB mic that shows up in <code>arecord -l</code> will work — just use its card number.</p>
+                    <div class="callout callout--warn">
+                        <div class="callout-label">if arecord throws an error</div>
+                        <div class="callout-text">The card number is wrong. Re-run <code>arecord -l</code> and look again.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 10 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">10</div>
+                    <div class="step-title">Create the folder structure</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>mkdir -p /home/[username]/billy/Voices</code></div>
+                    <p>This creates both folders at once. Your project will live here:</p>
+                    <div class="file-tree">
+                        <div class="tree-row"><span class="tree-dir">/home/[username]/billy/</span></div>
+                        <div class="tree-row tree-child"><span class="tree-file">assistant.py</span></div>
+                        <div class="tree-row tree-child"><span class="tree-dir">vosk-model-small-en-us-0.15/</span></div>
+                        <div class="tree-row tree-child"><span class="tree-dir">Voices/</span></div>
+                        <div class="tree-row tree-grandchild"><span class="tree-file tree-muted">startup.wav, greeting1.wav, ...</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 11 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">11</div>
+                    <div class="step-title">Download the Vosk model</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>cd /home/[username]/billy</code></div>
+                    <div class="cmd-block"><code>wget https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip</code></div>
+                    <div class="cmd-block"><code>unzip vosk-model-small-en-us-0.15.zip</code></div>
+                    <div class="cmd-block"><code>rm vosk-model-small-en-us-0.15.zip</code></div>
+                    <p>Check it worked: <code>ls</code> should show <code>vosk-model-small-en-us-0.15</code> as a folder. Don't rename it — the code looks for it by that exact name.</p>
+                </div>
+            </div>
+
+            <!-- STEP 12 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">12</div>
+                    <div class="step-title">Transfer your files to the Pi</div>
+                </div>
+                <div class="setup-step-body">
+                    <p>Run these from your <strong>computer's</strong> terminal, not the Pi's SSH session.</p>
+                    <p><strong>Transfer assistant.py:</strong></p>
+                    <div class="cmd-block"><code>scp /path/to/assistant.py [username]@192.168.1.42:/home/[username]/billy/</code></div>
+                    <p><strong>Transfer your Voices folder:</strong></p>
+                    <div class="cmd-block"><code>scp -r /path/to/Voices/ [username]@192.168.1.42:/home/[username]/billy/Voices/</code></div>
+                    <p>Check everything arrived (back in SSH):</p>
+                    <div class="cmd-block"><code>ls /home/[username]/billy/Voices/</code></div>
+                </div>
+            </div>
+
+            <!-- STEP 13 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">13</div>
+                    <div class="step-title">Edit the code for your setup</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>nano /home/[username]/billy/assistant.py</code></div>
+                    <p>Use <code>Ctrl+W</code> to search. Find and update these:</p>
+                    <ul class="setup-list">
+                        <li><strong>File paths</strong> — find <code>/home/zescott12/billy/Voices</code> in <code>play()</code> and replace <code>zescott12</code> with <code>[username]</code>. Do the same in <code>keep_alive()</code> a few lines below — there's a second path there for <code>silence.wav</code></li>
+                        <li><strong>GNews key</strong> — find <code>GNEWS_KEY = "..."</code> and replace the value with your own key from Step 7</li>
+                        <li><strong>Weather location</strong> — if you're not in Brisbane, find the Open-Meteo URL and replace the latitude and longitude. Get your coordinates at <code>latlong.net</code></li>
+                        <li><strong>Birthday countdowns</strong> — update the dates in <code>birthday()</code> to your own, or delete the whole function if you don't want it</li>
+                    </ul>
+                    <p>Save: <code>Ctrl+X</code> → <code>Y</code> → <code>Enter</code></p>
+                </div>
+            </div>
+
+            <!-- STEP 14 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">14</div>
+                    <div class="step-title">Create the keep-alive silence file</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="callout callout--info">
+                        <div class="callout-label">bluetooth speaker only</div>
+                        <div class="callout-text">Skip this step if you're using a USB speaker or headphone jack.</div>
+                    </div>
+                    <div class="cmd-block"><code>cd /home/[username]/billy/Voices</code></div>
+                    <div class="cmd-block"><code>sox -n -r 44100 -c 1 silence.wav trim 0.0 3.0</code></div>
+                    <p>This creates a 3-second silent audio file. The <code>keep_alive()</code> function plays it every 3 minutes to stop the Bluetooth speaker from auto-shutting off.</p>
+                </div>
+            </div>
+
+            <!-- STEP 15 -->
+            <div class="setup-step">
+                <div class="setup-step-header">
+                    <div class="step-num">15</div>
+                    <div class="step-title">Test run</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>cd /home/[username]/billy</code></div>
+                    <div class="cmd-block"><code>python3 assistant.py</code></div>
+                    <p>You should see:</p>
+                    <div class="cmd-block cmd-block--output"><code>Vosk model loaded successfully.<br>Billy is online. Say 'billy' to wake.</code></div>
+                    <p>And hear your startup clip through the speaker. Say "billy hello" — if it responds, everything works. Hit <code>Ctrl+C</code> to stop.</p>
+                    <div class="error-quick">
+                        <div class="error-quick-row"><span class="eq-err">FileNotFoundError</span><span class="eq-fix">Wrong path in Step 13 — check both occurrences</span></div>
+                        <div class="error-quick-row"><span class="eq-err">No module named X</span><span class="eq-fix">A pip install failed in Step 6 — rerun just that package</span></div>
+                        <div class="error-quick-row"><span class="eq-err">No sound</span><span class="eq-fix">Bluetooth sink not set as default — redo the pactl step in Step 8</span></div>
+                        <div class="error-quick-row"><span class="eq-err">Vosk model not found</span><span class="eq-fix">Folder name is wrong or it's in the wrong directory — check Step 11</span></div>
+                        <div class="error-quick-row"><span class="eq-err">"Couldn't hear that" constantly</span><span class="eq-fix">Wrong mic card number — recheck Step 9</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 16 -->
+            <div class="setup-step setup-step--last">
+                <div class="setup-step-header">
+                    <div class="step-num">16</div>
+                    <div class="step-title">Run on boot</div>
+                </div>
+                <div class="setup-step-body">
+                    <div class="cmd-block"><code>crontab -e</code></div>
+                    <p>If it asks which editor, pick <code>1</code> (nano). Scroll to the very bottom.</p>
+                    <div class="variant-tabs">
+                        <div class="variant-block">
+                            <div class="variant-label">Bluetooth speaker — add both lines</div>
+                            <div class="cmd-block"><code>@reboot /home/[username]/bt-connect.sh<br>@reboot sleep 30 &amp;&amp; pulseaudio --start &amp;&amp; sleep 10 &amp;&amp; python3 /home/[username]/billy/assistant.py &gt;&gt; /home/[username]/billy/billy.log 2&gt;&amp;1 &amp;</code></div>
+                        </div>
+                        <div class="variant-block variant-block--alt">
+                            <div class="variant-label">USB speaker or 3.5mm jack — add one line</div>
+                            <div class="cmd-block"><code>@reboot sleep 15 &amp;&amp; python3 /home/[username]/billy/assistant.py &gt;&gt; /home/[username]/billy/billy.log 2&gt;&amp;1 &amp;</code></div>
+                        </div>
+                    </div>
+                    <p>The <code>sleep</code> gives the Pi time to connect to WiFi before the script starts. The <code>&gt;&gt; billy.log</code> saves all output to a log file so you can see what went wrong if it breaks.</p>
+                    <p>Save: <code>Ctrl+X</code> → <code>Y</code> → <code>Enter</code>. Then reboot:</p>
+                    <div class="cmd-block"><code>sudo reboot</code></div>
+                    <p>Wait 60 seconds. Without touching anything — say "billy hello." If it responds, you're done.</p>
+                    <p>If it doesn't, SSH back in and check the log:</p>
+                    <div class="cmd-block"><code>cat /home/[username]/billy/billy.log</code></div>
+                </div>
+            </div>
+
         </div>
     </section>
 
