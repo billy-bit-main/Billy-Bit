@@ -738,6 +738,87 @@ body {
     border-color: rgba(74,143,255,0.5);
 }
 
+/* ── INLINE LINK ── */
+.inline-link {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(74,143,255,0.3);
+    transition: color 0.2s, border-color 0.2s;
+}
+.inline-link:hover {
+    color: var(--text-primary);
+    border-color: rgba(74,143,255,0.7);
+}
+
+/* inline code */
+.code-entry-body code, .prose-block code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: #7ec8ff;
+    background: rgba(74,143,255,0.08);
+    border: 1px solid rgba(74,143,255,0.15);
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+}
+
+/* ── IMPORT LIST ── */
+.import-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1rem;
+    border: 1px solid var(--blue-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.import-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 180px;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(74,143,255,0.07);
+    align-items: start;
+    transition: background 0.2s;
+}
+.import-row:last-child { border-bottom: none; }
+.import-row:hover { background: rgba(74,143,255,0.04); }
+.import-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: #7ec8ff;
+    font-weight: 600;
+    padding-top: 0.1rem;
+}
+.import-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+.import-install {
+    font-size: 0.72rem;
+    text-align: right;
+}
+.import-install code {
+    font-size: 0.7rem;
+}
+.import-builtin {
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    font-family: 'Exo 2', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    padding-top: 0.15rem;
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .import-row {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+    .import-install { text-align: left; }
+}
+
 /* ── FEATURE GRID ── */
 .feature-grid {
     display: grid;
