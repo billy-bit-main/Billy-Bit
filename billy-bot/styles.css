@@ -950,6 +950,57 @@ body {
     text-transform: uppercase;
 }
 
+/* troubleshoot blocks */
+.troubleshoot-block {
+    margin-top: 1rem;
+    border: 1px solid rgba(255,179,71,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.ts-label {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.7;
+    padding: 0.55rem 1rem;
+    background: rgba(255,179,71,0.04);
+    border-bottom: 1px solid rgba(255,179,71,0.1);
+}
+.ts-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 1rem;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid rgba(255,179,71,0.06);
+    align-items: start;
+}
+.ts-row:last-child { border-bottom: none; }
+.ts-prob {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.73rem;
+    color: var(--amber);
+    opacity: 0.75;
+    line-height: 1.5;
+    padding-top: 0.05rem;
+}
+.ts-fix {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+.ts-fix code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    color: #7ec8ff;
+    background: rgba(74,143,255,0.08);
+    border: 1px solid rgba(74,143,255,0.15);
+    border-radius: 3px;
+    padding: 0.05rem 0.3rem;
+}
+
 /* ── SETUP STEPS ── */
 .setup-step {
     border-left: 1px solid var(--blue-border);
@@ -1179,6 +1230,7 @@ body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
+    .ts-row { grid-template-columns: 1fr; gap: 0.2rem; }
     .error-quick-row { grid-template-columns: 1fr; gap: 0.25rem; }
     .setup-step { margin-left: 0.5rem; padding-left: 1.5rem; }
     .feature-grid { grid-template-columns: 1fr; }
