@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billy Bot — billy-bit</title>
     <meta name="description" content="Mission report for Billy Bot — a voice assistant built on a Raspberry Pi 5 that responds in my own voice.">
-    <link rel="icon" href="/icon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -37,7 +35,7 @@
         <div class="hero-inner">
             <div class="hero-label">mission report · 2025</div>
             <h1 class="hero-title">Billy Bot</h1>
-            <p class="hero-sub">basically alexa. except it's me talking to myself.</p>
+            <p class="hero-sub">Local Voice Agent Alternative</p>
             <div class="hero-meta">
                 <div class="hero-meta-item">
                     <span class="meta-label">PLATFORM</span>
@@ -53,7 +51,7 @@
                 </div>
                 <div class="hero-meta-item">
                     <span class="meta-label">LOCATION</span>
-                    <span class="meta-value">Brisbane, QLD</span>
+                    <span class="meta-value">QLD, Australia</span>
                 </div>
             </div>
             <div class="hero-waveform" aria-hidden="true">
@@ -76,11 +74,11 @@
             </div>
             <div class="section-body two-col">
                 <div class="prose-block">
-                    <p>Billy Bot is basically a mini Alexa — a local voice assistant that uses keyword extraction instead of AI. It runs on a Raspberry Pi with Python 3. There are two core output functions: <code>play()</code>, which plays a pre-recorded voice clip of me saying an answer (because I'm a narcissist), and <code>say()</code>, which falls back to text-to-speech if you'd rather not talk to yourself.</p>
-                    <p>Billy waits for the wake word "billy" before listening for commands. Then it runs speech-to-text through Google (with Vosk as an offline backup) and converts what you said into a string. From there it scans for keywords. On the surface it sort of looks like AI — but it's actually just a really long list of if/else statements checking whether a word is in the sentence.</p>
+                    <p>Billy Bot is basically a mini Alexa, a local voice assistant that uses keyword extraction instead of AI. It runs on a Raspberry Pi with Python 3. There are two core output functions: <code>play()</code>, which plays a pre-recorded voice clip of me saying an answer (because I'm a narcissist), and <code>say()</code>, which falls back to text-to-speech if you'd rather not talk to yourself.(Can't imagine that lol)</p>
+                    <p>Billy waits for the wake word "billy" before listening for commands. Then it runs speech-to-text through Google (with Vosk as an offline backup) and converts what you said into a string. From there it scans for keywords. On the surface it sort of looks like AI, but it's actually just a really long list of if/else statements checking whether a word is in the sentence.(This is a great alternative as it is very small and uses no memory)</p>
                 </div>
                 <div class="prose-block">
-                    <p>Because of the modular design, the keywords and functionality can be extended as far as you want. Write the function, add it to the if/else chain, done. Easy to expand — but it was a huge pain to build from scratch. Here's everything that went into it.</p>
+                    <p>Because of the modular design, the keywords and functionality can be extended as far as you want. Write the function, add it to the if/else chain, done. Easy to expand. (but it was a huge pain to build from scratch). Here's everything that went into it.</p>
                     <div class="flow-diagram">
                         <div class="flow-step">
                             <div class="flow-icon">🎤</div>
@@ -123,7 +121,7 @@
                         <div class="part-info">
                             <div class="part-name">Raspberry Pi 5 4GB</div>
                             <div class="part-price">$179.55 AUD</div>
-                            <div class="part-desc">The brain. Could get away with a Pi 4 2GB for this project alone but I'll use this for more.</div>
+                            <div class="part-desc">The brain. This is actually overkill a Pi 4 2GB is more than enough.</div>
                             <a class="part-link" href="https://core-electronics.com.au/raspberry-pi-5-model-b-4gb.html" target="_blank" rel="noopener noreferrer">view part →</a>
                         </div>
                     </div>
@@ -132,7 +130,7 @@
                         <div class="part-info">
                             <div class="part-name">UE Wonderboom</div>
                             <div class="part-price">$117.82 AUD</div>
-                            <div class="part-desc">Only used this because I already had it and wanted more budget for the mic. Any speaker works.</div>
+                            <div class="part-desc">Only used this because I already had it and wanted more budget for the mic. Any speaker works you don't need this.</div>
                             <a class="part-link" href="https://www.amazon.com.au/dp/B0B8FV6RZS" target="_blank" rel="noopener noreferrer">view part →</a>
                         </div>
                     </div>
@@ -902,7 +900,6 @@ def say(text):
                 <div class="section-number">06</div>
                 <h2 class="section-title">What Went Wrong</h2>
             </div>
-            <p class="section-intro">The honest log.</p>
 
             <div class="error-log">
                 <div class="log-entry">
