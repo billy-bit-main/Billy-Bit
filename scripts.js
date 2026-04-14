@@ -29,3 +29,26 @@ pairs.forEach(([planetId, sidebarId]) => {
 
 document.querySelectorAll('.sidebar-close').forEach(btn => btn.addEventListener('click', closeAll));
 overlay.addEventListener('click', closeAll);
+
+if ('ontouchstart' in window) {
+    let startX, startY, panX = 0, panY = 0, dragging = false;
+    const ss = document.querySelector('.solar-system');
+
+    document.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX - panX;
+        startY = e.touches[0].clientY - panY;
+        dragging = false;
+    });
+
+    document.addEventListener('touchmove', e => {
+        e.preventDefault();
+        dragging = true;
+        panX = e.touches[0].clientX - startX;
+        panY = e.touches[0].clientY - startY;
+        ss.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px))`;
+    }, { passive: false });
+
+    document.addEventListener('touchend', e => {
+        if (dragging) e.preventDefault();
+    });
+}
