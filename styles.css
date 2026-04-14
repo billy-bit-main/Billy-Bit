@@ -394,30 +394,10 @@ body {
 }
 
 /* PORTRAIT MOBILE */
-@media (max-width: 768px) and (orientation: portrait) {
-    .orbit {border: none;}
+@media (max-width: 768px) {
+    body {
+        overflow: hidden;
+        touch-action: none;
+    }
     .hud-br { display: none; }
-    .solar-system { top: 52%; }
-    .orbit-1 { width: 90px;  height: 140px; }
-    .orbit-2 { width: 130px; height: 200px; }
-    .orbit-3 { width: 170px; height: 265px; }
-    .orbit-4 { width: 210px; height: 325px; }
-    .orbit-5 { width: 255px; height: 390px; }
-    .orbit-6 { width: 295px; height: 450px; }
-    .orbit-7 { width: 335px; height: 515px; }
-    .orbit-8 { width: 365px; height: 555px; }
-}
-
-/* LANDSCAPE MOBILE */
-@media (max-width: 900px) and (orientation: landscape) {
-    .orbit {border: none;}
-    .hud-br { display: none; }
-    .orbit-1 { width: 135px; height: 90px;  }
-    .orbit-2 { width: 200px; height: 130px; }
-    .orbit-3 { width: 260px; height: 170px; }
-    .orbit-4 { width: 320px; height: 210px; }
-    .orbit-5 { width: 380px; height: 250px; }
-    .orbit-6 { width: 440px; height: 290px; }
-    .orbit-7 { width: 500px; height: 330px; }
-    .orbit-8 { width: 555px; height: 365px; }
 }
