@@ -390,7 +390,6 @@ body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 480px) {
-    .hud-br { display: none; }
     .sidebar { width: 100%; border-radius: 0; }
 }
 
