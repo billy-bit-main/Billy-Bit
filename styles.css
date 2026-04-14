@@ -395,6 +395,7 @@ body {
 
 /* PORTRAIT MOBILE */
 @media (max-width: 768px) and (orientation: portrait) {
+    .orbit {border: none;}
     .hud-br { display: none; }
     .solar-system { top: 52%; }
     .orbit-1 { width: 90px;  height: 140px; }
@@ -409,6 +410,7 @@ body {
 
 /* LANDSCAPE MOBILE */
 @media (max-width: 900px) and (orientation: landscape) {
+    .orbit {border: none;}
     .hud-br { display: none; }
     .orbit-1 { width: 135px; height: 90px;  }
     .orbit-2 { width: 200px; height: 130px; }
