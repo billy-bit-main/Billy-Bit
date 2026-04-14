@@ -220,6 +220,7 @@ body {
     flex-direction: row;
     align-items: flex-end;
     gap: 1rem;
+    z-index: 1000;
 }
 .project-details {
     text-align: right;
@@ -403,7 +404,5 @@ body {
         font-size: 0.55rem;
         bottom: 8px;
         right: 8px;
-        position: fixed;
-        z-index: 1000;
     }
 }
