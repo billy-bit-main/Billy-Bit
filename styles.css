@@ -39,6 +39,12 @@
     .rotate-prompt { display: flex; }
 }
 
+@media (max-width: 768px) and (orientation: landscape) {
+    .solar-system {
+        transform: translate(-50%, -50%) scale(0.55);
+    }
+}
+
 body {
     height: 100vh;
     overflow: hidden;
