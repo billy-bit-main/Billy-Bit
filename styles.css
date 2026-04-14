@@ -399,5 +399,9 @@ body {
         overflow: hidden;
         touch-action: none;
     }
-    .hud-br { display: none; }
+    .hud-br {
+    font-size: 0.55rem;
+    bottom: 8px;
+    right: 8px;
+    }    
 }
