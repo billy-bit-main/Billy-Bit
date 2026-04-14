@@ -400,8 +400,10 @@ body {
         touch-action: none;
     }
     .hud-br {
-    font-size: 0.55rem;
-    bottom: 8px;
-    right: 8px;
-    }    
+        font-size: 0.55rem;
+        bottom: 8px;
+        right: 8px;
+        position: fixed;
+        z-index: 1000;
+    }
 }
