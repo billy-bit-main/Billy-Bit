@@ -41,16 +41,16 @@ function render() {
 
         const statusClass = project.status.toLowerCase();
 
-        item.innerHTML = `
+        item.innerHTML = 
             <div class="project-date">${project.date}</div>
             <div class="project-title">${project.title}</div>
             <div class="project-desc">${project.description}</div>
             <div class="project-status status-${statusClass}">${project.status}</div>
-        `;
+        ;
 
         if (project.slug) {
             item.addEventListener('click', () => {
-                window.location.href = `https://billy-bit.com/${project.slug}`;
+                window.location.href = `https://billy-bit.com/python/${project.slug}`;
             });
         }
 
