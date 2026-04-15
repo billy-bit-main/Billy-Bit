@@ -6,6 +6,14 @@
 
 const projects = [
     {
+        date: "April 2026",
+        title: "Billy Bot",
+        description: "A local voice assistant running 24/7 on a Raspberry Pi. Listens for the wake word 'Billy', then handles weather, timers, jokes, maths, and more.,
+        status: "ACTIVE",
+        slug: "billy-bot"
+    },
+
+    {
         date: "2024",
         title: "Billy Bot",
         description: "A local voice assistant running 24/7 on a Raspberry Pi. Listens for the wake word 'Billy', then handles weather, timers, jokes, maths, and more — no cloud AI, just keyword matching and pre-recorded clips of my own voice.",
@@ -64,7 +72,6 @@ function updateFocus() {
         const distance = Math.abs(itemCenter - center);
         const maxDistance = window.innerHeight * 0.55;
 
-        // focus goes from 0 (far) to 1 (centered)
         const focus = Math.max(0, 1 - distance / maxDistance);
 
         const scale   = 0.93 + focus * 0.09;   // 0.93 → 1.02
