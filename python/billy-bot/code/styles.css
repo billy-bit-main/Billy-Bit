@@ -1,0 +1,195 @@
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        background:
+            radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
+            radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
+            radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
+            radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
+            radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
+            #040814;
+        color: #e8f2ff;
+        font-family: 'Exo 2', sans-serif;
+        padding: 6rem 2rem 6rem;
+    }
+
+    .scanlines {
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 0px,
+            rgba(0,0,20,0.2) 2px,
+            rgba(0,0,20,0.2) 4px
+        );
+        pointer-events: none;
+        z-index: 1000000000000000;
+    }
+
+    .hud-tl {
+        position: fixed;
+        left: 2%;
+        top: 2%;
+    }
+
+    .site-name {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(1rem, 3vw, 1.8rem);
+        font-weight: 900;
+        color: #e8f2ff;
+        letter-spacing: 0.1em;
+        text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169,204,255);
+        text-decoration: none;
+    }
+
+    .site-sub {
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+        color: #4a6a9a;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+    }
+
+    .hud-tr {
+        position: fixed;
+        right: 3%;
+        top: 2.5%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.4rem;
+    }
+
+    .hud-tr a {
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+        color: #4a6a9a;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .hud-tr a:hover {
+        color: #abcfff;
+    }
+
+    .container {
+        max-width: 860px;
+        margin: 0 auto;
+    }
+
+    .page-label {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 0.75rem;
+        color: #4a6a9a;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+    }
+
+    h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(1.5rem, 5vw, 3rem);
+        font-weight: 900;
+        color: #e8f2ff;
+        letter-spacing: 0.05em;
+        text-shadow: 0 0 20px rgba(74,143,255,1), 0 0 60px rgb(169,204,255);
+        margin-bottom: 1rem;
+        line-height: 1.15;
+    }
+
+    .intro {
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+        color: #8aaad0;
+        line-height: 1.9;
+        margin-bottom: 3rem;
+        max-width: 600px;
+    }
+
+    .intro strong { color: #abcfff; font-weight: 500; }
+    .intro a { color: #abcfff; }
+
+    .code-wrap {
+        position: relative;
+    }
+
+    .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .code-label {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 0.7rem;
+        color: #4a6a9a;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .copy-btn {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #4a6a9a;
+        background: transparent;
+        border: 1px solid #1a2a4a;
+        padding: 0.35rem 0.9rem;
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .copy-btn:hover {
+        color: #abcfff;
+        border-color: #4a6a9a;
+        box-shadow: 0 0 12px rgba(74, 143, 255, 0.15);
+    }
+
+    .copy-btn.copied {
+        color: #7fffb0;
+        border-color: #7fffb0;
+        box-shadow: 0 0 12px rgba(127, 255, 176, 0.2);
+    }
+
+    pre {
+        background: rgba(4, 8, 20, 0.7);
+        border: 1px solid #1a2a4a;
+        padding: 2rem;
+        overflow-x: auto;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: clamp(0.72rem, 1.5vw, 0.82rem);
+        line-height: 1.85;
+        color: #8aaad0;
+        white-space: pre;
+        box-shadow: 0 0 40px rgba(74, 143, 255, 0.04), inset 0 0 60px rgba(138, 43, 226, 0.03);
+    }
+
+    .hud-br {
+        position: fixed;
+        right: 3%;
+        bottom: 3.5%;
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+        color: #4a6a9a;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #1a2a4a; }
+
+    @media (max-width: 480px) {
+        body { padding: 5rem 1.25rem 4rem; }
+        .hud-br { display: none; }
+    }
