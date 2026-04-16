@@ -31,7 +31,7 @@ don't. Just build something small. It doesn't have to be good.
 
 ## People worth checking out
 
-- [WalterNCookie](https://github.com/WalterNCookie) — go look at maniaprint
+- [WalterNCookie](https://github.com/WalterNCookie) — go look at https://walterck.com/
 
 ## Built with
 
