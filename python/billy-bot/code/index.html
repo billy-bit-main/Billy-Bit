@@ -8,207 +8,7 @@
     <title>Billy Bot — Code</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
-
-```
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        min-height: 100vh;
-        background:
-            radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
-            radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
-            radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
-            radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
-            radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
-            #040814;
-        color: #e8f2ff;
-        font-family: 'Exo 2', sans-serif;
-        padding: 6rem 2rem 6rem;
-    }
-
-    .scanlines {
-        position: fixed;
-        inset: 0;
-        background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 0px,
-            rgba(0,0,20,0.2) 2px,
-            rgba(0,0,20,0.2) 4px
-        );
-        pointer-events: none;
-        z-index: 1000000000000000;
-    }
-
-    .hud-tl {
-        position: fixed;
-        left: 2%;
-        top: 2%;
-    }
-
-    .site-name {
-        font-family: 'Orbitron', sans-serif;
-        font-size: clamp(1rem, 3vw, 1.8rem);
-        font-weight: 900;
-        color: #e8f2ff;
-        letter-spacing: 0.1em;
-        text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169,204,255);
-        text-decoration: none;
-    }
-
-    .site-sub {
-        font-family: 'Exo 2', sans-serif;
-        font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-        color: #4a6a9a;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        margin-top: 0.25rem;
-    }
-
-    .hud-tr {
-        position: fixed;
-        right: 3%;
-        top: 2.5%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.4rem;
-    }
-
-    .hud-tr a {
-        font-family: 'Exo 2', sans-serif;
-        font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-        color: #4a6a9a;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .hud-tr a:hover {
-        color: #abcfff;
-    }
-
-    .container {
-        max-width: 860px;
-        margin: 0 auto;
-    }
-
-    .page-label {
-        font-family: 'Exo 2', sans-serif;
-        font-size: 0.75rem;
-        color: #4a6a9a;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        margin-bottom: 0.75rem;
-    }
-
-    h1 {
-        font-family: 'Orbitron', sans-serif;
-        font-size: clamp(1.5rem, 5vw, 3rem);
-        font-weight: 900;
-        color: #e8f2ff;
-        letter-spacing: 0.05em;
-        text-shadow: 0 0 20px rgba(74,143,255,1), 0 0 60px rgb(169,204,255);
-        margin-bottom: 1rem;
-        line-height: 1.15;
-    }
-
-    .intro {
-        font-size: clamp(0.85rem, 2vw, 0.95rem);
-        color: #8aaad0;
-        line-height: 1.9;
-        margin-bottom: 3rem;
-        max-width: 600px;
-    }
-
-    .intro strong { color: #abcfff; font-weight: 500; }
-    .intro a { color: #abcfff; }
-
-    .code-wrap {
-        position: relative;
-    }
-
-    .code-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.75rem;
-    }
-
-    .code-label {
-        font-family: 'Exo 2', sans-serif;
-        font-size: 0.7rem;
-        color: #4a6a9a;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
-    .copy-btn {
-        font-family: 'Exo 2', sans-serif;
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #4a6a9a;
-        background: transparent;
-        border: 1px solid #1a2a4a;
-        padding: 0.35rem 0.9rem;
-        cursor: pointer;
-        transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .copy-btn:hover {
-        color: #abcfff;
-        border-color: #4a6a9a;
-        box-shadow: 0 0 12px rgba(74, 143, 255, 0.15);
-    }
-
-    .copy-btn.copied {
-        color: #7fffb0;
-        border-color: #7fffb0;
-        box-shadow: 0 0 12px rgba(127, 255, 176, 0.2);
-    }
-
-    pre {
-        background: rgba(4, 8, 20, 0.7);
-        border: 1px solid #1a2a4a;
-        padding: 2rem;
-        overflow-x: auto;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: clamp(0.72rem, 1.5vw, 0.82rem);
-        line-height: 1.85;
-        color: #8aaad0;
-        white-space: pre;
-        box-shadow: 0 0 40px rgba(74, 143, 255, 0.04), inset 0 0 60px rgba(138, 43, 226, 0.03);
-    }
-
-    .hud-br {
-        position: fixed;
-        right: 3%;
-        bottom: 3.5%;
-        font-family: 'Exo 2', sans-serif;
-        font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-        color: #4a6a9a;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
-    ::-webkit-scrollbar { width: 4px; height: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #1a2a4a; }
-
-    @media (max-width: 480px) {
-        body { padding: 5rem 1.25rem 4rem; }
-        .hud-br { display: none; }
-    }
-</style>
-```
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -244,16 +44,540 @@
             <button class="copy-btn" onclick="copyCode(this)">copy all</button>
         </div>
 
-        <!-- =====================================================
-             PASTE YOUR FULL CODE INSIDE THIS <pre> TAG.
-             That's it. The copy button handles itself.
-             ===================================================== -->
         <pre id="code-block">
-```
+            import speech_recognition as sr
+import os
+import random
+import pygame
+import requests
+import pyttsx3
+import datetime
+from vosk import Model, KaldiRecognizer
+import json
+import threading
+import time
+from datetime import timedelta
+from word2number import w2n
 
-# paste your full assistant.py code here
+# ───────────────────────────────
+# INIT
+# ───────────────────────────────
 
-```
+VOSK_MODEL_PATH = "vosk-model-small-en-us-0.15"
+if os.path.exists(VOSK_MODEL_PATH):
+    vosk_model = Model(VOSK_MODEL_PATH)
+    vosk_recogniser = KaldiRecognizer(vosk_model, 16000)
+    vosk_available = True
+    print("Vosk model loaded successfully.")
+else:
+    vosk_available = False
+    print("Vosk model not found.")
+
+current_game = None
+current_number = None
+start_time = time.monotonic()
+GNEWS_KEY = "YOUR_KEY_HERE" # Get your free key at https://gnews.io/ (limited to 100 requests/day which is why I am not giving out mine ):<)
+
+recogniser = sr.Recognizer()
+pygame.mixer.init()
+speaker = pyttsx3.init()
+
+VOICE_PATH = os.path.join(os.getcwd(), "Voices")
+audio_lock = threading.RLock()
+
+# ───────────────────────────────
+# AUDIO SYSTEM
+# ───────────────────────────────
+
+def wait_audio():
+    while pygame.mixer.music.get_busy():
+        time.sleep(0.05)
+
+def say(text):
+    with audio_lock:
+        pygame.mixer.music.stop()
+        print("Billy:", text)
+        speaker.say(text)
+        speaker.runAndWait()
+        time.sleep(0.15)
+
+def play(filename):
+    with audio_lock:
+        wait_audio()
+
+        if not filename.endswith(".mp3"):
+            filename += ".mp3"
+
+        path = os.path.join(VOICE_PATH, filename)
+
+        if os.path.exists(path):
+            pygame.mixer.music.load(path)
+            pygame.mixer.music.play()
+            wait_audio()
+            time.sleep(0.1)
+        else:
+            print("Missing clip:", filename)
+            say("Missing audio file")
+
+# ───────────────────────────────
+# KEEP ALIVE
+# ───────────────────────────────
+
+def keep_alive():
+    while True:
+        time.sleep(180)
+        if current_game is None and not pygame.mixer.music.get_busy():
+            play("silence")
+
+threading.Thread(target=keep_alive, daemon=True).start()
+
+# ───────────────────────────────
+# WEATHER
+# ───────────────────────────────
+
+weather_descriptions = {
+    0: "clear sky",
+    1: "mainly clear",
+    2: "partly cloudy",
+    3: "overcast",
+    45: "foggy",
+    48: "foggy",
+    61: "light rain",
+    63: "moderate rain",
+    65: "heavy rain",
+    71: "light snow",
+    73: "moderate snow",
+    75: "heavy snow",
+    80: "showers",
+    81: "showers",
+    82: "heavy showers",
+    95: "thunderstorm"
+}
+
+def get_weather():
+    try:
+        weather_raw = requests.get(
+            "https://api.open-meteo.com/v1/forecast?latitude=-27.4705&longitude=153.0260&current_weather=true",
+            timeout=5
+        )
+        weather_data = weather_raw.json()
+
+        cw = weather_data.get("current_weather", {})
+        code = cw.get("weathercode", -1)
+        temp = cw.get("temperature", 0)
+        wind = cw.get("windspeed", 0)
+        sky = weather_descriptions.get(code, "unknown")
+
+        play("temperature")
+        say(str(temp))
+
+        play("sky")
+        say(sky)
+
+        play("wind")
+        say(str(wind))
+
+    except:
+        play("weathererror")
+
+# ───────────────────────────────
+# TIME / DATE
+# ───────────────────────────────
+
+def get_time():
+    play("thetimeis")
+    say(datetime.datetime.now().strftime("%I:%M %p"))
+
+def get_date():
+    date = datetime.datetime.now()
+    play("todayis")
+    say(f"{date.strftime('%A')}, {date.strftime('%B')} {date.strftime('%d')}, {date.strftime('%Y')}")
+
+def get_day():
+    play("todayis")
+    say(datetime.datetime.now().strftime("%A"))
+
+def get_uptime():
+    play("uptime")
+    say(str(timedelta(seconds=int(time.monotonic() - start_time))))
+
+# ───────────────────────────────
+# TIMER
+# ───────────────────────────────
+
+def timer(speech):
+    words = speech.lower().split()
+    total_seconds = 0
+    last_number = None
+
+    for word in words:
+        try:
+            last_number = w2n.word_to_num(word)
+        except:
+            if last_number is not None:
+                if word in ["second", "seconds", "sec", "secs"]:
+                    total_seconds += last_number
+                    last_number = None
+                elif word in ["minute", "minutes", "min", "mins"]:
+                    total_seconds += last_number * 60
+                    last_number = None
+                elif word in ["hour", "hours", "hr", "hrs"]:
+                    total_seconds += last_number * 3600
+                    last_number = None
+
+    if total_seconds == 0:
+        play("timerror")
+        return
+
+    threading.Timer(total_seconds, play, args=["buzzer"]).start()
+    play("timer")
+
+# ───────────────────────────────
+# CALCULATOR
+# ───────────────────────────────
+
+def calculate(speech):
+    speech = speech.replace("times", "*")
+    speech = speech.replace("multiplied by", "*")
+    speech = speech.replace("divided by", "/")
+    speech = speech.replace("plus", "+")
+    speech = speech.replace("minus", "-")
+
+    words = speech.split()
+    math_str = ""
+
+    for word in words:
+        try:
+            math_str += str(w2n.word_to_num(word)) + " "
+        except:
+            if any(op in word for op in ["+", "-", "*", "/"]):
+                math_str += word + " "
+
+    try:
+        result = eval(math_str.strip())
+        play("answer")
+        say(str(result))
+    except:
+        play("matherror")
+
+# ───────────────────────────────
+# BIRTHDAYS
+# ───────────────────────────────
+
+def birthday(year):
+    if year == 16:
+        target = datetime.datetime(2028, 2, 29)
+        seconds = int((target - datetime.datetime.now()).total_seconds())
+        play("birthday16")
+        say(str(seconds))
+    elif year == 18:
+        target = datetime.datetime(2030, 2, 28)
+        seconds = int((target - datetime.datetime.now()).total_seconds())
+        play("birthday18")
+        say(str(seconds))
+    else:
+        play("birthdayunknown")
+
+# ───────────────────────────────
+# GAMES
+# ───────────────────────────────
+
+def truth_dare():
+    global current_game
+    current_game = "truth_or_dare"
+    play("truth_dare")
+
+def handle_truth_dare(speech):
+    global current_game
+    if "truth" in speech:
+        play(random.choice(["truth1","truth2","truth3","truth4","truth5"]))
+    elif "dare" in speech:
+        play(random.choice(["dare1","dare2","dare3","dare4","dare5"]))
+    else:
+        play("wuss")
+    current_game = None
+
+def start_number_guess():
+    global current_game, current_number
+    current_number = random.randint(1, 100)
+    current_game = "number_guess"
+    play("number_guess")
+
+def handle_number_guess(speech):
+    global current_game, current_number
+    try:
+        guess = w2n.word_to_num(speech)
+        if guess < current_number:
+            play("higher")
+        elif guess > current_number:
+            play("lower")
+        else:
+            play("correct")
+            current_game = None
+            current_number = None
+    except:
+        play("guesserror")
+
+def start_news():
+    global current_game
+    current_game = "news"
+    play("newswhat")
+
+def handle_news(speech):
+    global current_game
+    try:
+        clean = speech.lower()
+        for word in ["billy","news","what's","whats","in the","tell me","about","on"]:
+            clean = clean.replace(word, "")
+        clean = clean.strip()
+        if clean == "":
+            clean = "world"
+
+        response = requests.get(
+            f"https://gnews.io/api/v4/search?q={clean}&token={GNEWS_KEY}&lang=en&max=1",
+            timeout=5
+        )
+        data = response.json()
+
+        if "articles" in data and len(data["articles"]) > 0:
+            article = data["articles"][0]
+            play("newsintro")
+            say(article["title"])
+            play("newsdesc")
+            say(article["description"])
+        else:
+            play("newserror")
+    except:
+        play("newserror")
+
+    current_game = None
+
+# ───────────────────────────────
+# MAIN RESPONDER
+# ───────────────────────────────
+
+
+
+# You can add more commands and responses to this function. Just make sure to keep the structure consistent for it to work properly.
+# Also be mindful how far up the chain you put new commands, as it will check them in order and execute the first one that matches. 
+# For example, if you put a command that checks for "hello" after the command that checks for "how are you",
+# it will never trigger since "hello" is contained in "how are you". So just keep that in mind when adding new stuff.
+def respond(speech):
+    speech = speech.lower()
+
+    if "billy" not in speech:
+        return True
+
+    if "weather" in speech:
+        get_weather()
+
+    elif "news" in speech:
+        start_news()
+
+    elif any(word in speech for word in ["timer","set a timer","countdown","remind me in","reminder"]):
+        timer(speech)
+
+    elif any(word in speech for word in ["number","guess","guessing game"]):
+        start_number_guess()
+
+    elif "sixteenth" in speech:
+        birthday(16)
+
+    elif "eighteenth" in speech:
+        birthday(18)
+
+    elif any(word in speech for word in ["what time","the time","time is it"]):
+        get_time()
+
+    elif "date" in speech:
+        get_date()
+
+    elif any(word in speech for word in ["what day","the day","day is it","what's today"]):
+        get_day()
+
+    elif "uptime" in speech or "how long have you been" in speech:
+        get_uptime()
+
+    elif any(op in speech for op in ["plus","minus","times","divided"]):
+        calculate(speech)
+
+    elif any(word in speech for word in ["truth or dare","truth and dare"]):
+        truth_dare()
+
+    elif "joke" in speech:
+        play(random.choice(["joke1","joke2","joke3","joke4","joke5",
+                             "joke6","joke7","joke8","joke9","joke10"]))
+
+    elif any(word in speech for word in ["roast","flame","diss","grill"]):
+        play(random.choice(["roast1","roast2","roast3","roast4","roast5"]))
+
+    elif any(word in speech for word in ["hype","pump","motivate","inspire","gas me"]):
+        play(random.choice(["hype1","hype2","hype3","hype4","hype5"]))
+
+    elif any(word in speech for word in ["affirm me","affirmation","encourage me"]):
+        play(random.choice(["affirm1","affirm2","affirm3","affirm4","affirm5",
+                             "affirm6","affirm7","affirm8","affirm9","affirm10"]))
+
+    elif any(word in speech for word in ["insult me","bully me","be mean","bring me down"]):
+        play(random.choice(["deaffirm1","deaffirm2","deaffirm3","deaffirm4","deaffirm5",
+                             "deaffirm6","deaffirm7","deaffirm8","deaffirm9","deaffirm10"]))
+
+    elif any(word in speech for word in ["how do i look","fit check","rate my fit",
+                                          "rate the fit","drip check","outfit check","am i dripped out"]):
+        play(random.choice(["fitcheck1","fitcheck2","fitcheck3","fitcheck4","fitcheck5"]))
+
+    elif any(word in speech for word in ["magic eight ball","eight ball","8 ball",
+                                          "magic ate ball","magic eight","magic 8","ate ball"]):
+        play(random.choice(["eightball1","eightball2","eightball3","eightball4","eightball5",
+                             "eightball6","eightball7","eightball8","eightball9","eightball10"]))
+
+    elif any(word in speech for word in ["flip a coin","coin flip","heads or tails"]):
+        play(random.choice(["heads","tails"]))
+
+    elif any(word in speech for word in ["am i cooked","is it over","am i done"]):
+        play(random.choice(["cooked_yes","cooked_no"]))
+
+    elif any(word in speech for word in ["should i","give me a sign","yes or no","help me decide"]):
+        play(random.choice(["yes","no"]))
+
+    elif any(word in speech for word in ["i'm sad","im sad","i am sad","feeling sad","i feel sad","i'm upset","im upset"]):
+        play(random.choice(["sad1","sad2","sad3"]))
+
+    elif any(word in speech for word in ["i'm tired","im tired","i am tired","so tired","exhausted"]):
+        play("tired")
+
+    elif any(word in speech for word in ["i'm hungry","im hungry","i am hungry","starving","famished"]):
+        play(random.choice(["hungry1","hungry2","hungry3"]))
+
+    elif any(word in speech for word in ["i'm bored","im bored","i am bored","nothing to do","entertain me","so bored"]):
+        play(random.choice(["bored1","bored2","bored3"]))
+
+    elif any(word in speech for word in ["i love you","love you","i luv you"]):
+        play("loveyou")
+
+    elif any(word in speech for word in ["i hate you","hate you","i don't like you"]):
+        play("hateyou")
+
+    elif any(word in speech for word in ["you're stupid","youre stupid","you are stupid","you're dumb","youre dumb"]):
+        play("stupid")
+
+    elif any(word in speech for word in ["you're smart","youre smart","you're amazing","youre amazing","you're the best","youre the best"]):
+        play("smart")
+
+    elif any(word in speech for word in ["are you real","are you alive","are you human","are you a robot"]):
+        play("areyoureal")
+
+    elif any(word in speech for word in ["better than siri","are you better than siri"]):
+        play("bettersiri")
+
+    elif any(word in speech for word in ["better than alexa","are you better than alexa"]):
+        play("betteralexa")
+
+    elif any(word in speech for word in ["what can you do","what do you do","your features"]):
+        play("whatcanyoudo")
+
+    elif any(word in speech for word in ["what are you doing","what are you up to","whatcha doing"]):
+        play("whatdoing")
+
+    elif any(word in speech for word in ["i'm back","im back","i am back","i'm home","im home"]):
+        play("imback")
+
+    elif any(word in speech for word in ["i'm leaving","im leaving","i am leaving","goodbye","see you later","i'm going"]):
+        play("leaving")
+
+    elif any(word in speech for word in ["i miss you","missed you"]):
+        play("missyou")
+
+    elif any(word in speech for word in ["you're funny","youre funny","that was funny","good one"]):
+        play("funny")
+
+    elif any(word in speech for word in ["good morning","morning","rise and shine","wake up","mourn in","mornin'"]):
+        play(random.choice(["morning1","morning2","morning3","morning4","morning5"]))
+
+    elif any(word in speech for word in ["good night","night","going to bed","going to sleep","goodnight","nite","knight"]):
+        play(random.choice(["goodnight1","goodnight2","goodnight3","goodnight4","goodnight5"]))
+
+    elif any(word in speech for word in ["how are you","you good","how you doing","you alright","how you been"]):
+        play("feeling")
+
+    elif any(word in speech for word in ["who are you","what's your name","identify yourself","why are you in my room"]):
+        play("name")
+
+    elif any(word in speech for word in ["thank you","thanks","cheers","good job","well done"]):
+        play("thanks")
+
+    elif any(word in speech for word in ["shut up","be quiet","shush","zip it","hush","quiet","silence","hell up","shutup"]):
+        play(random.choice(["shutup1","shutup2","shutup3","shutup4","shutup5"]))
+
+    elif "emergency stop protocol" in speech:
+        play("stop")
+        return False
+
+    elif any(word in speech for word in ["hello","hey","hi","yo","sup","wassup","wagwan","wsg","wsp",
+                                          "what's up","whats up","what's good","what it do"]):
+        play(random.choice(["greeting1","greeting2","greeting3"]))
+
+    else:
+        play(random.choice(["unknown1","unknown2","unknown3"]))
+
+    return True
+
+# ───────────────────────────────
+# MAIN LOOP
+# ───────────────────────────────
+
+print("Billy is online. Say 'billy' to wake.")
+play("startup")
+
+running = True
+
+with sr.Microphone() as source:
+    recogniser.adjust_for_ambient_noise(source, duration=1)
+
+    while running:
+        print("Listening...")
+
+        try:
+            audio = recogniser.listen(source, timeout=5, phrase_time_limit=10)
+        except sr.WaitTimeoutError:
+            continue
+
+        try:
+            speech = recogniser.recognize_google(audio)
+            print("You said:", speech)
+
+            if current_game == "truth_or_dare":
+                handle_truth_dare(speech)
+            elif current_game == "number_guess":
+                handle_number_guess(speech)
+            elif current_game == "news":
+                handle_news(speech)
+            else:
+                running = respond(speech)
+
+        except sr.RequestError:
+            print("Google failed, switching to Vosk...")
+            if vosk_available:
+                data = audio.get_raw_data(convert_rate=16000, convert_width=2)
+                if vosk_recogniser.AcceptWaveform(data):
+                    result = json.loads(vosk_recogniser.Result())
+                else:
+                    result = json.loads(vosk_recogniser.PartialResult())
+
+                speech = result.get("text", "")
+                if speech:
+                    print("You said (Vosk):", speech)
+                    if current_game == "truth_or_dare":
+                        handle_truth_dare(speech)
+                    elif current_game == "number_guess":
+                        handle_number_guess(speech)
+                    elif current_game == "news":
+                        handle_news(speech)
+                    else:
+                        running = respond(speech)
+
+        except sr.UnknownValueError:
+            print("Couldn't hear that")
         </pre>
 
     </div>
