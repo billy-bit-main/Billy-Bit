@@ -1,13 +1,16 @@
 const overlay = document.getElementById('sidebar-overlay');
+let sidebarOpen = false; 
 
 function openSidebar(sidebar) {
     sidebar.classList.add('open');
     overlay.classList.add('open');
+    sidebarOpen = true;
 }
 
 function closeAll() {
     document.querySelectorAll('.sidebar').forEach(s => s.classList.remove('open'));
     overlay.classList.remove('open');
+    sidebarOpen = false; 
 }
 
 const pairs = [
@@ -22,9 +25,11 @@ const pairs = [
 ];
 
 pairs.forEach(([planetId, sidebarId]) => {
-    document.getElementById(planetId).addEventListener('click', () => {
-        openSidebar(document.getElementById(sidebarId));
-    });
+    const planet = document.getElementById(planetId);
+    const sidebar = document.getElementById(sidebarId);
+    if (planet && sidebar) {
+        planet.addEventListener('click', () => openSidebar(sidebar));
+    }
 });
 
 document.querySelectorAll('.sidebar-close').forEach(btn => btn.addEventListener('click', closeAll));
@@ -35,20 +40,28 @@ if ('ontouchstart' in window) {
     const ss = document.querySelector('.solar-system');
 
     document.addEventListener('touchstart', e => {
+        // Only allow pan start if sidebar is closed
+        if (sidebarOpen) return; 
+        
         startX = e.touches[0].clientX - panX;
         startY = e.touches[0].clientY - panY;
         dragging = false;
     });
 
     document.addEventListener('touchmove', e => {
+        if (sidebarOpen) return;
+
         e.preventDefault();
         dragging = true;
         panX = e.touches[0].clientX - startX;
         panY = e.touches[0].clientY - startY;
-        ss.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px))`;
+        
+        if (ss) {
+            ss.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px))`;
+        }
     }, { passive: false });
 
     document.addEventListener('touchend', e => {
-        if (dragging) e.preventDefault();
+        if (dragging && !sidebarOpen) e.preventDefault();
     });
 }
