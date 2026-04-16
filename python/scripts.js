@@ -6,11 +6,27 @@
 
 const projects = [
     {
-        date: "2024",
+        date: "2026",
+        title: "Pet Booking Service",
+        description: "Just a begginer level faux pet booking service for my Digi-Tech assignment. Nothing special.",
+        status: "ACTIVE",
+        slug: "pet-booking-service"
+    },
+    
+    {
+        date: "2026",
         title: "Billy Bot",
         description: "A local voice assistant running 24/7 on a Raspberry Pi. Listens for the wake word 'Billy', then handles weather, timers, jokes, maths, and more.",
         status: "ACTIVE",
         slug: "billy-bot"
+    },
+
+    {
+        date: "2026",
+        title: "Python Integrated Display",
+        description: "Just a VERY VERY small lcd display showing stuff like date and weather. A sort of intro to graphics for me.",
+        status: "IN PROGRESS",
+        slug: "integrated-display"
     },
     // {
     //     date: "2025",
