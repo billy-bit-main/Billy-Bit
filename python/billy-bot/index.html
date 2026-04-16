@@ -35,7 +35,7 @@
         <div class="hero-inner">
             <div class="hero-label">mission report · 2025</div>
             <h1 class="hero-title">Billy Bot</h1>
-            <p class="hero-sub">Local Voice Agent Alternative</p>
+            <p class="hero-sub">basically alexa. except it's me talking to myself.</p>
             <div class="hero-meta">
                 <div class="hero-meta-item">
                     <span class="meta-label">PLATFORM</span>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="hero-meta-item">
                     <span class="meta-label">LOCATION</span>
-                    <span class="meta-value">QLD, Australia</span>
+                    <span class="meta-value">Brisbane, QLD</span>
                 </div>
             </div>
             <div class="hero-waveform" aria-hidden="true">
@@ -74,11 +74,11 @@
             </div>
             <div class="section-body two-col">
                 <div class="prose-block">
-                    <p>Billy Bot is basically a mini Alexa, a local voice assistant that uses keyword extraction instead of AI. It runs on a Raspberry Pi with Python 3. There are two core output functions: <code>play()</code>, which plays a pre-recorded voice clip of me saying an answer (because I'm a narcissist), and <code>say()</code>, which falls back to text-to-speech if you'd rather not talk to yourself.(Can't imagine that lol)</p>
-                    <p>Billy waits for the wake word "billy" before listening for commands. Then it runs speech-to-text through Google (with Vosk as an offline backup) and converts what you said into a string. From there it scans for keywords. On the surface it sort of looks like AI, but it's actually just a really long list of if/else statements checking whether a word is in the sentence.(This is a great alternative as it is very small and uses no memory)</p>
+                    <p>Billy Bot is basically a mini Alexa — a local voice assistant that uses keyword extraction instead of AI. It runs on a Raspberry Pi with Python 3. There are two core output functions: <code>play()</code>, which plays a pre-recorded voice clip of me saying an answer (because I'm a narcissist), and <code>say()</code>, which falls back to text-to-speech if you'd rather not talk to yourself.</p>
+                    <p>Billy waits for the wake word "billy" before listening for commands. Then it runs speech-to-text through Google (with Vosk as an offline backup) and converts what you said into a string. From there it scans for keywords. On the surface it sort of looks like AI — but it's actually just a really long list of if/else statements checking whether a word is in the sentence.</p>
                 </div>
                 <div class="prose-block">
-                    <p>Because of the modular design, the keywords and functionality can be extended as far as you want. Write the function, add it to the if/else chain, done. Easy to expand. (but it was a huge pain to build from scratch). Here's everything that went into it.</p>
+                    <p>Because of the modular design, the keywords and functionality can be extended as far as you want. Write the function, add it to the if/else chain, done. Easy to expand — but it was a huge pain to build from scratch. Here's everything that went into it.</p>
                     <div class="flow-diagram">
                         <div class="flow-step">
                             <div class="flow-icon">🎤</div>
@@ -121,7 +121,7 @@
                         <div class="part-info">
                             <div class="part-name">Raspberry Pi 5 4GB</div>
                             <div class="part-price">$179.55 AUD</div>
-                            <div class="part-desc">The brain. This is actually overkill a Pi 4 2GB is more than enough.</div>
+                            <div class="part-desc">The brain. Could get away with a Pi 4 2GB for this project alone but I'll use this for more.</div>
                             <a class="part-link" href="https://core-electronics.com.au/raspberry-pi-5-model-b-4gb.html" target="_blank" rel="noopener noreferrer">view part →</a>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                         <div class="part-info">
                             <div class="part-name">UE Wonderboom</div>
                             <div class="part-price">$117.82 AUD</div>
-                            <div class="part-desc">Only used this because I already had it and wanted more budget for the mic. Any speaker works you don't need this.</div>
+                            <div class="part-desc">Only used this because I already had it and wanted more budget for the mic. Any speaker works.</div>
                             <a class="part-link" href="https://www.amazon.com.au/dp/B0B8FV6RZS" target="_blank" rel="noopener noreferrer">view part →</a>
                         </div>
                     </div>
@@ -535,17 +535,15 @@ bluetoothctl connect XX:XX:XX:XX:XX:XX</code></div>
                 </div>
                 <div class="setup-step-body">
                     <div class="cmd-block"><code>nano /home/[username]/billy/assistant.py</code></div>
-                    <p>Use <code>Ctrl+W</code> to search. Find and update all of these:</p>
+                    <p>Use <code>Ctrl+W</code> to search. There are no hardcoded file paths to fix — the code uses <code>os.getcwd()</code> so it works for anyone as long as you run it from the right directory. You only need to update these:</p>
                     <ul class="setup-list">
-                        <li><strong>File paths</strong> — search for <code>zescott12</code> and replace it with your <code>[username]</code>. There are two occurrences — one in <code>play()</code> and one in <code>keep_alive()</code></li>
-                        <li><strong>GNews key</strong> — find <code>GNEWS_KEY</code> and replace the value with your own key from Step 7</li>
-                        <li><strong>Weather location</strong> — if you're not in Brisbane, find the Open-Meteo URL and replace the latitude and longitude. Get your coordinates at <code>latlong.net</code></li>
-                        <li><strong>Birthday countdowns</strong> — update the dates in <code>birthday()</code> to your own, or delete the whole function if you don't want it</li>
+                        <li><strong>GNews key</strong> — find <code>GNEWS_KEY = "YOUR_KEY_HERE"</code> and replace the value with your own key from Step 7</li>
+                        <li><strong>Weather location</strong> — if you're not in Brisbane, find the Open-Meteo URL and replace the latitude and longitude values. Get your coordinates at <code>latlong.net</code></li>
+                        <li><strong>Birthday countdowns</strong> — find the <code>birthday()</code> function and update the target dates to your own, or delete the whole function if you don't want it</li>
                     </ul>
                     <p>Save: <code>Ctrl+X</code> → <code>Y</code> → <code>Enter</code>. Three separate keystrokes.</p>
                     <div class="troubleshoot-block">
                         <div class="ts-label">if something goes wrong</div>
-                        <div class="ts-row"><span class="ts-prob">Can't find <code>zescott12</code> with Ctrl+W</span><span class="ts-fix">The path is inside the <code>play()</code> function near the top of the file. Scroll down manually until you see it</span></div>
                         <div class="ts-row"><span class="ts-prob">Nano won't respond to Ctrl+X</span><span class="ts-fix">Click into the terminal window first so it has focus, then try again</span></div>
                         <div class="ts-row"><span class="ts-prob">Made a mistake and saved it</span><span class="ts-fix">Re-transfer the original file from your computer (Step 12) and start this step again</span></div>
                     </div>
@@ -565,7 +563,9 @@ bluetoothctl connect XX:XX:XX:XX:XX:XX</code></div>
                     </div>
                     <div class="cmd-block"><code>cd /home/[username]/billy/Voices</code></div>
                     <div class="cmd-block"><code>sox -n -r 44100 -c 1 silence.wav trim 0.0 3.0</code></div>
-                    <p>This creates a 3-second silent audio file. The <code>keep_alive()</code> function plays it every 3 minutes to stop the Bluetooth speaker from auto-shutting off.</p>
+                    <div class="cmd-block"><code>ffmpeg -i silence.wav silence.mp3</code></div>
+                    <div class="cmd-block"><code>rm silence.wav</code></div>
+                    <p>This creates a 3-second silent .mp3 file. The code looks for <code>silence.mp3</code> specifically — sox creates wav by default so the ffmpeg conversion step is required. If ffmpeg isn't installed: <code>sudo apt install ffmpeg -y</code>.</p>
                     <div class="troubleshoot-block">
                         <div class="ts-label">if something goes wrong</div>
                         <div class="ts-row"><span class="ts-prob"><code>sox</code>: command not found</span><span class="ts-fix">You missed it in Step 5. Run <code>sudo apt install sox -y</code>, then try the sox command again</span></div>
@@ -583,13 +583,13 @@ bluetoothctl connect XX:XX:XX:XX:XX:XX</code></div>
                 <div class="setup-step-body">
                     <div class="cmd-block"><code>cd /home/[username]/billy</code></div>
                     <div class="cmd-block"><code>python3 assistant.py</code></div>
-                    <p>You should see:</p>
+                    <p>The <code>cd</code> is required — the code uses <code>os.getcwd()</code> to find the Voices folder and the Vosk model, so Python needs to be running from inside the <code>billy</code> directory. Running <code>python3 /home/[username]/billy/assistant.py</code> from anywhere else will fail to find both.</p>
                     <div class="cmd-block cmd-block--output"><code>Vosk model loaded successfully.
 Billy is online. Say 'billy' to wake.</code></div>
                     <p>And hear your startup clip through the speaker. Say "billy hello" — if it responds, everything works. Hit <code>Ctrl+C</code> to stop.</p>
                     <div class="troubleshoot-block">
                         <div class="ts-label">if something goes wrong</div>
-                        <div class="ts-row"><span class="ts-prob"><code>FileNotFoundError</code></span><span class="ts-fix">A file path in the code is wrong. Go back to Step 13 and check both occurrences of your username</span></div>
+                        <div class="ts-row"><span class="ts-prob"><code>FileNotFoundError</code> for Voices or Vosk</span><span class="ts-fix">You didn't <code>cd</code> into the billy folder first. The code uses <code>os.getcwd()</code> — it only finds the files if Python is running from inside <code>/home/[username]/billy/</code></span></div>
                         <div class="ts-row"><span class="ts-prob"><code>No module named X</code></span><span class="ts-fix">A pip install from Step 6 failed. Run <code>pip install [module-name] --break-system-packages</code> for just that package</span></div>
                         <div class="ts-row"><span class="ts-prob">Script starts but no sound plays</span><span class="ts-fix">PulseAudio default sink reset. Redo the <code>pactl set-default-sink</code> step from Step 8 and try again</span></div>
                         <div class="ts-row"><span class="ts-prob">"Vosk model not found" in terminal</span><span class="ts-fix">Run <code>ls /home/[username]/billy/</code> and confirm the folder is there and named exactly <code>vosk-model-small-en-us-0.15</code></span></div>
@@ -614,11 +614,11 @@ Billy is online. Say 'billy' to wake.</code></div>
                         <div class="variant-block">
                             <div class="variant-label">Bluetooth speaker — add both lines</div>
                             <div class="cmd-block"><code>@reboot /home/[username]/bt-connect.sh
-@reboot sleep 30 &amp;&amp; pulseaudio --start &amp;&amp; sleep 10 &amp;&amp; python3 /home/[username]/billy/assistant.py &gt;&gt; /home/[username]/billy/billy.log 2&gt;&amp;1 &amp;</code></div>
+@reboot sleep 30 &amp;&amp; pulseaudio --start &amp;&amp; sleep 10 &amp;&amp; cd /home/[username]/billy &amp;&amp; python3 assistant.py &gt;&gt; /home/[username]/billy/billy.log 2&gt;&amp;1 &amp;</code></div>
                         </div>
                         <div class="variant-block variant-block--alt">
                             <div class="variant-label">USB speaker or 3.5mm jack — add one line</div>
-                            <div class="cmd-block"><code>@reboot sleep 15 &amp;&amp; python3 /home/[username]/billy/assistant.py &gt;&gt; /home/[username]/billy/billy.log 2&gt;&amp;1 &amp;</code></div>
+                            <div class="cmd-block"><code>@reboot sleep 15 &amp;&amp; cd /home/[username]/billy &amp;&amp; python3 assistant.py &gt;&gt; /home/[username]/billy/billy.log 2&gt;&amp;1 &amp;</code></div>
                         </div>
                     </div>
                     <p>The <code>sleep</code> gives the Pi time to connect to WiFi before the script starts. The <code>&gt;&gt; billy.log</code> saves all output to a log file — if it breaks on boot, that's where you'll find out why.</p>
@@ -707,11 +707,6 @@ Billy is online. Say 'billy' to wake.</code></div>
                                 <div class="import-install import-builtin">built-in</div>
                             </div>
                             <div class="import-row">
-                                <div class="import-name">queue</div>
-                                <div class="import-desc">Buffers audio input in the Vosk system so speech data doesn't get lost or scrambled.</div>
-                                <div class="import-install import-builtin">built-in</div>
-                            </div>
-                            <div class="import-row">
                                 <div class="import-name">threading</div>
                                 <div class="import-desc">Handles background tasks — timers, keep-alive loops, delayed audio — without freezing the whole program.</div>
                                 <div class="import-install import-builtin">built-in</div>
@@ -731,7 +726,7 @@ Billy is online. Say 'billy' to wake.</code></div>
                     <div class="code-snippet">
                         <pre><code>import speech_recognition as sr
 import os, random, pygame, requests
-import pyttsx3, datetime, json, queue, threading, time
+import pyttsx3, datetime, json, threading, time
 from vosk import Model, KaldiRecognizer
 from datetime import timedelta
 from word2number import w2n</code></pre>
@@ -744,22 +739,32 @@ from word2number import w2n</code></pre>
                         <span class="code-entry-title">play() and say()</span>
                     </div>
                     <div class="code-entry-body">
-                        <p>Everything in Billy Bot ends up in one of two outputs. <code>play()</code> loads and plays a pre-recorded voice clip from the Voices directory using pygame — this is the main system and where all the personality lives. <code>say()</code> is the text-to-speech fallback, used when a response includes dynamic data like a temperature reading, timer duration, or calculation result. Most responses are hybrid: a clip plays first for structure, then <code>say()</code> handles the variable part. Both include small delays so audio doesn't overlap and turn into two voices fighting each other.</p>
+                        <p>Everything in Billy Bot ends up in one of two outputs. <code>play()</code> loads and plays a pre-recorded .mp3 clip from the Voices directory using pygame. <code>say()</code> is the text-to-speech fallback for dynamic data — temperature readings, timer durations, calculation results. Most responses are hybrid: a clip plays first for structure, then <code>say()</code> handles the variable part.</p>
+                        <p>Both functions share an <code>audio_lock</code> — a reentrant lock (<code>RLock</code>) that prevents two things playing at once. It's reentrant specifically because if a clip is missing, <code>play()</code> calls <code>say()</code> internally. A regular <code>Lock</code> would deadlock at that point since the same thread can't acquire it twice. <code>RLock</code> allows it.</p>
+                        <p>Clip filenames don't need the <code>.mp3</code> extension — <code>play()</code> appends it automatically. <code>VOICE_PATH</code> uses <code>os.getcwd()</code> so the path is portable — no hardcoded username anywhere.</p>
                     </div>
                     <div class="code-snippet">
-                        <pre><code>def play(filename):
-    path = os.path.join("/home/[username]/billy/Voices", filename)
-    pygame.mixer.music.load(path)
-    pygame.mixer.music.play()
-    while pygame.mixer.music.get_busy():
-        time.sleep(0.05)
-    time.sleep(0.1)
+                        <pre><code>VOICE_PATH = os.path.join(os.getcwd(), "Voices")
+audio_lock = threading.RLock()
+
+def play(filename):
+    with audio_lock:
+        if not filename.endswith(".mp3"):
+            filename += ".mp3"
+        path = os.path.join(VOICE_PATH, filename)
+        if os.path.exists(path):
+            pygame.mixer.music.load(path)
+            pygame.mixer.music.play()
+            while pygame.mixer.music.get_busy():
+                time.sleep(0.05)
+        else:
+            say("Missing audio file")
 
 def say(text):
-    print("Billy: " + text)
-    speaker.say(text)
-    speaker.runAndWait()
-    time.sleep(0.1)</code></pre>
+    with audio_lock:
+        pygame.mixer.music.stop()
+        speaker.say(text)
+        speaker.runAndWait()</code></pre>
                     </div>
                 </div>
 
@@ -820,7 +825,8 @@ def say(text):
                         <span class="code-entry-title">Dual Recognition — Google + Vosk Fallback</span>
                     </div>
                     <div class="code-entry-body">
-                        <p>Billy prioritises Google Speech-to-Text because it's fast and accurate — but it needs internet and isn't always reliable. So there's a fallback: if Google throws an <code>sr.RequestError</code>, the system switches to Vosk, which runs entirely on the Pi with no internet required. Vosk is slower and slightly less accurate, but it keeps Billy usable in bad network conditions. If both fail, input is ignored gracefully and the loop continues. The system is resilient instead of fragile.</p>
+                        <p>Billy prioritises Google Speech-to-Text because it's fast and accurate — but it needs internet and isn't always reliable. So there's a fallback: if Google throws an <code>sr.RequestError</code>, the system switches to Vosk, which runs entirely on the Pi with no internet required. If both fail, input is ignored and the loop continues.</p>
+                        <p>Two things worth knowing about the main loop structure. First, the entire loop runs inside a single <code>with sr.Microphone()</code> block — opening and closing the USB mic device every iteration causes unnecessary overhead and can throw "device busy" errors on the Pi. One block, open for the whole session. Second, <code>sr.WaitTimeoutError</code> is caught separately from the speech errors — if the mic hears nothing for 5 seconds it raises this, and without catching it the whole program would crash silently.</p>
                     </div>
                 </div>
 
@@ -900,6 +906,7 @@ def say(text):
                 <div class="section-number">06</div>
                 <h2 class="section-title">What Went Wrong</h2>
             </div>
+            <p class="section-intro">The honest log.</p>
 
             <div class="error-log">
                 <div class="log-entry">
