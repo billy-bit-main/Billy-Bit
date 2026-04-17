@@ -195,6 +195,7 @@ body {
     position: fixed;
     left: 2%;
     top: 2%;
+    z-index: 10000000000000000000000000;
 }
 .site-name {
     font-family: 'Orbitron', sans-serif;
@@ -203,6 +204,7 @@ body {
     color: #e8f2ff;
     letter-spacing: 0.1em;
     text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169, 204, 255);
+    z-index: 1000000000000000000000000000000;
 }
 .site-sub {
     font-family: 'Exo 2', sans-serif;
@@ -211,6 +213,7 @@ body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-top: 0.25rem;
+    z-index: 1000000000000000000000000;
 }
 .hud-br {
     position: fixed;
@@ -220,7 +223,7 @@ body {
     flex-direction: row;
     align-items: flex-end;
     gap: 1rem;
-    z-index: 1000;
+    z-index: 1000000000;
 }
 .project-details {
     text-align: right;
@@ -230,6 +233,7 @@ body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     line-height: 2;
+    z-index: 10000000000000;
 }
 .detail-values {
     text-align: left;
@@ -239,6 +243,7 @@ body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     line-height: 2;
+    z-index: 1000000000000000;
 }
 
 /* ── SCANLINES ── */
