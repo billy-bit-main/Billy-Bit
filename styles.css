@@ -195,7 +195,7 @@ body {
     position: fixed;
     left: 2%;
     top: 2%;
-    z-index: 10000000000000000000000000;
+    z-index: 10000;
 }
 .site-name {
     font-family: 'Orbitron', sans-serif;
@@ -204,7 +204,7 @@ body {
     color: #e8f2ff;
     letter-spacing: 0.1em;
     text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169, 204, 255);
-    z-index: 1000000000000000000000000000000;
+    z-index: 10000;
 }
 .site-sub {
     font-family: 'Exo 2', sans-serif;
@@ -213,7 +213,7 @@ body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-top: 0.25rem;
-    z-index: 1000000000000000000000000;
+    z-index: 10000;
 }
 .hud-br {
     position: fixed;
@@ -223,7 +223,7 @@ body {
     flex-direction: row;
     align-items: flex-end;
     gap: 1rem;
-    z-index: 1000000000;
+    z-index: 10000;
 }
 .project-details {
     text-align: right;
@@ -233,7 +233,7 @@ body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     line-height: 2;
-    z-index: 10000000000000;
+    z-index: 10000;
 }
 .detail-values {
     text-align: left;
@@ -243,7 +243,7 @@ body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     line-height: 2;
-    z-index: 1000000000000000;
+    z-index: 10000;
 }
 
 /* ── SCANLINES ── */
@@ -269,7 +269,7 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 200;
+    z-index: 200000;
 }
 .sidebar-overlay.open {
     opacity: 1;
@@ -288,7 +288,7 @@ body {
     border-radius: 16px 0 0 16px;
     transform: translateX(100%);
     transition: transform 0.35s ease;
-    z-index: 300;
+    z-index: 30000;
     padding: 2rem 1.75rem;
     display: flex;
     flex-direction: column;
