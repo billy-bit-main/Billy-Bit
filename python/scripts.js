@@ -6,11 +6,27 @@
 
 const projects = [
     {
+        date: "2024",
+        title: "Python Turtle Moe's Tavern Drawing",
+        description: "My grade 7 assesment. It's a '3d' drawing of Moe's Tavern and I'm Indubitably proud of it. I worked very hard and got an A+ so it must be good...",
+        status: "ACTIVE",
+        slug: "turtle-drawing"
+    },
+    
+    {
         date: "2026",
         title: "Pet Booking Service",
         description: "Just a begginer level faux pet booking service for my Digi-Tech assignment. Nothing special.",
         status: "ACTIVE",
         slug: "pet-booking-service"
+    },
+
+    {
+        date: "2026",
+        title: "Budget App",
+        description: "Just a basic budget app. It's a bit impractical for it to be python but it was for school. I had no choice.",
+        status: "ACTIVE",
+        slug: "budget-app"
     },
     
     {
@@ -28,13 +44,6 @@ const projects = [
         status: "IN PROGRESS",
         slug: "integrated-display"
     },
-    // {
-    //     date: "2025",
-    //     title: "Your Next Project",
-    //     description: "One sentence on what it does.",
-    //     status: "WIP",
-    //     slug: "your-slug"
-    // },
 ];
 
 // ── RENDER ────────────────────────────────────────────────────
