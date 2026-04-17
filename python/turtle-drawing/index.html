@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — billy-bit</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="icon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            cursor: none;
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.4), transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(75, 0, 130, 0.08), transparent 50%),
+                radial-gradient(ellipse at 50% 90%, rgba(255, 20, 147, 0.26), transparent 50%),
+                radial-gradient(ellipse at 70% 10%, rgba(0, 191, 255, 0.2), transparent 50%),
+                radial-gradient(ellipse at 30% 60%, rgba(186, 85, 211, 0.05), transparent 50%),
+                #040814;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        /* ── CUSTOM CURSOR ── */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(74, 143, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .cursor-dot {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(74, 143, 255, 0.9);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        body:hover .cursor { opacity: 1; }
+
+        /* ── STARS ── */
+        .stars-small {
+            position: fixed;
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow:
+                1181px 879px 0 rgba(255,255,255,0.45),
+                1045px 747px 0 rgba(255,255,255,0.40),
+                1189px 206px 0 rgba(255,255,255,0.42),
+                872px  13px  0 rgba(255,255,255,0.39),
+                295px  736px 0 rgba(255,255,255,0.46),
+                1054px 492px 0 rgba(255,255,255,0.59),
+                1121px 521px 0 rgba(255,255,255,0.70),
+                926px  719px 0 rgba(255,255,255,0.50),
+                452px  13px  0 rgba(255,255,255,0.63),
+                880px  571px 0 rgba(255,255,255,0.44),
+                1273px 700px 0 rgba(255,255,255,0.60),
+                945px  217px 0 rgba(255,255,255,0.55),
+                1230px 98px  0 rgba(255,255,255,0.31),
+                904px  33px  0 rgba(255,255,255,0.53),
+                337px  347px 0 rgba(255,255,255,0.39),
+                887px  753px 0 rgba(255,255,255,0.60),
+                1163px 801px 0 rgba(255,255,255,0.43),
+                335px  354px 0 rgba(255,255,255,0.69),
+                955px  443px 0 rgba(255,255,255,0.56),
+                418px  472px 0 rgba(255,255,255,0.39),
+                133px  125px 0 rgba(255,255,255,0.67),
+                344px  130px 0 rgba(255,255,255,0.31),
+                280px  608px 0 rgba(255,255,255,0.30),
+                976px  642px 0 rgba(255,255,255,0.36),
+                284px  741px 0 rgba(255,255,255,0.34),
+                1215px 327px 0 rgba(255,255,255,0.41),
+                266px  335px 0 rgba(255,255,255,0.32),
+                345px  278px 0 rgba(255,255,255,0.33),
+                1086px 419px 0 rgba(255,255,255,0.41),
+                428px  29px  0 rgba(255,255,255,0.67),
+                418px  7px   0 rgba(255,255,255,0.47),
+                595px  288px 0 rgba(255,255,255,0.41),
+                353px  454px 0 rgba(255,255,255,0.64),
+                378px  872px 0 rgba(255,255,255,0.40),
+                1181px 280px 0 rgba(255,255,255,0.47);
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+        .stars-medium {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow:
+                1133px 21px  0 rgba(255,255,255,0.74),
+                60px   157px 0 rgba(255,255,255,0.77),
+                1152px 250px 0 rgba(255,255,255,0.80),
+                665px  831px 0 rgba(255,255,255,0.74),
+                103px  366px 0 rgba(255,255,255,0.68),
+                235px  838px 0 rgba(255,255,255,0.68),
+                317px  654px 0 rgba(255,255,255,0.64),
+                695px  668px 0 rgba(255,255,255,0.86),
+                1226px 251px 0 rgba(255,255,255,0.64),
+                503px  29px  0 rgba(255,255,255,0.62),
+                978px  630px 0 rgba(255,255,255,0.90),
+                434px  484px 0 rgba(255,255,255,0.76);
+            animation: twinkle 6s ease-in-out infinite alternate;
+            animation-delay: 1.5s;
+        }
+        .stars-large {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow:
+                41px   179px 0 rgba(255,255,255,0.96),
+                1129px 425px 0 rgba(255,255,255,0.90),
+                317px  225px 0 rgba(255,255,255,0.99);
+            animation: twinkle 8s ease-in-out infinite alternate;
+            animation-delay: 3s;
+        }
+        @keyframes twinkle {
+            0%   { opacity: 1; }
+            40%  { opacity: 0.3; }
+            70%  { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+
+        /* ── FLOATING DEBRIS ── */
+        .debris {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: drift linear infinite;
+        }
+        @keyframes drift {
+            0%   { transform: translate(0, 0) rotate(0deg);   opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 0.6; }
+            100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+        }
+
+        /* ── ASTRONAUT ── */
+        .astronaut-wrap {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            animation: float-astro 18s ease-in-out infinite;
+        }
+        @keyframes float-astro {
+            0%   { transform: translate(0px, 0px) rotate(-5deg); }
+            25%  { transform: translate(18px, -22px) rotate(3deg); }
+            50%  { transform: translate(-10px, -8px) rotate(-2deg); }
+            75%  { transform: translate(12px, 14px) rotate(5deg); }
+            100% { transform: translate(0px, 0px) rotate(-5deg); }
+        }
+
+        /* ── TETHER LINE ── */
+        .tether {
+            position: fixed;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        /* ── MAIN CONTENT / LINK ── */
+        a.page-link {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 50;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.4rem;
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.4s ease;
+        }
+
+        .error-code {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            color: transparent;
+            background: linear-gradient(180deg, #e8f2ff 0%, rgba(74, 143, 255, 0.3) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            letter-spacing: 0.03em;
+            line-height: 1;
+            text-shadow: none;
+            position: relative;
+            animation: glitch 8s ease-in-out infinite;
+        }
+        .error-code::after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            color: rgba(255, 20, 147, 0.25);
+            clip-path: inset(0 0 60% 0);
+            animation: glitch-clip 8s ease-in-out infinite;
+            letter-spacing: 0.085em;
+        }
+        @keyframes glitch {
+            0%, 88%, 100% { transform: translate(0, 0); }
+            89%  { transform: translate(-3px, 0); }
+            90%  { transform: translate(3px, 0); }
+            91%  { transform: translate(0, 0); }
+            92%  { transform: translate(2px, -1px); }
+            93%  { transform: translate(0, 0); }
+        }
+        @keyframes glitch-clip {
+            0%, 88%, 100% { transform: translate(0, 0); clip-path: inset(0 0 60% 0); }
+            89%  { transform: translate(6px, 0); clip-path: inset(30% 0 40% 0); }
+            90%  { transform: translate(-4px, 0); clip-path: inset(60% 0 10% 0); }
+            91%  { transform: translate(0, 0); clip-path: inset(0 0 60% 0); }
+        }
+
+        .signal-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 18px;
+        }
+        .signal-bars span {
+            width: 5px;
+            background: rgba(74, 143, 255, 0.3);
+            border-radius: 1px;
+            animation: signal-pulse 2.5s ease-in-out infinite;
+        }
+        .signal-bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
+        .signal-bars span:nth-child(2) { height: 10px; animation-delay: 0.2s; }
+        .signal-bars span:nth-child(3) { height: 14px; animation-delay: 0.4s; }
+        .signal-bars span:nth-child(4) { height: 18px; animation-delay: 0.6s; }
+        .signal-bars span:nth-child(5) { height: 14px; animation-delay: 0.8s; }
+        .signal-bars span:nth-child(6) { height: 10px; animation-delay: 1.0s; }
+        .signal-bars span:nth-child(7) { height: 6px;  animation-delay: 1.2s; }
+        @keyframes signal-pulse {
+            0%, 100% { background: rgba(74, 143, 255, 0.25); }
+            50%       { background: rgba(74, 143, 255, 0.9); }
+        }
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .headline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+            font-weight: 700;
+            color: #e8f2ff;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(74, 143, 255, 1);
+        }
+
+        .subline {
+            font-family: 'Exo 2', sans-serif;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            color: #4a6a9a;
+            letter-spacing: 0.15em;
+            max-width: 380px;
+            line-height: 1.7;
+        }
+
+        .return-prompt {
+            font-family: 'Exo 2', sans-serif;
+            font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+            color: #2a4a7a;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            border: 1px solid rgba(74, 100, 180, 0.2);
+            border-radius: 6px;
+            padding: 0.55rem 1.2rem;
+            transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+            margin-top: 0.5rem;
+        }
+        a.page-link:hover .return-prompt {
+            color: #abcfff;
+            border-color: rgba(74, 143, 255, 0.5);
+            box-shadow: 0 0 18px rgba(74, 143, 255, 0.15);
+        }
+        a.page-link:hover .error-code {
+            filter: brightness(1.1);
+        }
+
+        /* ── HUD ── */
+        .hud-tl {
+            position: fixed;
+            left: 2%;
+            top: 2%;
+            z-index: 60;
+            pointer-events: none;
+        }
+        .site-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            font-weight: 900;
+            color: #e8f2ff;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 20px rgba(74,143,255,2), 0 0 60px rgb(169, 204, 255);
+        }
+        .site-sub {
+            font-family: 'Exo 2', sans-serif;
+            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+            color: #4a6a9a;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        /* ── TRANSMISSION LOG ── */
+        .hud-br {
+            position: fixed;
+            right: 3%;
+            bottom: 3.5%;
+            z-index: 60;
+            pointer-events: none;
+            text-align: right;
+        }
+        .log-label {
+            font-family: 'Exo 2', sans-serif;
+            font-size: clamp(0.55rem, 1.3vw, 0.75rem);
+            color: #4a6a9a;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            line-height: 2.2;
+        }
+        .log-value {
+            color: rgba(255, 100, 130, 0.7);
+        }
+        .log-value-ok {
+            color: #5ee8b0;
+        }
+        .blink {
+            animation: blink 1.2s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        /* ── SCANLINES ── */
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 0px,
+                rgba(0,0,20,0.2) 2px,
+                rgba(0,0,20,0.2) 4px
+            );
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* ── ORBIT RING (decorative) ── */
+        .orbit-ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(100, 150, 255, 0.07);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @media (max-width: 480px) {
+            .hud-br { display: none; }
+            .astronaut-wrap { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <!-- Stars -->
+    <div class="stars-small"></div>
+    <div class="stars-medium"></div>
+    <div class="stars-large"></div>
+
+    <!-- Decorative orbit rings -->
+    <div class="orbit-ring" style="width:220px;height:220px;"></div>
+    <div class="orbit-ring" style="width:420px;height:420px;"></div>
+    <div class="orbit-ring" style="width:640px;height:640px;"></div>
+    <div class="orbit-ring" style="width:860px;height:860px;"></div>
+
+    <!-- Debris particles (rendered by JS) -->
+    <div id="debris-container"></div>
+
+    <!-- Astronaut SVG -->
+    <div class="astronaut-wrap" id="astronaut-wrap" style="left:62%;top:22%;">
+        <svg width="72" height="100" viewBox="0 0 72 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Tether anchor -->
+            <line x1="36" y1="78" x2="36" y2="100" stroke="rgba(74,143,255,0.35)" stroke-width="1" stroke-dasharray="3 3"/>
+            <!-- Suit body -->
+            <ellipse cx="36" cy="62" rx="18" ry="22" fill="rgba(20,40,80,0.9)" stroke="rgba(74,143,255,0.4)" stroke-width="1"/>
+            <!-- Left arm -->
+            <path d="M18 55 Q8 58 10 68" stroke="rgba(74,143,255,0.35)" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <circle cx="10" cy="70" r="4" fill="rgba(20,40,80,0.9)" stroke="rgba(74,143,255,0.3)" stroke-width="1"/>
+            <!-- Right arm -->
+            <path d="M54 55 Q64 58 62 68" stroke="rgba(74,143,255,0.35)" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <circle cx="62" cy="70" r="4" fill="rgba(20,40,80,0.9)" stroke="rgba(74,143,255,0.3)" stroke-width="1"/>
+            <!-- Left leg -->
+            <path d="M28 82 Q24 92 22 98" stroke="rgba(74,143,255,0.35)" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <!-- Right leg -->
+            <path d="M44 82 Q48 92 50 98" stroke="rgba(74,143,255,0.35)" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <!-- Helmet -->
+            <circle cx="36" cy="34" r="18" fill="rgba(10,25,60,0.95)" stroke="rgba(74,143,255,0.45)" stroke-width="1.5"/>
+            <!-- Visor -->
+            <ellipse cx="36" cy="34" rx="11" ry="10" fill="rgba(0,60,120,0.6)" stroke="rgba(74,143,255,0.3)" stroke-width="1"/>
+            <!-- Visor reflection -->
+            <ellipse cx="31" cy="29" rx="4" ry="3" fill="rgba(255,255,255,0.08)"/>
+            <!-- Helmet detail ring -->
+            <circle cx="36" cy="34" r="18" fill="none" stroke="rgba(74,143,255,0.15)" stroke-width="3"/>
+            <!-- Chest light -->
+            <circle cx="36" cy="58" r="3" fill="rgba(94,232,176,0.6)">
+                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Suit patches -->
+            <rect x="27" y="65" width="6" height="4" rx="1" fill="rgba(74,143,255,0.2)" stroke="rgba(74,143,255,0.3)" stroke-width="0.5"/>
+            <rect x="39" y="65" width="6" height="4" rx="1" fill="rgba(74,143,255,0.2)" stroke="rgba(74,143,255,0.3)" stroke-width="0.5"/>
+        </svg>
+    </div>
+
+    <!-- Tether line to center (SVG, drawn by JS) -->
+    <svg class="tether" id="tether-svg" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;">
+        <line id="tether-line" x1="0" y1="0" x2="0" y2="0"
+              stroke="rgba(74,143,255,0.2)" stroke-width="1"
+              stroke-dasharray="5 6"/>
+    </svg>
+
+    <!-- HUD -->
+    <div class="hud-tl">
+        <div class="site-name">billy-bit</div>
+        <div class="site-sub">UNDER CONSTRUCTION</div>
+    </div>
+    <div class="hud-br">
+        <div class="log-label">STATUS &nbsp;<span class="log-value blink">◼ UNDER CONSTRUCTION</span></div>
+        <div class="log-label">DESTINATION &nbsp;<span class="log-value-ok">MISSION CONTROL</span></div>
+    </div>
+
+    <!-- THE WHOLE PAGE IS THE LINK -->
+    <a href="https://billy-bit.com" class="page-link" aria-label="Return to mission control">
+        <div class="content">
+            <div class="status-row">
+                <div class="signal-bars">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="error-code">UNDER<br>CONSTRUCTION</div>
+            <div class="headline">there seems to be nothing here yet...</div>
+            <div class="subline">this page is under construction<br>come back later</div>
+            <div class="return-prompt">↩ return to mission control</div>
+        </div>
+    </a>
+
+    <div class="scanlines"></div>
+
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+        let mx = window.innerWidth/2, my = window.innerHeight/2;
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            cursor.style.left = mx + 'px';
+            cursor.style.top  = my + 'px';
+            cursorDot.style.left = mx + 'px';
+            cursorDot.style.top  = my + 'px';
+        });
+        document.querySelector('.page-link').addEventListener('mouseenter', () => {
+            cursor.style.width  = '36px';
+            cursor.style.height = '36px';
+            cursor.style.borderColor = 'rgba(94,232,176,0.8)';
+            cursor.style.background  = 'rgba(94,232,176,0.05)';
+        });
+        document.querySelector('.page-link').addEventListener('mouseleave', () => {
+            cursor.style.width  = '20px';
+            cursor.style.height = '20px';
+            cursor.style.borderColor = 'rgba(74,143,255,0.8)';
+            cursor.style.background  = 'transparent';
+        });
+
+        // Debris particles
+        const colors = [
+            'rgba(74,143,255,0.5)',
+            'rgba(138,43,226,0.4)',
+            'rgba(255,20,147,0.35)',
+            'rgba(94,232,176,0.4)',
+            'rgba(255,180,80,0.3)',
+        ];
+        const container = document.getElementById('debris-container');
+        for (let i = 0; i < 22; i++) {
+            const d = document.createElement('div');
+            d.classList.add('debris');
+            const size = Math.random() * 4 + 2;
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const tx = (Math.random() - 0.5) * 300 + 'px';
+            const ty = (Math.random() - 0.5) * 300 + 'px';
+            const rot = (Math.random() * 720 - 360) + 'deg';
+            const dur  = Math.random() * 20 + 14;
+            const delay = -(Math.random() * dur);
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            d.style.cssText = `
+                width:${size}px; height:${size}px;
+                left:${startX}vw; top:${startY}vh;
+                background:${color};
+                --tx:${tx}; --ty:${ty}; --rot:${rot};
+                animation-duration:${dur}s;
+                animation-delay:${delay}s;
+            `;
+            container.appendChild(d);
+        }
+
+        // Tether line — connects astronaut to screen center
+        function updateTether() {
+            const wrap = document.getElementById('astronaut-wrap');
+            const svg  = document.getElementById('tether-svg');
+            const line = document.getElementById('tether-line');
+            if (!wrap || !line) return;
+            const r  = wrap.getBoundingClientRect();
+            const ax = r.left + r.width  / 2;
+            const ay = r.top  + r.height * 0.78;
+            const cx = window.innerWidth  / 2;
+            const cy = window.innerHeight / 2;
+            line.setAttribute('x1', ax);
+            line.setAttribute('y1', ay);
+            line.setAttribute('x2', cx);
+            line.setAttribute('y2', cy);
+        }
+        setInterval(updateTether, 80);
+        updateTether();
+
+        // Parallax — subtle on mouse move
+        document.addEventListener('mousemove', e => {
+            const xPct = (e.clientX / window.innerWidth  - 0.5);
+            const yPct = (e.clientY / window.innerHeight - 0.5);
+            const wrap = document.getElementById('astronaut-wrap');
+            if (wrap) {
+                wrap.style.marginLeft = (xPct * 12) + 'px';
+                wrap.style.marginTop  = (yPct * 8)  + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
+
