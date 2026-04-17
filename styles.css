@@ -25,7 +25,7 @@ body {
     margin: 0;
     opacity: 0;
 }
-/* --- Small stars (35) --- */
+
 .stars-small {
   position: fixed;
   width: 1px;
@@ -71,7 +71,7 @@ body {
   animation: twinkle 4s ease-in-out infinite alternate;
 }
 
-/* --- Medium stars (12) --- */
+
 .stars-medium {
   position: fixed;
   width: 2px;
@@ -95,7 +95,7 @@ body {
   animation-delay: 1.5s;
 }
 
-/* --- Large bright stars (3) --- */
+
 .stars-large {
   position: fixed;
   width: 3px;
@@ -190,7 +190,7 @@ body {
 .p7 { width: 30px; height: 30px; background: radial-gradient(circle at 35% 30%, #ffb0e0, #bf2a8a 50%, #2a0020); }
 .p8 { width: 58px; height: 58px; background: radial-gradient(circle at 35% 30%, #b0ffb0, #2abf2a 50%, #002a00); }
 
-/* ── HUD ── */
+
 .hud-tl {
     position: fixed;
     left: 2%;
@@ -246,7 +246,7 @@ body {
     z-index: 10000;
 }
 
-/* ── SCANLINES ── */
+
 .scanlines {
     position: fixed;
     inset: 0;
@@ -261,7 +261,7 @@ body {
     z-index: 100;
 }
 
-/* ── SIDEBAR OVERLAY ── */
+
 .sidebar-overlay {
     position: fixed;
     inset: 0;
@@ -276,7 +276,7 @@ body {
     pointer-events: all;
 }
 
-/* ── SIDEBAR ── */
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -393,12 +393,12 @@ body {
     color: #abcfff;
 }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 480px) {
     .sidebar { width: 100%; border-radius: 0; }
 }
 
-/* PORTRAIT MOBILE */
+
 @media (max-width: 768px) {
     body {
         overflow: hidden;
