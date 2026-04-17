@@ -1,8 +1,4 @@
-// ── PROJECT DATA ──────────────────────────────────────────────
-// To add a project: copy one object, fill it in, done.
-// status options: "ACTIVE" | "WIP" | "ARCHIVED"
-// slug: the path on billy-bit.com — e.g. "billy-bot" → billy-bit.com/billy-bot
-// omit slug if there's no dedicated page yet
+
 
 const projects = [
     {
@@ -28,6 +24,14 @@ const projects = [
         status: "ACTIVE",
         slug: "budget-app"
     },
+
+    {
+        date: "2026",
+        title: "Password Strength Tester",
+        description: "A very simple password strength tester based on a pdf of how long it takes hackers to brute force passwords with different characters and lengths.",
+        status: "ACTIVE",
+        slug: "password-strength-tester"
+    },
     
     {
         date: "2026",
@@ -41,12 +45,12 @@ const projects = [
         date: "2026",
         title: "Python Integrated Display",
         description: "Just a VERY VERY small lcd display showing stuff like date and weather. A sort of intro to graphics for me.",
-        status: "IN PROGRESS",
+        status: "WIP",
         slug: "integrated-display"
     },
 ];
 
-// ── RENDER ────────────────────────────────────────────────────
+
 function render() {
     const timeline = document.getElementById('timeline');
 
@@ -75,9 +79,6 @@ function render() {
     });
 }
 
-// ── FOCUS SCALING ON SCROLL ───────────────────────────────────
-// Items near the centre of the viewport are full opacity + slightly larger.
-// Items further away are dimmed + scaled down a touch.
 
 function updateFocus() {
     const items = document.querySelectorAll('.project-item');
@@ -100,7 +101,6 @@ function updateFocus() {
     });
 }
 
-// ── INIT ──────────────────────────────────────────────────────
 render();
 updateFocus();
 window.addEventListener('scroll', updateFocus, { passive: true });
