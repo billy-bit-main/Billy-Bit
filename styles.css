@@ -269,7 +269,7 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 200000;
+    z-index: 20000;
 }
 .sidebar-overlay.open {
     opacity: 1;
