@@ -181,8 +181,16 @@ body {
 
 
 .project-item::before {
-    background: rgba(100, 150, 255, 0.3);  /* add a default color here */
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(100, 150, 255, 0.3);
     border: 1px solid rgba(100, 150, 255, 0.35);
+    transition: border-color 0.2s, background 0.2s;
 }
 
 
