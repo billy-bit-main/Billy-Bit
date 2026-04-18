@@ -250,6 +250,23 @@ body {
     border: 1px solid rgba(74, 106, 154, 0.3);
 }
 
+.featured-project::
+.featured-project::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FFC600;
+    border: 1px solid rgba(255, 214, 55, 0.35);
+    transition: border-color 0.2s, background 0.2s;
+}
+.project-item:hover::before {
+    border-color: #FFD533;
+    background: rgba(74, 138, 255, 0.2);
+}
 /* ── MOBILE ── */
 @media (max-width: 480px) {
     .page-wrap {
