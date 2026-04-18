@@ -5,6 +5,10 @@
 }
 
 body {
+    body
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
     min-height: 100vh;
     overflow-x: hidden;
     background:
