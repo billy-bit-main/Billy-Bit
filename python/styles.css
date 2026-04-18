@@ -286,4 +286,8 @@ body {
     .page-wrap {
         padding: 120px 1.25rem 120px;
     }
+
+    .hud-t1 {
+        position: absolute;
+    }
 }
