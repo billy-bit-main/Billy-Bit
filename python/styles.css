@@ -262,6 +262,11 @@ body {
     border: 1px solid rgba(74, 106, 154, 0.3);
 }
 
+.featured-project {
+    border-color: rgba(255, 214, 55, 0.4);
+    background: rgba(255, 214, 55, 0.05);
+    box-shadow: 0 0 20px rgba(255, 214, 55, 0.1);
+}
 
 /* ── MOBILE ── */
 @media (max-width: 480px) {
