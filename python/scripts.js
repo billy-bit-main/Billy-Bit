@@ -49,6 +49,15 @@ const projects = [
         status: "WIP",
         slug: "integrated-display"
     },
+
+    {
+        featured: true,
+        date: "2026",
+        title: "Music Mood",
+        description: "A honestly suprisingly complex project. You enter your mood, the program turns that mood into a vector and compares it to vectors of a list of moods in a json file. Then when it finds a similar one, it gets the genres from that mood and turns THEM into a vector and then compares it to a list of other genres. Then it runs an API call and finds 10 ish songs with a similar mood.",
+        status: "WIP",
+        slug: "music-mood"
+    }
 ];
 
 
