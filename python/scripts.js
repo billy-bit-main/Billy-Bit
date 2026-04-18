@@ -86,8 +86,8 @@ function render() {
             });
         }
 
-        if (project.featued) {
-            item.classList.add('featured-item')
+        if (project.featured) {
+            item.classList.add('featured-project')
         }
         
         timeline.appendChild(item);
