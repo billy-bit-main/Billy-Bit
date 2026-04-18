@@ -282,13 +282,14 @@ body {
 }
 
 /* ── MOBILE ── */
-@media (max-width: 480px) {
-    .page-wrap {
-        padding: 120px 1.25rem 120px;
-    }
+@media (max-width: 780px) {
 
-    .hud-t1 {
+     .hud-t1 {
         position: static;
         background: red;
+    }
+    
+    .page-wrap {
+        padding: 120px 1.25rem 120px;
     }
 }
