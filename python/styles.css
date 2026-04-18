@@ -276,8 +276,8 @@ body {
 }
 
 .featured-project {
-    border-color: rgba(255, 214, 55, 0.4);
-    background: rgba(255, 214, 55, 0.05);
+    border-color: rgba(255, 214, 55, 0.07);
+    background: rgba(255, 214, 55, 0.02);
     box-shadow: 0 0 20px rgba(255, 214, 55, 0.1);
 }
 
