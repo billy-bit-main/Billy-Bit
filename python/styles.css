@@ -89,6 +89,7 @@ body {
     left: 2%;
     top: 2%;
     z-index: 50;
+    padding: 2rem 1.5rem 1rem 1.5rem;
 }
 .hud-back {
     display: block;
