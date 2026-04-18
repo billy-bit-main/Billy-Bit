@@ -217,7 +217,7 @@ body {
     top: -10px;
     right: -10px;
     bottom: -10px;
-    background: rgba(255, 214, 55, 0.08);
+    background: rgba(255, 214, 55, 0.04);
     border-radius: 12px;
     z-index: -1;
 }
