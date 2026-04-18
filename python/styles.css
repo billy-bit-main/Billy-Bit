@@ -85,7 +85,7 @@ body {
 
 /* ── HUD ── */
 .hud-tl {
-    position: fixed;
+    position: static;
     left: 2%;
     top: 2%;
     z-index: 50;
