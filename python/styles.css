@@ -289,5 +289,6 @@ body {
 
     .hud-t1 {
         position: static;
+        background: red;
     }
 }
