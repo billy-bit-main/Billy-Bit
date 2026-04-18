@@ -194,6 +194,7 @@ body {
 }
 
 
+
 .featured-project::before {
     background: #FFC600;
     border: 1px solid rgba(255, 214, 55, 0.35);
@@ -207,6 +208,18 @@ body {
 .featured-project:hover::before {
     border-color: #FFD533;
     background: #FFD700;
+}
+
+.featured-project::after {
+    content: '';
+    position: absolute;
+    left: -50px;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: rgba(255, 214, 55, 0.08);
+    border-radius: 12px;
+    z-index: -1;
 }
 
 .project-date {
