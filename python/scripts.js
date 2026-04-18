@@ -34,6 +34,7 @@ const projects = [
     },
     
     {
+        featured: true,
         date: "2026",
         title: "Billy Bot",
         description: "A local voice assistant running 24/7 on a Raspberry Pi. Listens for the wake word 'Billy', then handles weather, timers, jokes, maths, and more.",
@@ -62,19 +63,24 @@ function render() {
 
         const statusClass = project.status.toLowerCase();
 
+   
         item.innerHTML = `
             <div class="project-date">${project.date}</div>
             <div class="project-title">${project.title}</div>
             <div class="project-desc">${project.description}</div>
             <div class="project-status status-${statusClass}">${project.status}</div>
         `;
-
+        
         if (project.slug) {
             item.addEventListener('click', () => {
                 window.location.href = `https://billy-bit.com/python/${project.slug}`;
             });
         }
 
+        if (project.featued) {
+            item.classList.add('featured-item')
+        }
+        
         timeline.appendChild(item);
     });
 }
