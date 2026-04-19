@@ -1,6 +1,6 @@
 const overlay = document.getElementById('sidebar-overlay');
 let sidebarOpen = false; 
-
+let infoOpen = false;
 function openSidebar(sidebar) {
     sidebar.classList.add('open');
     overlay.classList.add('open');
@@ -13,6 +13,9 @@ function closeAll() {
     sidebarOpen = false; 
 }
 
+function openInfo(info) {
+    info.classList.add('isopen')
+    infoOpen = true;
 const pairs = [
     ['planet-doofus',  'sidebar-doofus'],
     ['planet-glasshouse', 'sidebar-glasshouse'],
