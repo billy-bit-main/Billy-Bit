@@ -12,10 +12,6 @@ function closeAll() {
     overlay.classList.remove('open');
     sidebarOpen = false; 
 }
-
-function openInfo(info) {
-    info.classList.add('isopen')
-    infoOpen = true;
 const pairs = [
     ['planet-doofus',  'sidebar-doofus'],
     ['planet-glasshouse', 'sidebar-glasshouse'],
