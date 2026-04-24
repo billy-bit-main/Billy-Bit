@@ -5,53 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Retro Bowl</title>
     <style>
-        /* FORCE GPU ACCELERATION */
         body, html {
-            background: #000;
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            overflow: hidden;
-            touch-action: none; /* Stops mobile scrolling lag */
+            background: #000; margin: 0; padding: 0;
+            width: 100%; height: 100%; overflow: hidden;
+            touch-action: none;
         }
-
-        .gm4html5_div_class {
-            width: 100%; height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* GPU HACKS FOR FPS BOOST */
-            transform: translateZ(0);
-            will-change: transform; 
-            backface-visibility: hidden;
-        }
-
+        /* This forces the browser to prioritize the game's speed */
         canvas {
-            /* CRISP PIXELS (Change to 'auto' if you want it blurry/smooth) */
-            image-rendering: auto;
-            
-            /* SCALING FIXES */
-            max-width: 100%;
-            max-height: 100%;
+            image-rendering: auto; /* Smoother look as requested */
+            width: 100vw; height: 100vh;
+            max-width: 100%; max-height: 100%;
             object-fit: contain;
-            
-            /* REMOVE SHIMMERING */
-            box-shadow: 0 0 1px rgba(0,0,0,0); 
+            display: block;
+            margin: auto;
         }
-
-        /* UI BUTTONS */
         .ui-btn {
-            position: absolute;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.3);
-            color: #666;
-            border: 1px solid #333;
-            padding: 5px 10px;
-            font-size: 10px;
-            text-decoration: none;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.2s;
-            font-family: sans-serif;
+            position: absolute; z-index: 100;
+            background: rgba(0, 0, 0, 0.5); color: #888;
+            border: 1px solid #222; padding: 6px 12px;
+            font-size: 11px; text-decoration: none; cursor: pointer;
+            opacity: 0; transition: opacity 0.3s;
+            font-family: monospace;
         }
         body:hover .ui-btn { opacity: 1; }
         #back { top: 10px; left: 10px; }
@@ -60,25 +34,30 @@
 </head>
 <body>
 
-    <a href="/" id="back" class="ui-btn">BACK</a>
-    <button id="full" class="ui-btn" onclick="triggerFullscreen()">FULLSCREEN</button>
+    <a href="/" id="back" class="ui-btn">BACK_TO_HOME</a>
+    <button id="full" class="ui-btn" onclick="document.documentElement.requestFullscreen()">FULLSCREEN</button>
 
-    <div class="gm4html5_div_class" id="gm4html5_div_id">
+    <div id="gm4html5_div_id">
         <canvas id="canvas" width="853" height="480"></canvas>
     </div>
 
+    <!-- The Game File -->
     <script type="text/javascript" src="html5game/RetroBowl.js"></script>
-    <script>
-        window.addEventListener("load", function() {
-            window.PokiSDK = null; 
-            if (typeof GameMaker_Init === "function") { GameMaker_Init(); }
-        });
 
-        function triggerFullscreen() {
-            var el = document.documentElement;
-            var rfs = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
-            if(rfs) rfs.call(el);
-        }
+    <script>
+        // FULL OVERRIDE: Start the game engine directly to stop the laggy checks
+        window.onload = function() {
+            if (typeof GameMaker_Init === "function") {
+                // Clear any weird background loops
+                window.PokiSDK = {
+                    init: function() { return Promise.resolve(); },
+                    isAdBlocked: function() { return false; },
+                    happyTime: function() {},
+                    gameLoadingFinished: function() {}
+                };
+                GameMaker_Init();
+            }
+        };
     </script>
 </body>
 </html>
