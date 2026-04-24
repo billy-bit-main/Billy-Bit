@@ -43,6 +43,15 @@ const projects = [
     },
 
     {
+        featured: true,
+        date: "2026",
+        title: "Virtual Roomba",
+        description: "A virtual roomba that navigates txt file house layouts to "clean" every '.'",
+        status: "ACTIVE",
+        slug: "virtual-roomba"
+    },
+    
+    {
         date: "2026",
         title: "Python Integrated Display",
         description: "Just a VERY VERY small lcd display showing stuff like date and weather. A sort of intro to graphics for me.",
