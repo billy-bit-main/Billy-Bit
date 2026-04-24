@@ -5,56 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Retro Bowl</title>
     <style>
-        /* FULL BLANK STYLE */
+        /* FORCE GPU ACCELERATION */
         body, html {
             background: #000;
             margin: 0; padding: 0;
             width: 100%; height: 100%;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            touch-action: none; /* Stops mobile scrolling lag */
         }
 
         .gm4html5_div_class {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            /* GPU HACKS FOR FPS BOOST */
+            transform: translateZ(0);
+            will-change: transform; 
+            backface-visibility: hidden;
         }
 
         canvas {
+            /* CRISP PIXELS (Change to 'auto' if you want it blurry/smooth) */
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
             image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            
+            /* SCALING FIXES */
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            
+            /* REMOVE SHIMMERING */
+            box-shadow: 0 0 1px rgba(0,0,0,0); 
         }
 
-        /* HIDDEN BUTTONS (Visible on hover) */
+        /* UI BUTTONS */
         .ui-btn {
             position: absolute;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid #444;
+            background: rgba(0, 0, 0, 0.3);
+            color: #666;
+            border: 1px solid #333;
             padding: 5px 10px;
             font-size: 10px;
             text-decoration: none;
             cursor: pointer;
-            opacity: 0; /* Hidden by default */
+            opacity: 0;
             transition: opacity 0.2s;
             font-family: sans-serif;
         }
-
-        body:hover .ui-btn {
-            opacity: 0.5; /* Subtle visibility when moving mouse */
-        }
-
-        .ui-btn:hover {
-            opacity: 1 !important;
-        }
-
+        body:hover .ui-btn { opacity: 1; }
         #back { top: 10px; left: 10px; }
         #full { top: 10px; right: 10px; }
     </style>
@@ -62,7 +64,7 @@
 <body>
 
     <a href="/" id="back" class="ui-btn">BACK</a>
-    <button id="full" class="ui-btn" onclick="document.documentElement.requestFullscreen()">FULLSCREEN</button>
+    <button id="full" class="ui-btn" onclick="triggerFullscreen()">FULLSCREEN</button>
 
     <div class="gm4html5_div_class" id="gm4html5_div_id">
         <canvas id="canvas" width="853" height="480"></canvas>
@@ -74,6 +76,12 @@
             window.PokiSDK = null; 
             if (typeof GameMaker_Init === "function") { GameMaker_Init(); }
         });
+
+        function triggerFullscreen() {
+            var el = document.documentElement;
+            var rfs = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+            if(rfs) rfs.call(el);
+        }
     </script>
 </body>
 </html>
