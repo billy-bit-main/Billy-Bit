@@ -35,7 +35,7 @@ function render() {
             item.addEventListener('click', () => {
                 window.location.href = `https://billy-bit.com/${project.slug}`;
             });
-        else if (project.slug) {
+        elseif (project.slug) {
             item.addEventListener('click', () => {
                 window.location.href = `https://billy-bit.com/webpages-HTMLCSSJS/${project.slug}`;
             });
