@@ -201,9 +201,6 @@ pre {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #1a2a4a; }
 
-.demo-wrap {
-    margin-bottom: 3rem;
-}
 .demo-label {
     font-family: 'Exo 2', sans-serif;
     font-size: 0.7rem;
