@@ -2,61 +2,12 @@
 
 const projects = [
     {
-        date: "2021 (I think)",
-        title: "Doofus Space Hunter",
-        description: "A very simple, very boring game. Basically, you hold down left click and drag around doofus (a dog) and eat monsters while a pacman thing in the middle shoots orbs at you.",
-        status: "ACTIVE",
-        slug: "doofus-space-hunter"
-    },
-    
-    {
-        date: "2026",
-        title: "Pet Booking Service",
-        description: "Just a begginer level faux pet booking service for my Digi-Tech assignment. Nothing special.",
-        status: "ACTIVE",
-        slug: "pet-booking-service"
-    },
-
-    {
-        date: "2026",
-        title: "Budget App",
-        description: "Just a basic budget app. It's a bit impractical for it to be python but it was for school. I had no choice.",
-        status: "ACTIVE",
-        slug: "budget-app"
-    },
-
-    {
-        date: "2026",
-        title: "Password Strength Tester",
-        description: "A very simple password strength tester based on a pdf of how long it takes hackers to brute force passwords with different characters and lengths.",
-        status: "ACTIVE",
-        slug: "password-strength-tester"
-    },
-    
-    {
         featured: true,
-        date: "2026",
-        title: "Billy Bot",
-        description: "A local voice assistant running 24/7 on a Raspberry Pi. Listens for the wake word 'Billy', then handles weather, timers, jokes, maths, and more.",
+        date: "2025",
+        title: "Glasshouse Mountains",
+        description: "A 3D render of the Glasshouse Mountains, with info panels that show facts and useful information. I did not make the interactive 3D landscape, credit to <a href='https://github.com/pipxrm'>pipxrm</a> for that.",
         status: "ACTIVE",
-        slug: "billy-bot"
-    },
-
-    {
-        date: "2026",
-        title: "Python Integrated Display",
-        description: "Just a VERY VERY small lcd display showing stuff like date and weather. A sort of intro to graphics for me.",
-        status: "WIP",
-        slug: "integrated-display"
-    },
-
-    {
-        featured: true,
-        date: "2026",
-        title: "Music Mood",
-        description: "A honestly suprisingly complex project. You enter your mood, the program turns that mood into a vector and compares it to vectors of a list of moods in a json file. Then when it finds a similar one, it gets the genres from that mood and turns THEM into a vector and then compares it to a list of other genres. Then it runs an API call and finds 10 ish songs with a similar mood.",
-        status: "WIP",
-        slug: "music-mood"
+        slug: "glasshouse-mountains"
     }
 ];
 
@@ -79,10 +30,14 @@ function render() {
             <div class="project-desc">${project.description}</div>
             <div class="project-status status-${statusClass}">${project.status}</div>
         `;
-        
-        if (project.slug) {
+
+        if (project.slug == "glasshouse-mountains") {
             item.addEventListener('click', () => {
-                window.location.href = `https://billy-bit.com/python/${project.slug}`;
+                window.location.href = `https://billy-bit.com/${project.slug}`;
+            });
+        else if (project.slug) {
+            item.addEventListener('click', () => {
+                window.location.href = `https://billy-bit.com/webpages-HTMLCSSJS/${project.slug}`;
             });
         }
 
