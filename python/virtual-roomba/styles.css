@@ -210,6 +210,10 @@ pre {
     margin-bottom: 0.75rem;
 }
 
+.demo {
+    width: 600px;
+    height: 600px;
+}
 @media (max-width: 480px) {
     body { padding: 5rem 1.25rem 4rem; }
     .hud-br { display: none; }
