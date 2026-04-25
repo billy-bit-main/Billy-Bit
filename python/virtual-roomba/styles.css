@@ -215,7 +215,7 @@ pre {
 .demo-wrap video {
     border: 1px solid #1a2a4a;
     display: block;
-    max-width: 100%;
+    max-width: 400px;
 }
 
 @media (max-width: 480px) {
