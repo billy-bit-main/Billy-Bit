@@ -34,7 +34,7 @@ function render() {
         if (project.slug == "glasshouse-mountains") {
             item.addEventListener('click', () => {
                 window.location.href = `https://billy-bit.com/${project.slug}`;
-            });
+            }
         else {
             item.addEventListener('click', () => {
                 window.location.href = `https://billy-bit.com/webpages-HTMLCSSJS/${project.slug}`;
