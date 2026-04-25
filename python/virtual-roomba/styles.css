@@ -213,10 +213,9 @@ pre {
     margin-bottom: 0.75rem;
 }
 .demo-wrap video {
-    width: 100%;
-    max-width: 600px;
     border: 1px solid #1a2a4a;
     display: block;
+    max-width: 100%;
 }
 
 @media (max-width: 480px) {
