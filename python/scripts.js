@@ -46,7 +46,7 @@ const projects = [
         featured: true,
         date: "2026",
         title: "Virtual Roomba",
-        description: "A virtual roomba that navigates txt file house layouts to "clean" every '.'",
+        description: "A virtual roomba that navigates txt file house layouts to 'clean' every '.'",
         status: "ACTIVE",
         slug: "virtual-roomba"
     },
