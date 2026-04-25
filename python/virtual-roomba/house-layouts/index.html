@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Layouts — Virtual Roomba — billy-bit</title>
+    <link rel="icon" href="../../../roboicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Extra styles just for this page */
+        .layouts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .layout-card {
+            background: rgba(4, 8, 20, 0.7);
+            border: 1px solid #1a2a4a;
+            padding: 1.25rem 1.5rem;
+            position: relative;
+        }
+
+        .layout-label {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.65rem;
+            color: #4a6a9a;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .layout-card pre {
+            padding: 0;
+            border: none;
+            background: none;
+            box-shadow: none;
+            font-size: 0.72rem;
+            line-height: 1.5;
+        }
+
+        .layout-copy {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        /* Key */
+        .key {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .key-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.75rem;
+            color: #8aaad0;
+        }
+        .key-char {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #7ec8ff;
+            background: rgba(74,143,255,0.08);
+            border: 1px solid rgba(74,143,255,0.15);
+            border-radius: 4px;
+            padding: 0.1rem 0.4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="hud-tl">
+        <a href="https://billy-bit.com" class="site-name">BILLY-BIT</a>
+        <div class="site-sub">mission control</div>
+    </div>
+
+    <div class="hud-tr">
+        <a href="https://billy-bit.com/python/virtual-roomba/">← roomba.py</a>
+        <a href="https://github.com/Biggy-Billy" target="_blank" rel="noopener">github →</a>
+    </div>
+
+    <div class="container">
+
+        <div class="page-label">python · virtual roomba · house layouts</div>
+        <h1>house layouts.</h1>
+
+        <p class="intro">
+            Save each block below as <code>house1.txt</code>, <code>house2.txt</code> etc. in the same folder as
+            <code>roomba.py</code>. Run the script and enter the number when prompted.
+        </p>
+
+        <div class="key">
+            <div class="key-item"><span class="key-char">@</span> roomba start</div>
+            <div class="key-item"><span class="key-char">.</span> dirty tile</div>
+            <div class="key-item"><span class="key-char">#</span> wall</div>
+            <div class="key-item"><span class="key-char">&nbsp;</span> open floor</div>
+        </div>
+
+        <div class="layouts-grid" id="layouts-grid">
+            <!-- Rendered by JS -->
+        </div>
+
+    </div>
+
+    <div class="hud-br">billy-bit.com · 2025</div>
+
+    <script>
+        // ── PASTE YOUR HOUSE LAYOUTS HERE ──────────────────────────
+        // Each entry is one house. The content is the raw .txt file.
+        // Spaces matter — keep the formatting exact.
+
+        const houses = [
+            {
+                number: 1,
+                content:
+`#########
+#@......#
+#.#####.#
+#.#...#.#
+#.#.#.#.#
+#...#...#
+#########`
+            },
+            // paste the rest here — copy the object above and change the number + content
+        ];
+
+        // ── RENDER ──────────────────────────────────────────────────
+        function render() {
+            const grid = document.getElementById('layouts-grid');
+
+            houses.forEach(house => {
+                const card = document.createElement('div');
+                card.className = 'layout-card';
+
+                card.innerHTML = `
+                    <div class="layout-label">house${house.number}.txt</div>
+                    <button class="copy-btn layout-copy" onclick="copyLayout(this, ${house.number})">copy</button>
+                    <pre>${escapeHtml(house.content)}</pre>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function copyLayout(btn, number) {
+            const house = houses.find(h => h.number === number);
+            navigator.clipboard.writeText(house.content).then(() => {
+                btn.textContent = 'copied ✓';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>
