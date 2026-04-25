@@ -32,20 +32,20 @@ function render() {
         `;
 
         if (project.slug == "glasshouse-mountains") {
-            item.addEventListener('click', () => {
-                window.location.href = `https://billy-bit.com/${project.slug}`;
-            }
-        else {
-            item.addEventListener('click', () => {
-                window.location.href = `https://billy-bit.com/webpages-HTMLCSSJS/${project.slug}`;
-            });
-        }
+    item.addEventListener('click', () => {
+        window.location.href = `https://billy-bit.com/${project.slug}`;
+    });
+} else {
+    item.addEventListener('click', () => {
+        window.location.href = `https://billy-bit.com/webpages-HTMLCSSJS/${project.slug}`;
+    });
+}
 
-        if (project.featured) {
-            item.classList.add('featured-project')
-        }
-        
-        timeline.appendChild(item);
+if (project.featured) {
+    item.classList.add('featured-project');
+}
+
+timeline.appendChild(item);
     });
 }
 
