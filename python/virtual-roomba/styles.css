@@ -212,11 +212,6 @@ pre {
     text-transform: uppercase;
     margin-bottom: 0.75rem;
 }
-.demo-wrap video {
-    border: 1px solid #1a2a4a;
-    display: block;
-    max-width: 400px;
-}
 
 @media (max-width: 480px) {
     body { padding: 5rem 1.25rem 4rem; }
