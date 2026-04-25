@@ -201,6 +201,24 @@ pre {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #1a2a4a; }
 
+.demo-wrap {
+    margin-bottom: 3rem;
+}
+.demo-label {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.7rem;
+    color: #4a6a9a;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+.demo-wrap video {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #1a2a4a;
+    display: block;
+}
+
 @media (max-width: 480px) {
     body { padding: 5rem 1.25rem 4rem; }
     .hud-br { display: none; }
