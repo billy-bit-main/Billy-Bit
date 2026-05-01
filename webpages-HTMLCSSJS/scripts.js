@@ -8,6 +8,14 @@ const projects = [
         description: "A 3D render of the Glasshouse Mountains, with info panels that show facts and useful information. I did not make the interactive 3D landscape, credit to <a href='https://github.com/pipxrm'>pipxrm</a> for that.",
         status: "ACTIVE",
         slug: "glasshouse-mountains"
+    },
+
+    {
+        date: "2026",
+        title: "Custom Wallpaper",
+        description: "A custom wallpaper with a local to-do list, the time, and the date.",
+        status: "ACTIVE",
+        slug: "custom-wallpaper"
     }
 ];
 
