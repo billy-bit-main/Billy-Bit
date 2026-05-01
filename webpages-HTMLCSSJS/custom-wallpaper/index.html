@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Wallpaper — billy-bit</title>
+    <link rel="icon" href="../../roboicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="hud-tl">
+        <a href="https://billy-bit.com" class="site-name">BILLY-BIT</a>
+        <div class="site-sub">mission control</div>
+    </div>
+
+    <div class="hud-tr">
+        <a href="https://billy-bit.com/webpages-HTMLCSSJS/">← html/css/js projects</a>
+        <a href="https://github.com/Biggy-Billy" target="_blank" rel="noopener">github →</a>
+    </div>
+
+    <div class="container">
+
+        <div class="page-label">html/css/js · custom wallpaper</div>
+        <h1>custom wallpaper.</h1>
+
+        <p class="intro">
+            A live desktop wallpaper built with HTML, CSS, and JS — runs through <strong>Lively Wallpaper</strong>, a free Windows app that lets you use web pages as wallpapers.
+            You can swap out the background image to anything you want by replacing one line of CSS.
+            Here's how to set it up and make it yours.
+        </p>
+
+        <!-- SETUP SECTION -->
+        <div class="code-header" style="margin-bottom: 1.25rem;">
+            <span class="code-label">setup · lively wallpaper</span>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-title">Download Lively Wallpaper</div>
+                <p>Get it from the <a href="https://www.rocksdanister.com/lively/" target="_blank" rel="noopener" style="color:#abcfff;">Lively website</a> or search it on the Microsoft Store — both are free. Install and open it.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-title">Download the wallpaper files</div>
+                <p>Grab the files from the GitHub repo. You want the whole folder — <code>index.html</code>, <code>styles.css</code>, and <code>scripts.js</code>. Keep them together in one folder on your computer.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-title">Add it to Lively</div>
+                <p>In Lively, click the <strong>+</strong> button in the top right. Choose <strong>"Open from disk"</strong> and navigate to the <code>index.html</code> file you downloaded. Lively will load it as a wallpaper — click OK through any prompts.</p>
+                <div class="callout callout--info">
+                    <div class="callout-label">tip</div>
+                    <div class="callout-text">If it asks how to open the file, pick "Web page". Don't pick the "HTML" app option — it won't render correctly.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">04</div>
+                <div class="step-title">Set it as your wallpaper</div>
+                <p>Once it loads in Lively, double-click the preview or click <strong>"Set as wallpaper"</strong>. It'll go live on your desktop. Lively runs in the background — you can close the window and it keeps going.</p>
+            </div>
+
+        </div>
+
+        <!-- IMAGE SWAP SECTION -->
+        <div class="code-header" style="margin-bottom: 1.25rem;">
+            <span class="code-label">changing the image</span>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-title">Convert your image to base64</div>
+                <p>Base64 is just a way of turning an image file into a long text string, so you can paste it directly into your CSS instead of having to link to a file. Go to <a href="https://base64.guru/converter/encode/image" target="_blank" rel="noopener" style="color:#abcfff;">base64.guru/converter/encode/image</a>, upload your image, and copy the output string.</p>
+                <div class="callout callout--warn">
+                    <div class="callout-label">heads up</div>
+                    <div class="callout-text">The output string will be very long — that's normal. The bigger the image file, the longer the string. Don't panic.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-title">Open styles.css and find the background line</div>
+                <p>Open <code>styles.css</code> in any text editor (Notepad works, VS Code is better). Look for the line that starts with <code>background-image:</code> or find the <code>url('data:image/</code> part — that's where the current image is embedded.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-title">Swap in your base64 string</div>
+                <p>Replace everything between the quotes with your new base64 string, keeping the <code>data:image/</code> prefix. The format looks like this:</p>
+            </div>
+
+        </div>
+
+        <div class="code-wrap">
+            <div class="code-header">
+                <span class="code-label">styles.css · image swap</span>
+                <button class="copy-btn" onclick="copyCode(this, 'snippet')">copy</button>
+            </div>
+            <pre id="snippet">
+
+background-image: url('data:image/jpeg;base64,PASTE_YOUR_STRING_HERE');
+
+background-image: url('data:image/png;base64,PASTE_YOUR_STRING_HERE');</pre>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">04</div>
+                <div class="step-title">Save and reload in Lively</div>
+                <p>Save the CSS file. In Lively, right-click the wallpaper preview and hit <strong>Reload</strong> — or just remove and re-add the wallpaper. Your new image will be live.</p>
+                <div class="callout callout--info">
+                    <div class="callout-label">note</div>
+                    <div class="callout-text">If the image looks stretched, check the <code>background-size</code> property in the CSS. <code>cover</code> fills the screen, <code>contain</code> fits it without cropping. Change it to whichever looks right for your image.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hud-br">billy-bit.com · 2026</div>
+
+    <script>
+        function copyCode(btn, id) {
+            const code = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = 'copied ✓';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
